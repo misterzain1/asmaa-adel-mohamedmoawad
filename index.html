@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -836,33 +835,88 @@
   }
 
   .audio-btn {
-    padding: 8px 18px;
-    font-size: 13px;
+    padding: 10px 22px;
+    font-size: 14px;
     font-family: inherit;
     font-weight: 700;
     border: 1px solid rgba(220, 20, 60, 0.4);
     border-radius: 20px;
-    background: rgba(0,0,0,0.3);
-    color: rgba(255,255,255,0.8);
+    background: rgba(0,0,0,0.4);
+    color: rgba(255,255,255,0.9);
     cursor: pointer;
     transition: all 0.3s ease;
   }
 
   .audio-btn:hover {
-    background: rgba(220, 20, 60, 0.2);
+    background: rgba(220, 20, 60, 0.25);
     color: #fff;
     border-color: var(--crimson);
   }
 
   .audio-btn.playing {
-    background: rgba(220, 20, 60, 0.3);
+    background: rgba(220, 20, 60, 0.35);
     color: #fff;
+    border-color: var(--gold);
     animation: audioPulse 1.5s ease-in-out infinite;
   }
 
   @keyframes audioPulse {
-    0%, 100% { box-shadow: 0 0 5px rgba(220,20,60,0.3); }
-    50% { box-shadow: 0 0 20px rgba(220,20,60,0.6); }
+    0%, 100% { box-shadow: 0 0 8px rgba(220,20,60,0.3); }
+    50% { box-shadow: 0 0 25px rgba(220,20,60,0.7); }
+  }
+
+  /* Music Selector Modal Style */
+  .music-modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    animation: modalFadeIn 0.3s ease-out;
+  }
+
+  @keyframes modalFadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .music-modal-card {
+    background: rgba(15, 0, 0, 0.95);
+    border: 1px solid rgba(220, 20, 60, 0.5);
+    border-radius: 20px;
+    padding: 22px;
+    max-width: 360px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 0 50px rgba(220, 20, 60, 0.4);
+  }
+
+  .playlist-track {
+    background: rgba(139, 0, 0, 0.2);
+    border: 1px solid rgba(220, 20, 60, 0.3);
+    border-radius: 12px;
+    padding: 12px 14px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    margin-bottom: 8px;
+  }
+
+  .playlist-track:hover, .playlist-track.active {
+    background: linear-gradient(135deg, #8b0000, #dc143c);
+    border-color: var(--gold);
+    box-shadow: 0 0 15px rgba(220,20,60,0.4);
   }
 
   /* Confetti */
@@ -1019,12 +1073,10 @@
         </div>
       </div>
 
-      <!-- Audio placeholder -->
+      <!-- Audio Button Section -->
       <div class="audio-section">
-        <button class="audio-btn" id="audio-btn" onclick="toggleAudio()">🎵 شغلي موسيقى الحب</button>
-        <audio id="bg-music" loop>
-          <source src="music.mp3" type="audio/mpeg">
-        </audio>
+        <button class="audio-btn" id="audio-btn" onclick="openMusicModal()">🎵 شغلي موسيقى الحب</button>
+        <audio id="bg-music"></audio>
       </div>
 
       <div class="birthday-message">
@@ -1067,6 +1119,24 @@
       </div>
     </div>
 
+  </div>
+</div>
+
+<!-- Music Selector Modal -->
+<div class="music-modal-overlay" id="music-modal">
+  <div class="music-modal-card">
+    <div style="font-size: 32px; margin-bottom: 6px;">🎵</div>
+    <h2 style="font-size: 17px; color: var(--gold); margin-bottom: 4px;">اختاري الأغنية اللي تحبيها</h2>
+    <p style="font-size: 12px; color: rgba(255,255,255,0.7); margin-bottom: 14px;">هتشتغل الموسيقى في الخلفية فوراً</p>
+
+    <div id="playlist-container" style="max-height: 200px; overflow-y: auto; margin-bottom: 12px; padding-left: 2px;">
+      <!-- Tracks loaded dynamically -->
+    </div>
+
+    <div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top: 10px;">
+      <button class="share-btn" style="border-color: var(--gold); color: var(--gold);" onclick="togglePlayPauseCurrent()" id="modal-play-btn">⏸️ إيقاف / تشغيل</button>
+      <button class="share-btn" onclick="closeMusicModal()">إغلاق ✖</button>
+    </div>
   </div>
 </div>
 
@@ -1358,23 +1428,84 @@
     window.open('https://wa.me/?text=' + text, '_blank');
   }
 
-  // ========== AUDIO ==========
-  function toggleAudio() {
-    const audio = document.getElementById('bg-music');
-    const btn = document.getElementById('audio-btn');
-    if (audio.paused) {
-      audio.play().then(() => {
-        btn.textContent = '⏸️ وقفي الموسيقى';
-        btn.classList.add('playing');
-      }).catch(() => {
-        alert('ضيفي ملف music.mp3 في نفس المجلد عشان الموسيقى تشتغل 🎵');
-      });
+  // ========== MULTI-AUDIO / PLAYLIST LOGIC ==========
+  // قائمة الأغاني المرفوعة - يمكنك تغيير الأغاني ورابط الملف هنا
+  const musicTracks = [
+    { name: "🎵 أغنية عيد الميلاد (music.mp3)", file: "music.mp3" },
+    { name: "🎶 أغنية الحب الأولى (music2.mp3)", file: "music2.mp3" },
+    { name: "🎼 موسيقى هادئة (music3.mp3)", file: "music3.mp3" }
+  ];
+
+  let currentTrackIndex = 0;
+  const audioEl = document.getElementById('bg-music');
+
+  function renderPlaylist() {
+    const container = document.getElementById('playlist-container');
+    container.innerHTML = '';
+
+    musicTracks.forEach((track, idx) => {
+      const item = document.createElement('div');
+      item.className = 'playlist-track' + (idx === currentTrackIndex ? ' active' : '');
+      item.innerHTML = `<span>${track.name}</span> <span>${idx === currentTrackIndex && !audioEl.paused ? '▶️' : '🎧'}</span>`;
+      item.onclick = () => playSelectedTrack(idx);
+      container.appendChild(item);
+    });
+  }
+
+  function openMusicModal() {
+    renderPlaylist();
+    document.getElementById('music-modal').style.display = 'flex';
+  }
+
+  function closeMusicModal() {
+    document.getElementById('music-modal').style.display = 'none';
+  }
+
+  function playSelectedTrack(index) {
+    currentTrackIndex = index;
+    audioEl.src = musicTracks[currentTrackIndex].file;
+    audioEl.play().then(() => {
+      updateMainAudioBtn(true);
+      renderPlaylist();
+      setTimeout(closeMusicModal, 500); // إغلاق تلقائي بسيط بعد الاختيار
+    }).catch(err => {
+      alert('تأكدي من رفع ملف الصوت برابط: ' + musicTracks[currentTrackIndex].file);
+    });
+  }
+
+  function togglePlayPauseCurrent() {
+    if (audioEl.paused) {
+      if (!audioEl.src) {
+        playSelectedTrack(0);
+      } else {
+        audioEl.play().then(() => {
+          updateMainAudioBtn(true);
+          renderPlaylist();
+        });
+      }
     } else {
-      audio.pause();
+      audioEl.pause();
+      updateMainAudioBtn(false);
+      renderPlaylist();
+    }
+  }
+
+  function updateMainAudioBtn(isPlaying) {
+    const btn = document.getElementById('audio-btn');
+    if (isPlaying) {
+      btn.textContent = '⏸️ ' + musicTracks[currentTrackIndex].name;
+      btn.classList.add('playing');
+    } else {
       btn.textContent = '🎵 شغلي موسيقى الحب';
       btn.classList.remove('playing');
     }
   }
+
+  // التبديل التلقائي للأغنية التالية عند انتهاء الأولى
+  audioEl.addEventListener('ended', () => {
+    currentTrackIndex = (currentTrackIndex + 1) % musicTracks.length;
+    playSelectedTrack(currentTrackIndex);
+  });
 
   // ========== CONFETTI ==========
   function startConfetti() {
