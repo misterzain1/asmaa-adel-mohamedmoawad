@@ -362,6 +362,14 @@
 
   .enter-btn:active { transform: translateY(0); }
 
+  .next-btn {
+    background: linear-gradient(135deg, #1f7a1f, #32cd32);
+    box-shadow: 0 5px 25px rgba(50,205,50,0.4);
+  }
+  .next-btn:hover {
+    box-shadow: 0 10px 35px rgba(50,205,50,0.7);
+  }
+
   .error-msg {
     color: #ff4444;
     font-size: 13px;
@@ -507,7 +515,7 @@
     text-shadow: 0 0 20px rgba(255,215,0,0.4);
   }
 
-  /* Quiz */
+  /* Quiz - Story Section */
   .quiz-section {
     display: none;
     animation: quizIn 0.8s ease-out;
@@ -559,12 +567,33 @@
     border-color: #32cd32;
   }
 
+  .story-gif {
+    max-width: 160px;
+    border-radius: 15px;
+    border: 2px solid rgba(220, 20, 60, 0.4);
+    margin-bottom: 10px;
+    box-shadow: 0 0 20px rgba(220,20,60,0.3);
+  }
+
+  .story-emoji-anim {
+    font-size: 40px;
+    margin-bottom: 10px;
+    animation: floatLove 2s ease-in-out infinite;
+    display: inline-block;
+  }
+
+  @keyframes floatLove {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-10px) scale(1.1); }
+  }
+
   .quiz-question {
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 900;
     color: #fff;
     margin-bottom: 14px;
-    line-height: 1.6;
+    line-height: 1.8;
+    white-space: pre-wrap;
     text-shadow: 0 0 10px rgba(220,20,60,0.3);
   }
 
@@ -596,7 +625,7 @@
   }
 
   .quiz-feedback {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 900;
     margin: 10px 0;
     min-height: 24px;
@@ -746,42 +775,6 @@
     box-shadow: 0 0 12px rgba(220,20,60,0.2);
   }
 
-  /* Story Box Added */
-  .story-box {
-    background: rgba(139, 0, 0, 0.15);
-    border: 1px solid rgba(220, 20, 60, 0.3);
-    border-radius: 16px;
-    padding: 20px;
-    margin: 20px 0;
-    position: relative;
-    overflow: hidden;
-    text-align: right;
-  }
-
-  .story-box::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 3px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  }
-
-  .story-title {
-    font-size: 18px;
-    color: var(--gold);
-    margin-bottom: 12px;
-    font-weight: 900;
-    text-align: center;
-    text-shadow: 0 0 15px rgba(255,215,0,0.3);
-  }
-
-  .story-text {
-    font-size: 14.5px;
-    line-height: 2.2;
-    color: #ffcccc;
-    font-weight: 700;
-  }
-
   .signature {
     margin-top: 16px;
     font-size: 15px;
@@ -865,96 +858,6 @@
     border-color: var(--crimson);
   }
 
-  /* Audio */
-  .audio-section {
-    margin: 12px 0;
-  }
-
-  .audio-btn {
-    padding: 10px 22px;
-    font-size: 14px;
-    font-family: inherit;
-    font-weight: 700;
-    border: 1px solid rgba(220, 20, 60, 0.4);
-    border-radius: 20px;
-    background: rgba(0,0,0,0.4);
-    color: rgba(255,255,255,0.9);
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .audio-btn:hover {
-    background: rgba(220, 20, 60, 0.25);
-    color: #fff;
-    border-color: var(--crimson);
-  }
-
-  .audio-btn.playing {
-    background: rgba(220, 20, 60, 0.35);
-    color: #fff;
-    border-color: var(--gold);
-    animation: audioPulse 1.5s ease-in-out infinite;
-  }
-
-  @keyframes audioPulse {
-    0%, 100% { box-shadow: 0 0 8px rgba(220,20,60,0.3); }
-    50% { box-shadow: 0 0 25px rgba(220,20,60,0.7); }
-  }
-
-  /* Music Selector Modal Style */
-  .music-modal-overlay {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    z-index: 2000;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-    animation: modalFadeIn 0.3s ease-out;
-  }
-
-  @keyframes modalFadeIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
-  }
-
-  .music-modal-card {
-    background: rgba(15, 0, 0, 0.95);
-    border: 1px solid rgba(220, 20, 60, 0.5);
-    border-radius: 20px;
-    padding: 22px;
-    max-width: 360px;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 0 50px rgba(220, 20, 60, 0.4);
-  }
-
-  .playlist-track {
-    background: rgba(139, 0, 0, 0.2);
-    border: 1px solid rgba(220, 20, 60, 0.3);
-    border-radius: 12px;
-    padding: 12px 14px;
-    color: #fff;
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: all 0.3s ease;
-    margin-bottom: 8px;
-  }
-
-  .playlist-track:hover, .playlist-track.active {
-    background: linear-gradient(135deg, #8b0000, #dc143c);
-    border-color: var(--gold);
-    box-shadow: 0 0 15px rgba(220,20,60,0.4);
-  }
-
   /* Confetti */
   #confetti-canvas {
     position: fixed;
@@ -991,10 +894,9 @@
     .game-grid { gap: 8px; }
     .game-card { font-size: 22px; }
     .game-card .card-content { font-size: 26px; }
-    .quiz-question { font-size: 15px; }
+    .quiz-question { font-size: 14px; }
     .count-box { min-width: 45px; padding: 6px 8px; }
     .count-box .num { font-size: 18px; }
-    .story-text { font-size: 13px; }
   }
 </style>
 </head>
@@ -1006,6 +908,9 @@
 <div class="snow-container" id="snow-container"></div>
 <div class="hearts-container" id="hearts-container"></div>
 <canvas id="confetti-canvas"></canvas>
+
+<!-- Hidden YouTube Background Music -->
+<div id="yt-music-container" style="display:none;"></div>
 
 <!-- Splash -->
 <div class="splash-screen" id="splash-screen">
@@ -1046,7 +951,7 @@
       </div>
 
       <div style="display:flex; flex-direction:column; gap:10px;">
-        <input type="password" class="password-input" id="password-input" placeholder="كلمة السر" maxlength="6">
+        <input type="password" class="password-input" id="password-input" placeholder="كلمة السر" maxlength="7">
         <button class="enter-btn" onclick="checkPassword()">ادخلي قلبي 💝</button>
         <p class="error-msg" id="error-msg">❌ مش دي كلمة السر يا حبيبتي ياغبية 🥲😒... فكري تاني!</p>
       </div>
@@ -1056,7 +961,7 @@
     <div class="game-section" id="game-section">
       <div class="big-heart">🎮</div>
       <h1 class="game-title">لعبة الحب</h1>
-      <p class="game-subtitle">لازم تلاقي كل الأزواج المتشابهة يا سمسم<br>عشان تفتحي رسالتك</p>
+      <p class="game-subtitle">لازم تلاقي كل الأزواج المتشابهة يا سمسم<br>عشان تفتحي حكايتنا</p>
 
       <div class="game-stats">
         <div>المحاولات: <span id="moves-count">0</span></div>
@@ -1067,32 +972,40 @@
 
       <div class="game-win-msg" id="game-win-msg">
         <div class="game-win-text">🎉 برافو يا ذكية! كسبتي اللعبة!</div>
-        <button class="enter-btn" onclick="showQuiz()">اختبري ذكاءك يا سمسم 🧠</button>
+        <button class="enter-btn" onclick="showStoryQuiz()">نبدأ حكايتنا الرومانسية 📖</button>
       </div>
     </div>
 
-    <!-- Quiz -->
+    <!-- Quiz & Interactive Story -->
     <div class="quiz-section" id="quiz-section">
-      <div class="big-heart">🧩</div>
-      <h1 class="quiz-title">لغز الحب</h1>
-      <p class="quiz-subtitle">جاوبي صح عشان تدخلي قلبي كله</p>
+      <h1 class="quiz-title">حكايتنا الحلوة ❤️</h1>
+      
+      <!-- زر تشغيل/إيقاف الموسيقى داخل صفحة القصة -->
+      <div style="margin: 10px 0;">
+        <button class="secret-btn" onclick="toggleMusic()" id="story-music-btn">🎵 تشغيل الموسيقى الرومانسية</button>
+      </div>
 
       <div class="quiz-progress" id="quiz-progress">
         <div class="quiz-dot active" id="dot-0"></div>
         <div class="quiz-dot" id="dot-1"></div>
         <div class="quiz-dot" id="dot-2"></div>
-        <div class="quiz-dot" id="dot-3"></div>
+        <div class="quiz-dot" id="dot-3"></div> 
       </div>
 
       <div id="quiz-content">
+        <img id="story-gif" class="story-gif" src="" alt="love gif">
+        <div class="story-emoji-anim" id="story-emoji">💑</div>
         <div class="quiz-question" id="quiz-question">جاري التحميل...</div>
+        
         <input type="text" class="quiz-input" id="quiz-input" placeholder="اكتبي إجابتك هنا...">
-        <button class="enter-btn" onclick="checkQuizAnswer()">تأكدي 💘</button>
+        <button class="enter-btn" id="check-btn" onclick="checkQuizAnswer()">تأكدي 💘</button>
+        <button class="enter-btn next-btn" id="next-btn" style="display:none;" onclick="nextStoryStep()">اضغطي هنا للدخول للسؤال التالي 📖</button>
+        
         <div class="quiz-feedback" id="quiz-feedback"></div>
       </div>
     </div>
 
-    <!-- Birthday -->
+    <!-- Birthday Final Section -->
     <div class="birthday-section" id="birthday-screen">
       <div class="big-heart">🎂🖤</div>
       <h1 class="birthday-title">كل سنة وانتي طيبة</h1>
@@ -1111,12 +1024,6 @@
         </div>
       </div>
 
-      <!-- Audio Button Section -->
-      <div class="audio-section">
-        <button class="audio-btn" id="audio-btn" onclick="openMusicModal()">🎵 شغلي موسيقى الحب</button>
-        <audio id="bg-music"></audio>
-      </div>
-
       <div class="birthday-message">
         <span class="love-line">🌹 يوم 6/8/1997 ده أحسن يوم في الدنيا</span>
         <span class="love-line">✨ يوم اتولد فيه الجميلة</span>
@@ -1130,20 +1037,10 @@
         <span class="love-line">💍 ربنا يخليكي ليا ويحميكي يا أغلى من الدنيا</span>
         <span class="love-line">🖤 بحبك أكتر من أي حاجة في الكون ده كله</span>
         <span class="love-line">👑 انتي أميرتي اللي مالكيش مثيل</span>
-        <span class="love-line">🌹 وعقبال 100 سنة مع بعض يا حبيبتي</span>
-      </div>
-
-      <!-- صندوق القصة -->
-      <div class="story-box">
-        <h2 class="story-title">📖 حكايتنا الحلوة</h2>
-        <p class="story-text">
-          كان يا ما كان... ولد اسمه محمد بيحب بنت اسمها اسماء. كبروا واتربوا في نفس المكان، بس ماكانوش قريبين من بعض...<br>
-          لحد ما جه أول قرب وأول تعارف حقيقي بينهم سنة 2022، وربنا كلل حبهم بخطوبة جميلة في 2025 💍.<br>
-          عاشوا قصة حب جميلة، طبيعي زي أي اتنين بيفرحوا ويزعلوا، بيتخانقوا ويتصالحوا، بس حبهم بيكبر كل يوم ❤️.<br>
-          وإن شاء الله قريباً جداً هنكون في بيت واحد... أنا ومليكتي "اسماء عادل محمد" و"محمد أحمد معوض".<br>
-          زي ما أنا أبوكي وأخوكي وسندك وضهرك، إنتي برضه أهم حاجة عندي في دنيتي كلها 🌍.<br>
-          كل سنة وانتي أجمل وأحسن وأرق بنت في الدنيا دي كلها... كل سنة وانتي طيبة يا سمسوم 🥰.
-        </p>
+        <span class="love-line">🌹 وإن شاء الله قريباً جداً هنكون في بيت واحد</span>
+        <span class="love-line">💍 أنا ومليكتي "اسماء عادل محمد" و "محمد أحمد معوض"</span>
+        <span class="love-line">🌍 زي ما أنا أبوكي وأخوكي وسندك، إنتي برضه دنيتي كلها</span>
+        <span class="love-line">🥰 وعقبال 100 سنة مع بعض يا حبيبتي</span>
       </div>
 
       <div class="signature">
@@ -1173,23 +1070,6 @@
   </div>
 </div>
 
-<!-- Music Selector Modal -->
-<div class="music-modal-overlay" id="music-modal">
-  <div class="music-modal-card">
-    <div style="font-size: 32px; margin-bottom: 6px;">🎵</div>
-    <h2 style="font-size: 17px; color: var(--gold); margin-bottom: 4px;">اختاري الأغنية اللي تحبيها</h2>
-    <p style="font-size: 12px; color: rgba(255,255,255,0.7); margin-bottom: 14px;">هتشتغل الموسيقى في الخلفية فوراً</p>
-
-    <div id="playlist-container" style="max-height: 200px; overflow-y: auto; margin-bottom: 12px; padding-left: 2px;">
-      <!-- Tracks loaded dynamically -->
-    </div>
-
-    <div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top: 10px;">
-      <button class="share-btn" style="border-color: var(--gold); color: var(--gold);" onclick="togglePlayPauseCurrent()" id="modal-play-btn">⏸️ إيقاف / تشغيل</button>
-      <button class="share-btn" onclick="closeMusicModal()">إغلاق ✖</button>
-    </div>
-  </div>
-</div>
 
 <script>
   // ========== BACKGROUND EFFECTS ==========
@@ -1244,6 +1124,33 @@
   }
   createHearts();
 
+  // ========== YOUTUBE BACKGROUND MUSIC & TOGGLE ==========
+  let isMusicPlaying = false;
+
+  function playRomanticMusic() {
+    const container = document.getElementById('yt-music-container');
+    const btn = document.getElementById('story-music-btn');
+    if (container.innerHTML === '') {
+      container.innerHTML = '<iframe width="0" height="0" src="https://www.youtube.com/embed/97_jCByOARw?autoplay=1&loop=1&playlist=97_jCByOARw" frameborder="0" allow="autoplay"></iframe>';
+      isMusicPlaying = true;
+      if(btn) btn.textContent = '🔇 إيقاف الموسيقى';
+    }
+  }
+
+  function toggleMusic() {
+    const container = document.getElementById('yt-music-container');
+    const btn = document.getElementById('story-music-btn');
+    if (!isMusicPlaying) {
+      container.innerHTML = '<iframe width="0" height="0" src="https://www.youtube.com/embed/97_jCByOARw?autoplay=1&loop=1&playlist=97_jCByOARw" frameborder="0" allow="autoplay"></iframe>';
+      isMusicPlaying = true;
+      if(btn) btn.textContent = '🔇 إيقاف الموسيقى';
+    } else {
+      container.innerHTML = '';
+      isMusicPlaying = false;
+      if(btn) btn.textContent = '🎵 تشغيل الموسيقى الرومانسية';
+    }
+  }
+
   // ========== SPLASH -> INTRO SAFE TRANSITION ==========
   setTimeout(() => {
     const splash = document.getElementById('splash-screen');
@@ -1268,7 +1175,10 @@
   function checkPassword() {
     const input = document.getElementById('password-input').value.trim();
     const errorMsg = document.getElementById('error-msg');
-    if (input === '681997' || input === '681995') {
+    
+    if (input === '681997' || input === '681995' || input === '1241995') {
+      playRomanticMusic(); // تشغيل الموسيقى تلقائياً بعد إدخال الباسورد
+      
       document.getElementById('password-screen').style.display = 'none';
       document.getElementById('game-section').style.display = 'block';
       initGame();
@@ -1287,7 +1197,7 @@
   });
 
   // ========== MEMORY GAME ==========
-  const gameEmojis = ['❤️', '🖤', '🌹', '💍', '👑', '🎁'];
+  const gameEmojis = ['❤️', '🖤', '🌹', '💍', '👩‍❤️‍👨', '🎁'];
   let cards = [], flippedCards = [], matchedPairs = 0, moves = 0, canFlip = true;
 
   function initGame() {
@@ -1353,53 +1263,70 @@
     }
   }
 
-  // ========== QUIZ ==========
-  const quizQuestions = [
+  // ========== INTERACTIVE STORY QUIZ ==========
+  const storySteps = [
     {
-      q: "🧠 سؤال 1: اسم حبيبك الثلاثي ايه؟",
+      text: "كان يا ما كان يا سعد يا إكرام وما يحلى الكلام إلا بذكر النبي عليه الصلاة والسلام ✨\n\nكان فى ولد اسمه محمد بيحب بنت اسمها اسماء... \nتعرفي اسم الولد اللي بيحبها ده إيه ثلاثي؟",
+      emoji: "👩‍❤️‍👨",
+      gif: "https://media.tenor.com/8QG9_7W3eGMAAAAC/love-cute.gif",
       answers: ["محمد احمد معوض", "محمد أحمد معوض", "محمداحمدمعوض"],
-      correctMsg: "🎉 شاطرة برافو! أذكى واحدة في الدنيا 😂",
-      wrongMsg: "❌ يا سمسم! ده اسم حبيبك مش فاكراه؟! 😤"
+      correctMsg: "برافو شاطره وذكيه 😍",
+      wrongMsg: "ركزي عشان مزعلكيش يا سمسم 😒"
     },
     {
-      q: "🎂 سؤال 2: تاريخ ميلاد حبيبك ايه؟ (اكتبي من غير /)",
-      answers: ["1241995", "12/4/1995"],
-      correctMsg: "💕 برافو يا حبيبتي! فاكرة! هزعلك ليه وأنا بحبك 😘",
-      wrongMsg: "😢 يا سمسم! لو غلطتي هزعلك! جربي تاني!"
+      text: "الولد ده اتولد قبل اسماء بسنتين... 🌙\n\nهل تعرفي تاريخ ميلاده؟ (اكتبي اليوم والشهر والسنة ورا بعض من غير فواصل أو بـ /)",
+      emoji: "🎂",
+      gif: "https://media.tenor.com/FwF73Z2-i9MAAAAC/happy-birthday.gif",
+      answers: ["1241995", "12/4/1995", "12-4-1995", "1995"],
+      correctMsg: "برافو شاطره وذكيه 💕",
+      wrongMsg: "ركزي عشان مزعلكيش يا سمسم 😒"
     },
     {
-      q: "💰 سؤال 3: كم المبلغ اللي خدتيه في أول عيدية من حبيبك؟ (أرقام بس)",
-      answers: ["200"],
-      correctMsg: "🎊 برافو يا ذكية! فاكرة كل حاجة! يلا افتحي قلبي 💖",
-      wrongMsg: "🤔 يا سمسم! ده أول عيدية! مش فاكراه؟!"
+      text: "كبروا واتربوا في نفس المكان، بس ماكانوش قريبين من بعض في الأول... 🚶‍♂️🚶‍♀️\n\nما كانش في بينهم تعارف، لحد ما جت سنة معينة وبدأوا يقربوا... هل تعرفي أول سنة اتعرفوا فيها على بعض كانت سنة كام؟",
+      emoji: "🤝",
+      gif: "https://media.tenor.com/z4_n3L5Rk9wAAAAC/cute-love.gif",
+      answers: ["2022", "٢٠٢٢"],
+      correctMsg: "برافو شاطره وذكيه! أحلى سنة دي ولا إيه! 💖",
+      wrongMsg: "ركزي عشان مزعلكيش يا سمسم 😒"
     },
     {
-      q: "💍 سؤال 4: سنة خطوبتنا اي يا سمسم ؟ (أرقام بس)",
-      answers: ["2025"],
-      correctMsg: "🎊 برافو يا أميرتي! أحلى سنة في حياتي! يلا افتحي قلبي 💖",
-      wrongMsg: "🤔 يا سمسم! دي أهم سنة! مش فاكراها؟!"
-    } 
+      text: "وفي نفس السنة دي أو اللي بعدها، خدت سمسم أول عيدية من حبيبها 💸\n\nتفتكري العيدية دي كانت كام؟ (أرقام بس)",
+      emoji: "🎁",
+      gif: "https://media.tenor.com/U1Uv6K1h4r8AAAAC/bubu-dudu-bubu.gif",
+      answers: ["200", "٢٠٠"],
+      correctMsg: "برافو شاطره وذكيه! ذاكرتك حديد يا أميرتي! 🎉",
+      wrongMsg: "ركزي عشان مزعلكيش يا سمسم 😒"
+    }
   ];
 
   let currentQuiz = 0;
 
-  function showQuiz() {
+  function showStoryQuiz() {
     document.getElementById('game-section').style.display = 'none';
     document.getElementById('quiz-section').style.display = 'block';
     currentQuiz = 0;
-    loadQuizQuestion();
+    loadStoryStep();
   }
 
-  function loadQuizQuestion() {
-    document.getElementById('quiz-question').textContent = quizQuestions[currentQuiz].q;
+  function loadStoryStep() {
+    const step = storySteps[currentQuiz];
+    
+    document.getElementById('quiz-question').textContent = step.text;
+    document.getElementById('story-emoji').textContent = step.emoji;
+    document.getElementById('story-gif').src = step.gif;
+    
     document.getElementById('quiz-input').value = '';
     document.getElementById('quiz-feedback').className = 'quiz-feedback';
     document.getElementById('quiz-feedback').textContent = '';
+    
+    document.getElementById('check-btn').style.display = 'inline-block';
+    document.getElementById('next-btn').style.display = 'none';
+    
     updateQuizDots();
   }
 
   function updateQuizDots() {
-    for (let i = 0; i < quizQuestions.length; i++) {
+    for (let i = 0; i < storySteps.length; i++) {
       const dot = document.getElementById('dot-' + i);
       if(dot) {
         dot.className = 'quiz-dot';
@@ -1411,34 +1338,46 @@
 
   function checkQuizAnswer() {
     const input = document.getElementById('quiz-input').value.trim().toLowerCase().replace(/\s/g, '');
-    const q = quizQuestions[currentQuiz];
+    const step = storySteps[currentQuiz];
     const feedback = document.getElementById('quiz-feedback');
-    const isCorrect = q.answers.some(a => a.toLowerCase().replace(/\s/g, '') === input);
+    
+    const isCorrect = step.answers.some(a => a.toLowerCase().replace(/\s/g, '') === input);
 
     feedback.className = 'quiz-feedback show ' + (isCorrect ? 'correct' : 'wrong');
-    feedback.textContent = isCorrect ? q.correctMsg : q.wrongMsg;
+    feedback.textContent = isCorrect ? step.correctMsg : step.wrongMsg;
 
     if (isCorrect) {
-      const waitTime = (currentQuiz === quizQuestions.length - 1) ? 3500 : 2000;
+      document.getElementById('check-btn').style.display = 'none';
+      document.getElementById('next-btn').style.display = 'inline-block';
       
-      setTimeout(() => {
-        currentQuiz++;
-        if (currentQuiz >= quizQuestions.length) {
-          document.getElementById('quiz-section').style.display = 'none';
-          document.getElementById('birthday-screen').style.display = 'block';
-          document.getElementById('countdown-section').style.display = 'block';
-          startConfetti();
-          createSparkles();
-          startCountdown();
-        } else {
-          loadQuizQuestion();
-        }
-      }, waitTime);
+      if(currentQuiz === storySteps.length - 1) {
+        document.getElementById('next-btn').textContent = "ادخلي لقصر الحب والاحتفال 🎉";
+      }
+    }
+  }
+
+  function nextStoryStep() {
+    currentQuiz++;
+    if (currentQuiz >= storySteps.length) {
+      document.getElementById('quiz-section').style.display = 'none';
+      document.getElementById('birthday-screen').style.display = 'block';
+      document.getElementById('countdown-section').style.display = 'block';
+      startConfetti();
+      createSparkles();
+      startCountdown();
+    } else {
+      loadStoryStep();
     }
   }
 
   document.getElementById('quiz-input').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') checkQuizAnswer();
+    if (e.key === 'Enter') {
+      if(document.getElementById('check-btn').style.display !== 'none'){
+        checkQuizAnswer();
+      } else {
+        nextStoryStep();
+      }
+    }
   });
 
   // ========== COUNTDOWN ==========
@@ -1488,83 +1427,6 @@
     const text = encodeURIComponent('شوفي الموقع الحلو ده! 🖤\n' + window.location.href);
     window.open('https://wa.me/?text=' + text, '_blank');
   }
-
-  // ========== MULTI-AUDIO / PLAYLIST LOGIC (مدمج بدقة كما طلبته) ==========
-  const musicTracks = [
-    { name: "🎵 أغنية عيد الميلاد (music.mp3)", file: "music.mp3" },
-    { name: "🎶 أغنية الحب الأولى (music2.mp3)", file: "music2.mp3" },
-    { name: "🎼 موسيقى هادئة (music3.mp3)", file: "music3.mp3" }
-  ];
-
-  let currentTrackIndex = 0;
-  const audioEl = document.getElementById('bg-music');
-
-  function renderPlaylist() {
-    const container = document.getElementById('playlist-container');
-    container.innerHTML = '';
-
-    musicTracks.forEach((track, idx) => {
-      const item = document.createElement('div');
-      item.className = 'playlist-track' + (idx === currentTrackIndex ? ' active' : '');
-      item.innerHTML = `<span>${track.name}</span> <span>${idx === currentTrackIndex && !audioEl.paused ? '▶️' : '🎧'}</span>`;
-      item.onclick = () => playSelectedTrack(idx);
-      container.appendChild(item);
-    });
-  }
-
-  function openMusicModal() {
-    renderPlaylist();
-    document.getElementById('music-modal').style.display = 'flex';
-  }
-
-  function closeMusicModal() {
-    document.getElementById('music-modal').style.display = 'none';
-  }
-
-  function playSelectedTrack(index) {
-    currentTrackIndex = index;
-    audioEl.src = musicTracks[currentTrackIndex].file;
-    audioEl.play().then(() => {
-      updateMainAudioBtn(true);
-      renderPlaylist();
-      setTimeout(closeMusicModal, 500);
-    }).catch(err => {
-      alert('تأكدي من رفع ملف الصوت برابط: ' + musicTracks[currentTrackIndex].file);
-    });
-  }
-
-  function togglePlayPauseCurrent() {
-    if (audioEl.paused) {
-      if (!audioEl.src) {
-        playSelectedTrack(0);
-      } else {
-        audioEl.play().then(() => {
-          updateMainAudioBtn(true);
-          renderPlaylist();
-        });
-      }
-    } else {
-      audioEl.pause();
-      updateMainAudioBtn(false);
-      renderPlaylist();
-    }
-  }
-
-  function updateMainAudioBtn(isPlaying) {
-    const btn = document.getElementById('audio-btn');
-    if (isPlaying) {
-      btn.textContent = '⏸️ ' + musicTracks[currentTrackIndex].name;
-      btn.classList.add('playing');
-    } else {
-      btn.textContent = '🎵 شغلي موسيقى الحب';
-      btn.classList.remove('playing');
-    }
-  }
-
-  audioEl.addEventListener('ended', () => {
-    currentTrackIndex = (currentTrackIndex + 1) % musicTracks.length;
-    playSelectedTrack(currentTrackIndex);
-  });
 
   // ========== CONFETTI ==========
   function startConfetti() {
@@ -1621,7 +1483,7 @@
     setTimeout(() => {
       cancelAnimationFrame(animationId);
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-    }, 12000);
+    }, 15000);
   }
 
   function createSparkles() {
