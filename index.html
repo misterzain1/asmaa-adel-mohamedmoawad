@@ -746,6 +746,42 @@
     box-shadow: 0 0 12px rgba(220,20,60,0.2);
   }
 
+  /* Story Box Added */
+  .story-box {
+    background: rgba(139, 0, 0, 0.15);
+    border: 1px solid rgba(220, 20, 60, 0.3);
+    border-radius: 16px;
+    padding: 20px;
+    margin: 20px 0;
+    position: relative;
+    overflow: hidden;
+    text-align: right;
+  }
+
+  .story-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .story-title {
+    font-size: 18px;
+    color: var(--gold);
+    margin-bottom: 12px;
+    font-weight: 900;
+    text-align: center;
+    text-shadow: 0 0 15px rgba(255,215,0,0.3);
+  }
+
+  .story-text {
+    font-size: 14.5px;
+    line-height: 2.2;
+    color: #ffcccc;
+    font-weight: 700;
+  }
+
   .signature {
     margin-top: 16px;
     font-size: 15px;
@@ -958,6 +994,7 @@
     .quiz-question { font-size: 15px; }
     .count-box { min-width: 45px; padding: 6px 8px; }
     .count-box .num { font-size: 18px; }
+    .story-text { font-size: 13px; }
   }
 </style>
 </head>
@@ -1044,6 +1081,7 @@
         <div class="quiz-dot active" id="dot-0"></div>
         <div class="quiz-dot" id="dot-1"></div>
         <div class="quiz-dot" id="dot-2"></div>
+        <div class="quiz-dot" id="dot-3"></div> <!-- النقطة الرابعة اللي كانت ناقصة -->
       </div>
 
       <div id="quiz-content">
@@ -1093,6 +1131,19 @@
         <span class="love-line">🖤 بحبك أكتر من أي حاجة في الكون ده كله</span>
         <span class="love-line">👑 انتي أميرتي اللي مالكيش مثيل</span>
         <span class="love-line">🌹 وعقبال 100 سنة مع بعض يا حبيبتي</span>
+      </div>
+
+      <!-- صندوق القصة الجديد اللي اتضاف -->
+      <div class="story-box">
+        <h2 class="story-title">📖 حكايتنا الحلوة</h2>
+        <p class="story-text">
+          كان يا ما كان... ولد اسمه محمد بيحب بنت اسمها اسماء. كبروا واتربوا في نفس المكان، بس ماكانوش قريبين من بعض...<br>
+          لحد ما جه أول قرب وأول تعارف حقيقي بينهم سنة 2022، وربنا كلل حبهم بخطوبة جميلة في 2025 💍.<br>
+          عاشوا قصة حب جميلة، طبيعي زي أي اتنين بيفرحوا ويزعلوا، بيتخانقوا ويتصالحوا، بس حبهم بيكبر كل يوم ❤️.<br>
+          وإن شاء الله قريباً جداً هنكون في بيت واحد... أنا ومليكتي "اسماء عادل محمد" و"محمد أحمد معوض".<br>
+          زي ما أنا أبوكي وأخوكي وسندك وضهرك، إنتي برضه أهم حاجة عندي في دنيتي كلها 🌍.<br>
+          كل سنة وانتي أجمل وأحسن وأرق بنت في الدنيا دي كلها... كل سنة وانتي طيبة يا سمسوم 🥰.
+        </p>
       </div>
 
       <div class="signature">
@@ -1323,10 +1374,10 @@
       wrongMsg: "🤔 يا سمسم! ده أول عيدية! مش فاكراه؟!"
     },
     {
-      q: "💰 سؤال 4: سنة خطوبتنا اي يا سمسم ؟ (أرقام بس)",
+      q: "💍 سؤال 4: سنة خطوبتنا اي يا سمسم ؟ (أرقام بس)",
       answers: ["2025"],
-      correctMsg: "🎊 برافو يا ذكية! فاكرة كل حاجة! يلا افتحي قلبي 💖",
-      wrongMsg: "🤔 يا سمسم! ده أول عيدية! مش فاكراه؟!"
+      correctMsg: "🎊 برافو يا أميرتي! أحلى سنة في حياتي! يلا افتحي قلبي 💖",
+      wrongMsg: "🤔 يا سمسم! دي أهم سنة! مش فاكراها؟!"
     } 
   ];
 
@@ -1348,11 +1399,14 @@
   }
 
   function updateQuizDots() {
-    for (let i = 0; i < 3; i++) {
+    // تم التعديل عشان يقرا 4 أسئلة بدل 3
+    for (let i = 0; i < quizQuestions.length; i++) {
       const dot = document.getElementById('dot-' + i);
-      dot.className = 'quiz-dot';
-      if (i < currentQuiz) dot.classList.add('done');
-      else if (i === currentQuiz) dot.classList.add('active');
+      if(dot) {
+        dot.className = 'quiz-dot';
+        if (i < currentQuiz) dot.classList.add('done');
+        else if (i === currentQuiz) dot.classList.add('active');
+      }
     }
   }
 
@@ -1366,6 +1420,9 @@
     feedback.textContent = isCorrect ? q.correctMsg : q.wrongMsg;
 
     if (isCorrect) {
+      // لو ده السؤال الأخير هنديها وقت أطول تقرأ رسالة الصح قبل ما ينقل
+      const waitTime = (currentQuiz === quizQuestions.length - 1) ? 3500 : 2000;
+      
       setTimeout(() => {
         currentQuiz++;
         if (currentQuiz >= quizQuestions.length) {
@@ -1378,7 +1435,7 @@
         } else {
           loadQuizQuestion();
         }
-      }, 2000);
+      }, waitTime);
     }
   }
 
@@ -1435,7 +1492,6 @@
   }
 
   // ========== MULTI-AUDIO / PLAYLIST LOGIC ==========
-  // قائمة الأغاني المرفوعة - يمكنك تغيير الأغاني ورابط الملف هنا
   const musicTracks = [
     { name: "🎵 أغنية عيد الميلاد (music.mp3)", file: "music.mp3" },
     { name: "🎶 أغنية الحب الأولى (music2.mp3)", file: "music2.mp3" },
@@ -1473,7 +1529,7 @@
     audioEl.play().then(() => {
       updateMainAudioBtn(true);
       renderPlaylist();
-      setTimeout(closeMusicModal, 500); // إغلاق تلقائي بسيط بعد الاختيار
+      setTimeout(closeMusicModal, 500);
     }).catch(err => {
       alert('تأكدي من رفع ملف الصوت برابط: ' + musicTracks[currentTrackIndex].file);
     });
@@ -1507,7 +1563,6 @@
     }
   }
 
-  // التبديل التلقائي للأغنية التالية عند انتهاء الأولى
   audioEl.addEventListener('ended', () => {
     currentTrackIndex = (currentTrackIndex + 1) % musicTracks.length;
     playSelectedTrack(currentTrackIndex);
