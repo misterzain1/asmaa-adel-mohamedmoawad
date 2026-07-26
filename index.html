@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -374,6 +375,139 @@
 
   .error-msg.show { opacity: 1; }
 
+  /* Memory Game */
+  .game-section {
+    display: none;
+    animation: gameIn 0.8s ease-out;
+  }
+
+  @keyframes gameIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .game-title {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--gold);
+    margin-bottom: 6px;
+    text-shadow: 0 0 20px rgba(255,215,0,0.3);
+  }
+
+  .game-subtitle {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 14px;
+    font-weight: 700;
+  }
+
+  .game-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 14px 0;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .game-card {
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, #1a0000, #2d0000);
+    border: 2px solid rgba(139, 0, 0, 0.5);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .game-card::before {
+    content: '🖤';
+    font-size: 22px;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+  }
+
+  .game-card.flipped::before,
+  .game-card.matched::before { opacity: 0; }
+
+  .game-card.flipped {
+    background: linear-gradient(135deg, #2d0000, #4a0000);
+    border-color: rgba(220, 20, 60, 0.6);
+    box-shadow: 0 0 20px rgba(220,20,60,0.3);
+    transform: rotateY(180deg);
+  }
+
+  .game-card.matched {
+    background: linear-gradient(135deg, #1a3a1a, #0d2b0d);
+    border-color: rgba(50, 205, 50, 0.5);
+    box-shadow: 0 0 20px rgba(50,205,50,0.3);
+    cursor: default;
+    animation: matchPulse 0.5s ease;
+  }
+
+  @keyframes matchPulse {
+    0% { transform: scale(1) rotateY(180deg); }
+    50% { transform: scale(1.15) rotateY(180deg); }
+    100% { transform: scale(1) rotateY(180deg); }
+  }
+
+  .game-card .card-content {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    transform: rotateY(180deg);
+    pointer-events: none;
+  }
+
+  .game-card.flipped .card-content,
+  .game-card.matched .card-content {
+    opacity: 1;
+  }
+
+  .game-stats {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 8px 0;
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.8);
+  }
+
+  .game-stats span { color: var(--gold); }
+
+  .game-win-msg {
+    display: none;
+    margin-top: 14px;
+    animation: winIn 0.8s ease-out;
+  }
+
+  @keyframes winIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .game-win-text {
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--gold);
+    margin-bottom: 10px;
+    text-shadow: 0 0 20px rgba(255,215,0,0.4);
+  }
+
   /* Quiz */
   .quiz-section {
     display: none;
@@ -613,7 +747,7 @@
     box-shadow: 0 0 12px rgba(220,20,60,0.2);
   }
 
-  /* Story Box */
+  /* Story Box Added */
   .story-box {
     background: rgba(139, 0, 0, 0.15);
     border: 1px solid rgba(220, 20, 60, 0.3);
@@ -855,6 +989,9 @@
     .birthday-message { font-size: 13px; }
     .intro-to { font-size: 16px; }
     .intro-name { font-size: 22px; }
+    .game-grid { gap: 8px; }
+    .game-card { font-size: 22px; }
+    .game-card .card-content { font-size: 26px; }
     .quiz-question { font-size: 15px; }
     .count-box { min-width: 45px; padding: 6px 8px; }
     .count-box .num { font-size: 18px; }
@@ -916,18 +1053,36 @@
       </div>
     </div>
 
+    <!-- Memory Game -->
+    <div class="game-section" id="game-section">
+      <div class="big-heart">🎮</div>
+      <h1 class="game-title">لعبة الحب</h1>
+      <p class="game-subtitle">لازم تلاقي كل الأزواج المتشابهة يا سمسم<br>عشان تفتحي رسالتك</p>
+
+      <div class="game-stats">
+        <div>المحاولات: <span id="moves-count">0</span></div>
+        <div>الأزواج: <span id="pairs-count">0</span>/6</div>
+      </div>
+
+      <div class="game-grid" id="game-grid"></div>
+
+      <div class="game-win-msg" id="game-win-msg">
+        <div class="game-win-text">🎉 برافو يا ذكية! كسبتي اللعبة!</div>
+        <button class="enter-btn" onclick="showQuiz()">اختبري ذكاءك يا سمسم 🧠</button>
+      </div>
+    </div>
+
     <!-- Quiz -->
     <div class="quiz-section" id="quiz-section">
       <div class="big-heart">🧩</div>
-      <h1 class="quiz-title">لغز حكايتنا</h1>
-      <p class="quiz-subtitle">جاوبي صح على الأسئلة دي عشان تدخلي قلبي كله</p>
+      <h1 class="quiz-title">لغز الحب</h1>
+      <p class="quiz-subtitle">جاوبي صح عشان تدخلي قلبي كله</p>
 
       <div class="quiz-progress" id="quiz-progress">
         <div class="quiz-dot active" id="dot-0"></div>
         <div class="quiz-dot" id="dot-1"></div>
         <div class="quiz-dot" id="dot-2"></div>
         <div class="quiz-dot" id="dot-3"></div>
-        <div class="quiz-dot" id="dot-4"></div>
       </div>
 
       <div id="quiz-content">
@@ -1116,9 +1271,8 @@
     const errorMsg = document.getElementById('error-msg');
     if (input === '681997' || input === '681995') {
       document.getElementById('password-screen').style.display = 'none';
-      document.getElementById('quiz-section').style.display = 'block';
-      currentQuiz = 0;
-      loadQuizQuestion();
+      document.getElementById('game-section').style.display = 'block';
+      initGame();
     } else {
       errorMsg.classList.add('show');
       document.getElementById('password-input').style.borderColor = '#ff4444';
@@ -1133,41 +1287,109 @@
     if (e.key === 'Enter') checkPassword();
   });
 
-  // ========== QUIZ (STORY QUESTIONS) ==========
+  // ========== MEMORY GAME ==========
+  const gameEmojis = ['❤️', '🖤', '🌹', '💍', '👑', '🎁'];
+  let cards = [], flippedCards = [], matchedPairs = 0, moves = 0, canFlip = true;
+
+  function initGame() {
+    const grid = document.getElementById('game-grid');
+    grid.innerHTML = '';
+    cards = []; flippedCards = []; matchedPairs = 0; moves = 0; canFlip = true;
+    document.getElementById('moves-count').textContent = '0';
+    document.getElementById('pairs-count').textContent = '0';
+    document.getElementById('game-win-msg').style.display = 'none';
+
+    let deck = [...gameEmojis, ...gameEmojis];
+    for (let i = deck.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [deck[i], deck[j]] = [deck[j], deck[i]];
+    }
+
+    deck.forEach((emoji, index) => {
+      const card = document.createElement('div');
+      card.className = 'game-card';
+      card.dataset.index = index;
+      card.dataset.emoji = emoji;
+      const content = document.createElement('div');
+      content.className = 'card-content';
+      content.textContent = emoji;
+      card.appendChild(content);
+      card.addEventListener('click', () => flipCard(card));
+      grid.appendChild(card);
+      cards.push(card);
+    });
+  }
+
+  function flipCard(card) {
+    if (!canFlip || card.classList.contains('flipped') || card.classList.contains('matched')) return;
+    card.classList.add('flipped');
+    flippedCards.push(card);
+    if (flippedCards.length === 2) {
+      moves++;
+      document.getElementById('moves-count').textContent = moves;
+      canFlip = false;
+      const [c1, c2] = flippedCards;
+      if (c1.dataset.emoji === c2.dataset.emoji) {
+        setTimeout(() => {
+          c1.classList.remove('flipped');
+          c2.classList.remove('flipped');
+          c1.classList.add('matched');
+          c2.classList.add('matched');
+          matchedPairs++;
+          document.getElementById('pairs-count').textContent = matchedPairs;
+          flippedCards = [];
+          canFlip = true;
+          if (matchedPairs === 6) {
+            setTimeout(() => { document.getElementById('game-win-msg').style.display = 'block'; }, 600);
+          }
+        }, 500);
+      } else {
+        setTimeout(() => {
+          c1.classList.remove('flipped');
+          c2.classList.remove('flipped');
+          flippedCards = [];
+          canFlip = true;
+        }, 1000);
+      }
+    }
+  }
+
+  // ========== QUIZ ==========
   const quizQuestions = [
     {
-      q: "🧠 سؤال 1: اسم حبيبتك الثلاثي إيه؟",
-      answers: ["اسماء عادل محمد", "الاسماء عادل محمد"],
-      correctMsg: "🎉 برافو يا أميرتي! حافظة اسمك كويس 😂❤️",
-      wrongMsg: "❌ يا سمسم! مش فاكرة اسمك ولا ايه؟! 😤"
+      q: "🧠 سؤال 1: اسم حبيبك الثلاثي ايه؟",
+      answers: ["محمد احمد معوض", "محمد أحمد معوض", "محمداحمدمعوض"],
+      correctMsg: "🎉 شاطرة برافو! أذكى واحدة في الدنيا 😂",
+      wrongMsg: "❌ يا سمسم! ده اسم حبيبك مش فاكراه؟! 😤"
     },
     {
-      q: "🎂 سؤال 2: تاريخ ميلادك إيه؟ (اكتبي أرقام من غير /)",
-      answers: ["681997", "6/8/1997"],
-      correctMsg: "💕 برافو يا حبيبتي! تاريخ ميلاد القمر! 😘",
-      wrongMsg: "😢 يا سمسم! تاريخ ميلادك ونسيتيه؟! جربي تاني!"
+      q: "🎂 سؤال 2: تاريخ ميلاد حبيبك ايه؟ (اكتبي من غير /)",
+      answers: ["1241995", "12/4/1995"],
+      correctMsg: "💕 برافو يا حبيبتي! فاكرة! هزعلك ليه وأنا بحبك 😘",
+      wrongMsg: "😢 يا سمسم! لو غلطتي هزعلك! جربي تاني!"
     },
     {
-      q: "💰 سؤال 3: أول عيدية خدتيها من حبيبك كانت كام؟ (أرقام بس)",
+      q: "💰 سؤال 3: كم المبلغ اللي خدتيه في أول عيدية من حبيبك؟ (أرقام بس)",
       answers: ["200"],
-      correctMsg: "🎊 برافو يا ذكية! فاكرة أول عيدية! 💖",
-      wrongMsg: "🤔 يا سمسم! دي أول عيدية! مش فاكراها؟!"
+      correctMsg: "🎊 برافو يا ذكية! فاكرة كل حاجة! يلا افتحي قلبي 💖",
+      wrongMsg: "🤔 يا سمسم! ده أول عيدية! مش فاكراه؟!"
     },
     {
-      q: "🤝 سؤال 4: أول تعارف حقيقي بينا كان سنة كام؟ (أرقام بس)",
-      answers: ["2022"],
-      correctMsg: "✨ برافو! سنة بداية حكايتنا الجميلة 🖤",
-      wrongMsg: "❌ فكري كويس يا سمسم! سنة كام بدأنا نقرب لبعض؟!"
-    },
-    {
-      q: "💍 سؤال 5: سنة خطوبتنا الجميلة كانت كام؟ (أرقام بس)",
+      q: "💍 سؤال 4: سنة خطوبتنا اي يا سمسم ؟ (أرقام بس)",
       answers: ["2025"],
-      correctMsg: "👑 برافو يا كل دنيتي! أحلى سنة في عمري 💍❤️",
-      wrongMsg: "❌ عيب يا سمسم تبقي مش فاكرة سنة خطوبتنا! جربي تاني!"
-    }
+      correctMsg: "🎊 برافو يا أميرتي! أحلى سنة في حياتي! يلا افتحي قلبي 💖",
+      wrongMsg: "🤔 يا سمسم! دي أهم سنة! مش فاكراها؟!"
+    } 
   ];
 
   let currentQuiz = 0;
+
+  function showQuiz() {
+    document.getElementById('game-section').style.display = 'none';
+    document.getElementById('quiz-section').style.display = 'block';
+    currentQuiz = 0;
+    loadQuizQuestion();
+  }
 
   function loadQuizQuestion() {
     document.getElementById('quiz-question').textContent = quizQuestions[currentQuiz].q;
@@ -1268,7 +1490,7 @@
     window.open('https://wa.me/?text=' + text, '_blank');
   }
 
-  // ========== MULTI-AUDIO / PLAYLIST LOGIC ==========
+  // ========== MULTI-AUDIO / PLAYLIST LOGIC (مدمج بدقة كما طلبته) ==========
   const musicTracks = [
     { name: "🎵 أغنية عيد الميلاد (music.mp3)", file: "music.mp3" },
     { name: "🎶 أغنية الحب الأولى (music2.mp3)", file: "music2.mp3" },
@@ -1431,3 +1653,5 @@
 
 </body>
 </html>
+
+```
