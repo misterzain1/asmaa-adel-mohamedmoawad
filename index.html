@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -23,6 +23,7 @@
     min-height: 100vh;
     overflow-x: hidden;
     color: #fff;
+    transition: background 0.5s, color 0.5s;
   }
 
   /* Background layers */
@@ -143,6 +144,7 @@
     text-align: center;
     box-shadow: 0 0 60px rgba(139,0,0,0.3), inset 0 0 30px rgba(139,0,0,0.05);
     animation: cardIn 1s ease-out;
+    transition: background 0.5s, border 0.5s;
   }
 
   @keyframes cardIn {
@@ -1006,6 +1008,106 @@
     100% { transform: scale(1.5) rotate(180deg); opacity: 0; }
   }
 
+  /* ====== NEW ADDITIONS STYLES ====== */
+  /* Gift Box */
+  .gift-box-overlay {
+    position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8);
+    backdrop-filter:blur(10px); z-index:3000; display:none; align-items:center; justify-content:center;
+  }
+  .gift-box {
+    background: rgba(10,0,0,0.9); border-radius:20px; padding:30px; text-align:center;
+    border:2px solid var(--gold); box-shadow:0 0 60px rgba(255,215,0,0.5); max-width:320px; width:90%;
+    transition: 0.5s;
+  }
+  .gift-box.open .gift-content { display:block; }
+  .gift-box.open .gift-lock { display:none; }
+  .gift-content { display:none; }
+  .gift-input {
+    width: 100%; padding: 12px; font-size: 20px; text-align: center; letter-spacing: 4px;
+    border: 2px solid var(--border-color); border-radius: 12px; background: rgba(0,0,0,0.5);
+    color: #fff; outline: none; margin-top: 10px;
+  }
+
+  /* Slider */
+  .photo-slider {
+    margin:20px auto; max-width:300px; height:250px; border-radius:20px; overflow:hidden;
+    position:relative; border:2px solid rgba(220,20,60,0.3);
+  }
+  .photo-slider img {
+    width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0;
+    opacity:0; transition:opacity 1s;
+  }
+  .photo-slider img.active { opacity:1; }
+
+  /* Timeline */
+  .timeline {
+    margin:25px 0; text-align:right; position:relative; padding-right:30px;
+  }
+  .timeline::before {
+    content:''; position:absolute; right:10px; top:0; height:100%; width:2px;
+    background:linear-gradient(to bottom, var(--crimson), var(--gold));
+  }
+  .timeline-item {
+    margin-bottom:20px; position:relative; color:#ffcccc; font-weight:700;
+  }
+  .timeline-item::before {
+    content:''; position:absolute; right:-26px; top:8px; width:14px; height:14px;
+    border-radius:50%; background:var(--crimson); border:2px solid var(--gold);
+  }
+  .timeline-year { color:var(--gold); font-weight:900; margin-left:5px; }
+
+  /* Star cert */
+  .star-cert {
+    background:linear-gradient(135deg, #1a0000, #2d0000); border:1px solid var(--gold);
+    border-radius:16px; padding:15px; margin:25px 0; text-align:center;
+  }
+
+  /* Balloons */
+  .balloon {
+    position:fixed; bottom:-100px; font-size:40px; z-index:150; pointer-events:none;
+    animation:balloonUp 8s linear forwards;
+  }
+  @keyframes balloonUp {
+    0%{ bottom:-100px; opacity:1; } 100%{ bottom:110%; opacity:0; }
+  }
+
+  /* Mode toggle */
+  .mode-toggle {
+    position:absolute; top:10px; left:10px; background:transparent; border:1px solid var(--gold);
+    color:var(--gold); border-radius:20px; padding:5px 12px; font-weight:700; cursor:pointer;
+    z-index:20; font-size:12px;
+  }
+
+  /* Wall */
+  .message-wall {
+    margin-top:25px; text-align:right;
+  }
+  .wall-input {
+    width:100%; padding:10px; border-radius:10px; border:1px solid rgba(220,20,60,0.4);
+    background:rgba(0,0,0,0.4); color:#fff; font-family:inherit; margin-bottom:8px;
+  }
+  .wall-messages {
+    max-height:150px; overflow-y:auto; margin-top:10px;
+  }
+  .wall-msg {
+    background: rgba(139,0,0,0.15); border-radius:10px; padding:8px; margin-bottom:6px;
+    border-right:3px solid var(--crimson); color:#ffcccc;
+  }
+
+  /* Light mode overrides */
+  .light-mode {
+    --bg-gradient: radial-gradient(ellipse at center, #ffe0e0 0%, #f8c8c8 60%, #f0b0b0 100%);
+  }
+  .light-mode .glass-card {
+    background: rgba(255,240,240,0.9);
+    border-color: rgba(180,0,0,0.3);
+  }
+  .light-mode .title, .light-mode .subtitle, .light-mode .quiz-question,
+  .light-mode .game-subtitle, .light-mode .intro-from, .light-mode .intro-to,
+  .light-mode .birthday-message, .light-mode .story-text, .light-mode .signature {
+    color: #2c0a0a;
+  }
+
   /* Responsive */
   @media (max-width: 480px) {
     .glass-card { padding: 18px; margin: 6px; }
@@ -1043,6 +1145,9 @@
 
 <div class="main-container">
   <div class="glass-card" id="main-card">
+
+    <!-- Mode toggle button -->
+    <button class="mode-toggle" id="mode-toggle" onclick="toggleMode()">☀️ وضع فاتح</button>
 
     <!-- Intro -->
     <div class="intro-screen" id="intro-screen">
@@ -1144,11 +1249,13 @@
         </div>
       </div>
 
-      <!-- Audio Button Section -->
-      <div class="audio-section">
+      <!-- Audio Buttons -->
+      <div class="audio-section" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
         <button class="audio-btn" id="audio-btn" onclick="openMusicModal()">🎵 شغلي موسيقى الحب</button>
-        <audio id="bg-music"></audio>
+        <button class="audio-btn" onclick="toggleVoiceMessage()">🔊 اسمعي رسالتي</button>
       </div>
+      <audio id="bg-music"></audio>
+      <audio id="voice-message" src="ZAIN.mp3"></audio>
 
       <div class="birthday-message">
         <span class="love-line">🌹 يوم 6/8/1997 ده أحسن يوم في الدنيا</span>
@@ -1166,6 +1273,20 @@
         <span class="love-line">🌹 وعقبال 100 سنة مع بعض يا حبيبتي</span>
       </div>
 
+      <!-- Photo Slider (without real images, will hide if not found) -->
+      <div class="photo-slider" id="photo-slider">
+        <img src="images/1.jpg" class="slide active" onerror="this.style.display='none'">
+        <img src="images/2.jpg" class="slide" onerror="this.style.display='none'">
+        <img src="images/3.jpg" class="slide" onerror="this.style.display='none'">
+        <img src="images/4.jpg" class="slide" onerror="this.style.display='none'">
+        <img src="images/5.jpg" class="slide" onerror="this.style.display='none'">
+      </div>
+
+      <!-- Love Counter -->
+      <div style="margin:20px 0; font-size:18px; color:var(--gold); font-weight:900;">
+        💖 عدد الدقائق اللي فكرت فيكي النهاردة: <span id="love-counter" style="font-size:24px;">0</span>
+      </div>
+
       <!-- صندوق القصة -->
       <div class="story-box">
         <h2 class="story-title">📖 سمسمتي الحلوة </h2>
@@ -1173,6 +1294,20 @@
           زي ما أنا أبوكي وأخوكي وسندك وضهرك، إنتي برضه أهم حاجة عندي في دنيتي كلها 🌍.<br>
           كل سنة وانتي أجمل وأحسن وأرق بنت في الدنيا دي كلها... كل سنة وانتي طيبة يا سمسوم 🥰.
         </p>
+      </div>
+
+      <!-- Timeline -->
+      <div class="timeline">
+        <div class="timeline-item"><span class="timeline-year">2022</span> أول تعارف وقرب حقيقي</div>
+        <div class="timeline-item"><span class="timeline-year">2025</span> خطوبة الحب 💍</div>
+        <div class="timeline-item"><span class="timeline-year">2026</span> عيد ميلادك معايا 🎂</div>
+        <div class="timeline-item"><span class="timeline-year">المستقبل</span> بيت واحد، عمر واحد 💞</div>
+      </div>
+
+      <!-- Star Certificate -->
+      <div class="star-cert">
+        <h3 style="color:var(--gold);">✨ شهادة نجمة ✨</h3>
+        <p style="color:#ffcccc;">نهدي النجمة رقم <strong style="color:#ffd700;">681997</strong> إلى الملكة <strong style="color:#ffd700;">أسماء عادل محمد</strong></p>
       </div>
 
       <div class="signature">
@@ -1192,6 +1327,14 @@
         ربنا يخليكي ليا يا أغلى حاجة في حياتي. 💍❤️
       </div>
 
+      <!-- Message Wall -->
+      <div class="message-wall">
+        <h3 style="color:var(--gold);">💌 رسالتك ليا</h3>
+        <textarea class="wall-input" id="wall-input" placeholder="اكتبي رسالة حب هنا..." rows="2"></textarea>
+        <button class="enter-btn" onclick="addWallMessage()">إرسال 💌</button>
+        <div class="wall-messages" id="wall-messages"></div>
+      </div>
+
       <!-- Share -->
       <div class="share-section">
         <button class="share-btn" onclick="copyLink()">📋 انسخي اللينك</button>
@@ -1199,6 +1342,24 @@
       </div>
     </div>
 
+  </div>
+</div>
+
+<!-- Gift Box Overlay -->
+<div class="gift-box-overlay" id="gift-overlay">
+  <div class="gift-box" id="gift-box">
+    <div class="gift-lock">
+      <div style="font-size:60px;">🎁</div>
+      <p style="margin-bottom:10px; color:#fff;">🔒 افتحي الصندوق - باسورد الكمبيوتر</p>
+      <input type="password" class="gift-input" id="gift-password" placeholder="4 أرقام" maxlength="4">
+      <button class="enter-btn" onclick="openGift()" style="margin-top:10px;">فتح 🎀</button>
+      <p class="error-msg" id="gift-error">❌ غلط... جربي تاني!</p>
+    </div>
+    <div class="gift-content">
+      <div style="font-size:40px;">💖</div>
+      <h3 style="color:#ffd700;">أنتي أغلى هدية من ربنا ليا</h3>
+      <p style="color:#fff;">بحبك قد الدنيا وما فيها ❤️</p>
+    </div>
   </div>
 </div>
 
@@ -1418,7 +1579,7 @@
       if (vol <= 0) {
         clearInterval(fadeInterval);
         quizMusic.pause();
-        quizMusic.volume = 0.7; // reset for next time
+        quizMusic.volume = 0.7;
         if (btn) {
           btn.textContent = '🔊 تشغيل الموسيقى';
           btn.classList.remove('playing');
@@ -1434,7 +1595,6 @@
     const quizMusic = document.getElementById('quiz-music');
     const btn = document.getElementById('quiz-music-btn');
     if (!quizMusic.src || quizMusic.src === window.location.href) {
-      // لم يتم تحميل المصدر بعد، حمله وشغله
       startQuizMusic();
       return;
     }
@@ -1491,7 +1651,6 @@
     document.getElementById('quiz-section').style.display = 'block';
     currentQuiz = 0;
     loadQuizQuestion();
-    // تشغيل الموسيقى الرومانسية تلقائياً مع بداية الأسئلة
     startQuizMusic();
   }
 
@@ -1515,7 +1674,6 @@
   }
 
   function goToBirthday() {
-    // إيقاف موسيقى الأسئلة تدريجياً قبل الانتقال لرسالة عيد الميلاد
     fadeOutQuizMusic(() => {
       document.getElementById('quiz-section').style.display = 'none';
       document.getElementById('birthday-screen').style.display = 'block';
@@ -1523,6 +1681,14 @@
       startConfetti();
       createSparkles();
       startCountdown();
+      // new additions triggers
+      launchBalloons();
+      startLoveCounter();
+      setTimeout(() => {
+        document.getElementById('gift-overlay').style.display = 'flex';
+      }, 3000);
+      startPhotoSlider();
+      loadWallMessages();
     });
   }
 
@@ -1560,14 +1726,10 @@
       const now = new Date().getTime();
       const diff = target - now;
       if (diff > 0) {
-        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const s = Math.floor((diff % (1000 * 60)) / 1000);
-        document.getElementById('cd-days').textContent = d;
-        document.getElementById('cd-hours').textContent = h;
-        document.getElementById('cd-minutes').textContent = m;
-        document.getElementById('cd-seconds').textContent = s;
+        document.getElementById('cd-days').textContent = Math.floor(diff / (1000 * 60 * 60 * 24));
+        document.getElementById('cd-hours').textContent = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        document.getElementById('cd-minutes').textContent = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        document.getElementById('cd-seconds').textContent = Math.floor((diff % (1000 * 60)) / 1000);
       }
     }
     update();
@@ -1614,7 +1776,6 @@
   function renderPlaylist() {
     const container = document.getElementById('playlist-container');
     container.innerHTML = '';
-
     musicTracks.forEach((track, idx) => {
       const item = document.createElement('div');
       item.className = 'playlist-track' + (idx === currentTrackIndex ? ' active' : '');
@@ -1751,6 +1912,90 @@
         setTimeout(() => s.remove(), 1500);
       }, i * 80);
     }
+  }
+
+  // ========== NEW FEATURES JS ==========
+  // Gift box
+  function openGift() {
+    if (document.getElementById('gift-password').value === '6895') {
+      document.getElementById('gift-box').classList.add('open');
+    } else {
+      document.getElementById('gift-error').classList.add('show');
+      setTimeout(() => document.getElementById('gift-error').classList.remove('show'), 2000);
+    }
+  }
+
+  // Voice message
+  function toggleVoiceMessage() {
+    const v = document.getElementById('voice-message');
+    if (v.paused) v.play(); else v.pause();
+  }
+
+  // Photo slider
+  function startPhotoSlider() {
+    const slides = document.querySelectorAll('#photo-slider img');
+    if (slides.length === 0) return;
+    let idx = 0;
+    setInterval(() => {
+      slides.forEach(s => s.classList.remove('active'));
+      slides[idx].classList.add('active');
+      idx = (idx + 1) % slides.length;
+    }, 3000);
+  }
+
+  // Love counter
+  function startLoveCounter() {
+    const counter = document.getElementById('love-counter');
+    let count = 0;
+    const interval = setInterval(() => {
+      count += 7;
+      if (count >= 1440) { count = 1440; clearInterval(interval); }
+      counter.textContent = count;
+    }, 15);
+  }
+
+  // Balloons
+  function launchBalloons() {
+    const letters = ['أ', 'س', 'م', 'ا', 'ء'];
+    letters.forEach((letter, i) => {
+      setTimeout(() => {
+        const b = document.createElement('div');
+        b.className = 'balloon';
+        b.textContent = '🎈' + letter;
+        b.style.left = (10 + i * 18) + '%';
+        document.body.appendChild(b);
+        setTimeout(() => b.remove(), 8000);
+      }, i * 500);
+    });
+  }
+
+  // Light mode toggle
+  function toggleMode() {
+    document.body.classList.toggle('light-mode');
+    const isLight = document.body.classList.contains('light-mode');
+    document.getElementById('mode-toggle').textContent = isLight ? '🌙 وضع داكن' : '☀️ وضع فاتح';
+    localStorage.setItem('lightMode', isLight ? '1' : '0');
+  }
+  if (localStorage.getItem('lightMode') === '1') {
+    document.body.classList.add('light-mode');
+    document.getElementById('mode-toggle').textContent = '🌙 وضع داكن';
+  }
+
+  // Wall messages
+  function addWallMessage() {
+    const input = document.getElementById('wall-input');
+    const msg = input.value.trim();
+    if (!msg) return;
+    const messages = JSON.parse(localStorage.getItem('asmaa_wall') || '[]');
+    messages.push(msg);
+    localStorage.setItem('asmaa_wall', JSON.stringify(messages));
+    input.value = '';
+    loadWallMessages();
+  }
+  function loadWallMessages() {
+    const container = document.getElementById('wall-messages');
+    const messages = JSON.parse(localStorage.getItem('asmaa_wall') || '[]');
+    container.innerHTML = messages.map(m => `<div class="wall-msg">${m}</div>`).join('');
   }
 
   window.addEventListener('resize', () => {
