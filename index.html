@@ -1055,7 +1055,7 @@
       <div class="intro-to">إلى ملكة هذا القصر</div>
       <div class="intro-name">الملكة اسماء عادل محمد</div>
       <div class="divider"></div>
-      <button class="enter-btn" style="margin-top:12px;" onclick="showPasswordScreen()">افتحي قلبك يا أميرتي 💝</button>
+      <button class="enter-btn" style="margin-top:12px;" onclick="showPasswordScreen()">ادخلي  قلبك يا أميرتي 💝</button>
     </div>
 
     <!-- Password -->
@@ -1066,7 +1066,7 @@
 
       <div class="hint-box">
         <p class="hint-text">
-          🌙 <span class="highlight">التلميحة:</span> يوم اتولدت فيه الجميلة<br>
+          🌙 <span class="highlight">التلميحة:</span> يوم اتولدت فيه الملكة<br>
           شهر اتولدت فيه القمر<br>
           وسنة اتولد فيها حبيبك<br>
           <span style="font-size:11px; opacity:0.7;">اكتبي التاريخ كرقم واحد من غير /</span>
@@ -1084,7 +1084,7 @@
     <div class="game-section" id="game-section">
       <div class="big-heart">🎮</div>
       <h1 class="game-title">لعبة الحب</h1>
-      <p class="game-subtitle">لازم تلاقي كل الأزواج المتشابهة يا سمسم<br>عشان تفتحي رسالتك</p>
+      <p class="game-subtitle">لازم تلاقي كل الأزواج المتشابهة يا سمسم<br>عشان تدخلي قلبي وتشوفي اللي فيه الحب رومانسيه ليكي    </p>
 
       <div class="game-stats">
         <div>المحاولات: <span id="moves-count">0</span></div>
@@ -1168,12 +1168,8 @@
 
       <!-- صندوق القصة -->
       <div class="story-box">
-        <h2 class="story-title">📖 حكايتنا الحلوة</h2>
-        <p class="story-text">
-          كان يا ما كان... ولد اسمه محمد بيحب بنت اسمها اسماء. كبروا واتربوا في نفس المكان، بس ماكانوش قريبين من بعض...<br>
-          لحد ما جه أول قرب وأول تعارف حقيقي بينهم سنة 2022، وربنا كلل حبهم بخطوبة جميلة في 2025 💍.<br>
-          عاشوا قصة حب جميلة، طبيعي زي أي اتنين بيفرحوا ويزعلوا، بيتخانقوا ويتصالحوا، بس حبهم بيكبر كل يوم ❤️.<br>
-          وإن شاء الله قريباً جداً هنكون في بيت واحد... أنا ومليكتي "اسماء عادل محمد" و"محمد أحمد معوض".<br>
+        <h2 class="story-title">📖 سمسمتي الحلوة </h2>
+        <p class="story-text">احنا بنتصالح ونتخانق بنحب بعض وبنزعل من بعض بنقرب من بعض بس عمرنا ما بنبعد عن بعض بس عشان احنا واحد ما نروح واحده من جسد واحد كل سنه وانت طيبه يا اجمل سمسم في الدنيا كلها السنه دي ما تعديش علينا غير وانت في البيتي ان شاء الله
           زي ما أنا أبوكي وأخوكي وسندك وضهرك، إنتي برضه أهم حاجة عندي في دنيتي كلها 🌍.<br>
           كل سنة وانتي أجمل وأحسن وأرق بنت في الدنيا دي كلها... كل سنة وانتي طيبة يا سمسوم 🥰.
         </p>
@@ -1248,7 +1244,7 @@
   function createSnow() {
     const container = document.getElementById('snow-container');
     if(!container) return;
-    const flakes = ['❄', '✦', '•', '·'];
+    const flakes = ['❄', '💐', '🍑', '🫶🏻'];
     for (let i = 0; i < 30; i++) {
       const flake = document.createElement('div');
       flake.className = 'snowflake';
@@ -1266,7 +1262,7 @@
   function createHearts() {
     const container = document.getElementById('hearts-container');
     if(!container) return;
-    const emojis = ['💞', '❤️', '💖', '💕', '💗', '💝', '🌹', '✨'];
+    const emojis = ['💞', '❤️', '💖', '💕', '💗', '💝', '🌹', '🫂'];
     for (let i = 0; i < 25; i++) {
       const h = document.createElement('div');
       h.className = 'heart';
@@ -1323,7 +1319,7 @@
   });
 
   // ========== MEMORY GAME ==========
-  const gameEmojis = ['❤️', '💞', '🌹', '💍', '👑', '🎁'];
+  const gameEmojis = ['😜', '🍉', '🌹', '💍', '👑', '🎁'];
   let cards = [], flippedCards = [], matchedPairs = 0, moves = 0, canFlip = true;
 
   function initGame() {
