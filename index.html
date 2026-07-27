@@ -1393,11 +1393,16 @@
   let currentQuiz = 0;
 
   function showQuiz() {
+
     document.getElementById('game-section').style.display = 'none';
     document.getElementById('quiz-section').style.display = 'block';
+
     currentQuiz = 0;
     loadQuizQuestion();
-  }
+
+    // تشغيل الموسيقى
+    playQuizMusic();
+}
 
   function loadQuizQuestion() {
     document.getElementById('quiz-question').textContent = quizQuestions[currentQuiz].q;
@@ -1435,9 +1440,19 @@
       setTimeout(() => {
         currentQuiz++;
         if (currentQuiz >= quizQuestions.length) {
-          document.getElementById('quiz-section').style.display = 'none';
-          document.getElementById('birthday-screen').style.display = 'block';
-          document.getElementById('countdown-section').style.display = 'block';
+
+    // إيقاف موسيقى الأسئلة
+    stopQuizMusic();
+
+    document.getElementById('quiz-section').style.display = 'none';
+    document.getElementById('birthday-screen').style.display = 'block';
+
+    document.getElementById('countdown-section').style.display = 'block';
+
+    startConfetti();
+    createSparkles();
+    startCountdown();
+}
           startConfetti();
           createSparkles();
           startCountdown();
@@ -1509,7 +1524,27 @@
 
   let currentTrackIndex = 0;
   const audioEl = document.getElementById('bg-music');
+// ===============================
+// موسيقى الأسئلة
+// ===============================
+const quizMusic = new Audio("quiz_music.mp3");
+quizMusic.loop = true;
+quizMusic.volume = 0.35;
 
+function playQuizMusic() {
+    quizMusic.currentTime = 0;
+
+    quizMusic.play().catch(() => {
+        // لو المتصفح منع التشغيل التلقائي
+        console.log("Autoplay blocked");
+    });
+}
+
+function stopQuizMusic() {
+    quizMusic.pause();
+    quizMusic.currentTime = 0;
+}
+  
   function renderPlaylist() {
     const container = document.getElementById('playlist-container');
     container.innerHTML = '';
