@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>كل سنة وانتي طيبة يا اسماء 🌹 </title>
+<title>كل سنة وانتي طيبة يا اسماء 🌹</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
 
@@ -746,238 +746,6 @@
     box-shadow: 0 0 12px rgba(220,20,60,0.2);
   }
 
-  /* Story Box Added */
-  .story-box {
-    background: rgba(139, 0, 0, 0.15);
-    border: 1px solid rgba(220, 20, 60, 0.3);
-    border-radius: 16px;
-    padding: 20px;
-    margin: 20px 0;
-    position: relative;
-    overflow: hidden;
-    text-align: right;
-  }
-
-  .story-box::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 3px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  }
-
-  .story-title {
-    font-size: 18px;
-    color: var(--gold);
-    margin-bottom: 12px;
-    font-weight: 900;
-    text-align: center;
-    text-shadow: 0 0 15px rgba(255,215,0,0.3);
-  }
-
-  .story-text {
-    font-size: 14.5px;
-    line-height: 2.2;
-    color: #ffcccc;
-    font-weight: 700;
-  }
-
-  .signature {
-    margin-top: 16px;
-    font-size: 15px;
-    color: #ffcccc;
-    font-weight: 700;
-  }
-
-  .signature .from {
-    font-size: 12px;
-    color: rgba(255,255,255,0.6);
-    margin-bottom: 4px;
-    font-weight: 700;
-  }
-
-  /* Secret message button */
-  .secret-btn {
-    margin-top: 16px;
-    padding: 8px 20px;
-    font-size: 13px;
-    font-family: inherit;
-    font-weight: 700;
-    border: 1px solid rgba(220, 20, 60, 0.4);
-    border-radius: 20px;
-    background: rgba(139, 0, 0, 0.2);
-    color: rgba(255,255,255,0.8);
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .secret-btn:hover {
-    background: rgba(220, 20, 60, 0.3);
-    color: #fff;
-    border-color: var(--crimson);
-    box-shadow: 0 0 15px rgba(220,20,60,0.3);
-  }
-
-  .secret-message {
-    display: none;
-    margin-top: 12px;
-    padding: 14px;
-    background: rgba(139, 0, 0, 0.15);
-    border: 1px solid rgba(220, 20, 60, 0.25);
-    border-radius: 14px;
-    font-size: 15px;
-    font-weight: 700;
-    color: #ffcccc;
-    line-height: 1.8;
-    animation: secretIn 0.6s ease-out;
-  }
-
-  @keyframes secretIn {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
-  }
-
-  /* Share button */
-  .share-section {
-    margin-top: 14px;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-
-  .share-btn {
-    padding: 8px 18px;
-    font-size: 13px;
-    font-family: inherit;
-    font-weight: 700;
-    border: 1px solid rgba(220, 20, 60, 0.4);
-    border-radius: 20px;
-    background: rgba(0,0,0,0.3);
-    color: rgba(255,255,255,0.8);
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .share-btn:hover {
-    background: rgba(220, 20, 60, 0.2);
-    color: #fff;
-    border-color: var(--crimson);
-  }
-
-  /* Audio */
-  .audio-section {
-    margin: 12px 0;
-  }
-
-  .audio-btn {
-    padding: 10px 22px;
-    font-size: 14px;
-    font-family: inherit;
-    font-weight: 700;
-    border: 1px solid rgba(220, 20, 60, 0.4);
-    border-radius: 20px;
-    background: rgba(0,0,0,0.4);
-    color: rgba(255,255,255,0.9);
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .audio-btn:hover {
-    background: rgba(220, 20, 60, 0.25);
-    color: #fff;
-    border-color: var(--crimson);
-  }
-
-  .audio-btn.playing {
-    background: rgba(220, 20, 60, 0.35);
-    color: #fff;
-    border-color: var(--gold);
-    animation: audioPulse 1.5s ease-in-out infinite;
-  }
-
-  @keyframes audioPulse {
-    0%, 100% { box-shadow: 0 0 8px rgba(220,20,60,0.3); }
-    50% { box-shadow: 0 0 25px rgba(220,20,60,0.7); }
-  }
-
-  /* Music Selector Modal Style */
-  .music-modal-overlay {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    z-index: 2000;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-    animation: modalFadeIn 0.3s ease-out;
-  }
-
-  @keyframes modalFadeIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
-  }
-
-  .music-modal-card {
-    background: rgba(15, 0, 0, 0.95);
-    border: 1px solid rgba(220, 20, 60, 0.5);
-    border-radius: 20px;
-    padding: 22px;
-    max-width: 360px;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 0 50px rgba(220, 20, 60, 0.4);
-  }
-
-  .playlist-track {
-    background: rgba(139, 0, 0, 0.2);
-    border: 1px solid rgba(220, 20, 60, 0.3);
-    border-radius: 12px;
-    padding: 12px 14px;
-    color: #fff;
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: all 0.3s ease;
-    margin-bottom: 8px;
-  }
-
-  .playlist-track:hover, .playlist-track.active {
-    background: linear-gradient(135deg, #8b0000, #dc143c);
-    border-color: var(--gold);
-    box-shadow: 0 0 15px rgba(220,20,60,0.4);
-  }
-
-  /* Confetti */
-  #confetti-canvas {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 100;
-  }
-
-  .sparkle {
-    position: absolute;
-    width: 4px; height: 4px;
-    background: var(--gold);
-    border-radius: 50%;
-    animation: sparkleAnim 1.5s ease-out forwards;
-    pointer-events: none;
-  }
-
-  @keyframes sparkleAnim {
-    0% { transform: scale(0) rotate(0deg); opacity: 1; }
-    100% { transform: scale(1.5) rotate(180deg); opacity: 0; }
-  }
-
   /* Responsive */
   @media (max-width: 480px) {
     .glass-card { padding: 18px; margin: 6px; }
@@ -994,7 +762,6 @@
     .quiz-question { font-size: 15px; }
     .count-box { min-width: 45px; padding: 6px 8px; }
     .count-box .num { font-size: 18px; }
-    .story-text { font-size: 13px; }
   }
 </style>
 </head>
@@ -1005,7 +772,6 @@
 <div class="stars-container" id="stars-container"></div>
 <div class="snow-container" id="snow-container"></div>
 <div class="hearts-container" id="hearts-container"></div>
-<canvas id="confetti-canvas"></canvas>
 
 <!-- Splash -->
 <div class="splash-screen" id="splash-screen">
@@ -1056,7 +822,7 @@
     <div class="game-section" id="game-section">
       <div class="big-heart">🎮</div>
       <h1 class="game-title">لعبة الحب</h1>
-      <p class="game-subtitle">لازم تلاقي كل الأزواج المتشابهة يا سمسم<br> عشان تدخلي جوة قلبي و تشوفي الجواة  </p>
+      <p class="game-subtitle">لازم تلاقي كل الأزواج المتشابهة يا سمسم<br> عشان تدخلي جوة قلبي و تشوفي اللي جواه  </p>
 
       <div class="game-stats">
         <div>المحاولات: <span id="moves-count">0</span></div>
@@ -1077,7 +843,6 @@
       <h1 class="quiz-title">لغز الحب</h1>
       <p class="quiz-subtitle">جاوبي صح عشان تدخلي قلبي كله</p>
 
-      <!-- 5 نقاط لـ 5 أسئلة -->
       <div class="quiz-progress" id="quiz-progress">
         <div class="quiz-dot active" id="dot-0"></div>
         <div class="quiz-dot" id="dot-1"></div>
@@ -1103,7 +868,7 @@
       <div class="date-badge">6 / 8 / 1997</div>
 
       <!-- Countdown -->
-      <div class="countdown-section" id="countdown-section">
+      <div class="countdown-section" style="display:block;" id="countdown-section">
         <div class="countdown-title">⏳ متبقي على عيد ميلادك القادم:</div>
         <div class="countdown-boxes" id="countdown-boxes">
           <div class="count-box"><span class="num" id="cd-days">--</span><span class="label">يوم</span></div>
@@ -1111,12 +876,6 @@
           <div class="count-box"><span class="num" id="cd-minutes">--</span><span class="label">دقيقة</span></div>
           <div class="count-box"><span class="num" id="cd-seconds">--</span><span class="label">ثانية</span></div>
         </div>
-      </div>
-
-      <!-- Audio Button Section -->
-      <div class="audio-section">
-        <button class="audio-btn" id="audio-btn" onclick="openMusicModal()">🎵 شغلي موسيقى الحب</button>
-        <audio id="bg-music"></audio>
       </div>
 
       <div class="birthday-message">
@@ -1128,534 +887,197 @@
         <span class="love-line">💫 كل سنة وانتي جميلة زي ما انتي كده</span>
         <span class="love-line">😍 كل سنة وانتي عبيطة... عبيطة في حبك ليا</span>
         <span class="love-line">🌸 كل سنة وانتي كل حاجة حلوة في الدنيا</span>
-        <span class="love-line">🔐 كل سنة وانتي السر الجميل في حياتي</span>
-        <span class="love-line">💍 ربنا يخليكي ليا ويحميكي يا أغلى من الدنيا</span>
-        <span class="love-line">🫂 بحبك أكتر من أي حاجة في الكون ده كله</span>
-        <span class="love-line">👑 انتي أميرتي اللي مالكيش مثيل</span>
-        <span class="love-line">🌹 وعقبال 100 سنة مع بعض يا حبيبتي</span>
-      </div>
-
-      <!-- صندوق القصة -->
-      <div class="story-box">
-        <h2 class="story-title">📖 سمسم القمر </h2>
-        <p class="story-text">
-          بحبك 💞 ♕♡ بموت فيكي ♕♡ زوجتي المستقبلية' كل حاجة لية' انتي عرفة انا بصمم الموقع دة من امتا من 20/1/2026<br>
-          كل سنة وانتي أجمل وأحسن وأرق بنت في الدنيا دي كلها... كل سنة وانتي طيبة يا سمسوم 🥰.
-        </p>
-      </div>
-
-      <div class="signature">
-        <div class="from">مع كل نبضة قلب بحبك</div>
-        <div>من حبيبك وخطيبك وزوجك المستقبلي</div>
-        <div style="color:#ffd700; margin-top:4px; font-size:18px;">محمد أحمد معوض ❤️</div>
-      </div>
-
-      <!-- Secret message -->
-      <button class="secret-btn" onclick="toggleSecret()">🔐 اضغطي هنا يا سمسم</button>
-      <div class="secret-message" id="secret-message">
-        🌹 يا اسماء...<br>
-        أنا عارف إنك بتقرأي الكلام ده دلوقتي وبتحاولي تخبي دموعك و مشاعرك يا هبلة ...<br>
-        بس متخبيش، عشان كل دمعة من عينيكي دي أغلى من الدنيا كلها عندي.<br>
-        أنا مش بعرف أعبر كويس، بس أنا بحبك...<br>
-        بحبك أكتر من أي كلمة ممكن أقولها، وأكتر من أي موقع ممكن أعمله.<br>
-        ربنا يخليكي ليا يا أغلى حاجة في حياتي. 💍❤️
-      </div>
-
-      <!-- Share -->
-      <div class="share-section">
-        <button class="share-btn" onclick="copyLink()">📋 انسخي اللينك</button>
-        <button class="share-btn" onclick="shareWhatsApp()">📱 شاركي على واتساب</button>
       </div>
     </div>
-
   </div>
 </div>
 
-<!-- Music Selector Modal -->
-<div class="music-modal-overlay" id="music-modal">
-  <div class="music-modal-card">
-    <div style="font-size: 32px; margin-bottom: 6px;">🎵</div>
-    <h2 style="font-size: 17px; color: var(--gold); margin-bottom: 4px;">اختاري الأغنية اللي تحبيها</h2>
-    <p style="font-size: 12px; color: rgba(255,255,255,0.7); margin-bottom: 14px;">هتشتغل الموسيقى في الخلفية فوراً</p>
-
-    <div id="playlist-container" style="max-height: 200px; overflow-y: auto; margin-bottom: 12px; padding-left: 2px;">
-      <!-- Tracks loaded dynamically -->
-    </div>
-
-    <div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top: 10px;">
-      <button class="share-btn" style="border-color: var(--gold); color: var(--gold);" onclick="togglePlayPauseCurrent()" id="modal-play-btn">⏸️ إيقاف / تشغيل</button>
-      <button class="share-btn" onclick="closeMusicModal()">إغلاق ✖</button>
-    </div>
-  </div>
-</div>
+<!-- حاوية مشغل اليوتيوب المخفي -->
+<div id="youtube-audio-container" style="display:none;"></div>
 
 <script>
-  // ========== BACKGROUND EFFECTS ==========
-  function createStars() {
-    const container = document.getElementById('stars-container');
-    if(!container) return;
-    for (let i = 0; i < 60; i++) {
-      const star = document.createElement('div');
-      star.className = 'star';
-      star.style.left = Math.random() * 100 + '%';
-      star.style.top = Math.random() * 100 + '%';
-      star.style.animationDuration = (2 + Math.random() * 4) + 's';
-      star.style.animationDelay = Math.random() * 5 + 's';
-      star.style.width = star.style.height = (1 + Math.random() * 2) + 'px';
-      container.appendChild(star);
-    }
-  }
-  createStars();
+  // تأثير إخفاء شاشة البداية
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('splash-screen').style.opacity = '0';
+      setTimeout(() => {
+        document.getElementById('splash-screen').style.display = 'none';
+        document.getElementById('intro-screen').style.display = 'block';
+      }, 800);
+    }, 2000);
+  });
 
-  function createSnow() {
-    const container = document.getElementById('snow-container');
-    if(!container) return;
-    const flakes = ['❄', '💞', '💐', '·'];
-    for (let i = 0; i < 30; i++) {
-      const flake = document.createElement('div');
-      flake.className = 'snowflake';
-      flake.textContent = flakes[Math.floor(Math.random() * flakes.length)];
-      flake.style.left = Math.random() * 100 + '%';
-      flake.style.fontSize = (8 + Math.random() * 14) + 'px';
-      flake.style.animationDuration = (6 + Math.random() * 10) + 's';
-      flake.style.animationDelay = Math.random() * 10 + 's';
-      flake.style.opacity = 0.3 + Math.random() * 0.5;
-      container.appendChild(flake);
-    }
-  }
-  createSnow();
-
-  function createHearts() {
-    const container = document.getElementById('hearts-container');
-    if(!container) return;
-    const emojis = ['😁', '❤️', '💖', '💕', '💗', '💝', '🌹', '✨'];
-    for (let i = 0; i < 25; i++) {
-      const h = document.createElement('div');
-      h.className = 'heart';
-      h.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-      h.style.left = Math.random() * 100 + '%';
-      h.style.fontSize = (14 + Math.random() * 22) + 'px';
-      h.style.animationDuration = (8 + Math.random() * 14) + 's';
-      h.style.animationDelay = Math.random() * 10 + 's';
-      container.appendChild(h);
-    }
-  }
-  createHearts();
-
-  // ========== SPLASH -> INTRO SAFE TRANSITION ==========
-  setTimeout(() => {
-    const splash = document.getElementById('splash-screen');
-    const intro = document.getElementById('intro-screen');
-    if (splash) {
-      splash.style.opacity = '0';
-      splash.style.visibility = 'hidden';
-      setTimeout(() => { splash.style.display = 'none'; }, 800);
-    }
-    if (intro) {
-      intro.style.display = 'block';
-    }
-  }, 2800);
-
+  // التنقل بين الشاشات
   function showPasswordScreen() {
     document.getElementById('intro-screen').style.display = 'none';
     document.getElementById('password-screen').style.display = 'block';
-    document.getElementById('password-screen').style.animation = 'cardIn 0.8s ease-out';
   }
 
-  // ========== PASSWORD ==========
   function checkPassword() {
-    const input = document.getElementById('password-input').value.trim();
-    const errorMsg = document.getElementById('error-msg');
-    if (input === '681997' || input === '681995') {
+    const pass = document.getElementById('password-input').value;
+    if(pass === '681997') {
       document.getElementById('password-screen').style.display = 'none';
       document.getElementById('game-section').style.display = 'block';
       initGame();
     } else {
-      errorMsg.classList.add('show');
-      document.getElementById('password-input').style.borderColor = '#ff4444';
-      setTimeout(() => {
-        errorMsg.classList.remove('show');
-        document.getElementById('password-input').style.borderColor = 'rgba(139, 0, 0, 0.5)';
-      }, 2500);
+      const err = document.getElementById('error-msg');
+      err.classList.add('show');
+      setTimeout(() => err.classList.remove('show'), 2000);
     }
   }
 
-  document.getElementById('password-input').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') checkPassword();
-  });
-
-  // ========== MEMORY GAME ==========
-  const gameEmojis = ['❤️', '😜', '🍉', '💍', '👑', '🎁'];
-  let cards = [], flippedCards = [], matchedPairs = 0, moves = 0, canFlip = true;
+  // لعبة الذاكرة
+  const gameItems = ['❤️', '🌹', '👑', '💍', '🎁', '✨', '❤️', '🌹', '👑', '💍', '🎁', '✨'];
+  let flippedCards = [];
+  let matchedPairs = 0;
+  let moves = 0;
 
   function initGame() {
     const grid = document.getElementById('game-grid');
     grid.innerHTML = '';
-    cards = []; flippedCards = []; matchedPairs = 0; moves = 0; canFlip = true;
-    document.getElementById('moves-count').textContent = '0';
-    document.getElementById('pairs-count').textContent = '0';
-    document.getElementById('game-win-msg').style.display = 'none';
-
-    let deck = [...gameEmojis, ...gameEmojis];
-    for (let i = deck.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [deck[i], deck[j]] = [deck[j], deck[i]];
-    }
-
-    deck.forEach((emoji, index) => {
+    // خلط البطاقات
+    gameItems.sort(() => Math.random() - 0.5);
+    
+    gameItems.forEach((item, index) => {
       const card = document.createElement('div');
       card.className = 'game-card';
+      card.dataset.value = item;
       card.dataset.index = index;
-      card.dataset.emoji = emoji;
+      
       const content = document.createElement('div');
       content.className = 'card-content';
-      content.textContent = emoji;
+      content.innerText = item;
+      
       card.appendChild(content);
-      card.addEventListener('click', () => flipCard(card));
+      card.addEventListener('click', flipCard);
       grid.appendChild(card);
-      cards.push(card);
     });
   }
 
-  function flipCard(card) {
-    if (!canFlip || card.classList.contains('flipped') || card.classList.contains('matched')) return;
-    card.classList.add('flipped');
-    flippedCards.push(card);
+  function flipCard() {
+    if (flippedCards.length >= 2 || this.classList.contains('flipped') || this.classList.contains('matched')) return;
+    
+    this.classList.add('flipped');
+    flippedCards.push(this);
+
     if (flippedCards.length === 2) {
       moves++;
-      document.getElementById('moves-count').textContent = moves;
-      canFlip = false;
-      const [c1, c2] = flippedCards;
-      if (c1.dataset.emoji === c2.dataset.emoji) {
-        setTimeout(() => {
-          c1.classList.remove('flipped');
-          c2.classList.remove('flipped');
-          c1.classList.add('matched');
-          c2.classList.add('matched');
-          matchedPairs++;
-          document.getElementById('pairs-count').textContent = matchedPairs;
-          flippedCards = [];
-          canFlip = true;
-          if (matchedPairs === 6) {
-            setTimeout(() => { document.getElementById('game-win-msg').style.display = 'block'; }, 600);
-          }
-        }, 500);
-      } else {
-        setTimeout(() => {
-          c1.classList.remove('flipped');
-          c2.classList.remove('flipped');
-          flippedCards = [];
-          canFlip = true;
-        }, 1000);
-      }
+      document.getElementById('moves-count').innerText = moves;
+      setTimeout(checkMatch, 800);
     }
   }
 
-  // ========== QUIZ ==========
-  // القصة والأسئلة الرومانسية الـ 5 المترتبة
-  const quizQuestions = [
-    {
-      q: "كان يا ما كان وما يحلى الكلام إلا بذكر النبي عليه الصلاة والسلام... كان في ولد بيحب بنت اسمها اسماء، كبروا وتربوا في نفس المكان... سؤالنا الأول: هل تعرفي اسم الولد ده ثلاثي اللي بيعشقك؟",
-      answers: ["محمد احمد معوض", "محمد أحمد معوض", "محمداحمدمعوض"],
-      correctMsg: "برافو شاطرة سمسومة القمر 🎉",
-      wrongMsg: "ركزي بدل ما أزعلك عشان ده اسم حبيبك وخطيبك، معقولة مش عارفاه؟! 😤"
-    },
-    {
-      q: "بس ما كانوش قريبين من بعض وهم بيتربوا مع بعض، لحد ما جت سنة حلوة زي ضحكتك، قربوا فيها من بعض وبدأت الحكاية... فاكرة أول سنة قربتوا وتعرفتوا فيها على بعض كانت سنة كام؟ (أرقام بس)",
-      answers: ["2022"],
-      correctMsg: "شطورة فاكراها، دي كانت أجمل بداية 💕",
-      wrongMsg: "ركزي بدل ما آكلك على قفاكي! دي أول مرة نتعرف فيها مش فاكراها؟ 😒"
-    },
-    {
-      q: "وعاشوا قصة حب جميلة، دافية زي حضنك، وانتهت بخطوبة بتجمع قلبين اتخلقوا لبعض... فاكرة خطوبتكم الجميلة كانت سنة كام؟ (أرقام بس)",
-      answers: ["2025"],
-      correctMsg: "شطورة يا عروسة قلبي 🎊",
-      wrongMsg: "اعقلي وركزي بدل ما أطلعلك من التليفون 📱😡"
-    },
-    {
-      q: "وفي وسط الأيام الحلوة دي، والمناسبات اللي بتفرح قلوبنا، حبيبك حب يفرحك ويدلعك في العيد... فاكرة أول عيدية أخدتيها من حبيبك كانت كام؟",
-      answers: ["200", "٢٠٠"],
-      correctMsg: "شاطرة يا حبيبتي، أحلى عيدية طلعت من قلبي قبل جيبي 😘",
-      wrongMsg: "إيه ده؟! نسيتي أول عيدية ولا إيه؟ زعلتيني ركزي يا سمسم! 😢"
-    },
-    {
-      q: "وبعد كل السنين والمواقف دي، وبعد ما بقيتي كل دنيتي وحتة من روحي، لو سألتك... إيه الكلمة اللي دايماً بقولهالك وبتلخص كل اللي في قلبي ليكي؟ (اكتبي كلمة واحدة بس)",
-      answers: ["بحبك", "بعشقك", "بموتفيكي"],
-      correctMsg: "وأنا بعشقك وبموت فيكي يا روح قلبي ❤️💍",
-      wrongMsg: "تؤ تؤ، فكري بقلبك مش بعقلك يا سمسم! 🥺"
+  function checkMatch() {
+    const [card1, card2] = flippedCards;
+    if (card1.dataset.value === card2.dataset.value) {
+      card1.classList.replace('flipped', 'matched');
+      card2.classList.replace('flipped', 'matched');
+      matchedPairs++;
+      document.getElementById('pairs-count').innerText = matchedPairs;
+      
+      if (matchedPairs === 6) {
+        document.getElementById('game-win-msg').style.display = 'block';
+      }
+    } else {
+      card1.classList.remove('flipped');
+      card2.classList.remove('flipped');
     }
-  ];
+    flippedCards = [];
+  }
 
-  let currentQuiz = 0;
+  // الأسئلة والموسيقى
+  const ytContainer = document.getElementById('youtube-audio-container');
+  // يمكنك تغيير معرف الفيديو qgYWN2E3_60 لأي فيديو موسيقى هادئة من اليوتيوب
+  const youtubeVideoId = 'qgYWN2E3_60'; 
+
+  function playYouTubeAudio() {
+    // نقوم بإضافة iframe الخاص باليوتيوب مع خاصية autoplay
+    ytContainer.innerHTML = `<iframe width="10" height="10" src="https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&loop=1&playlist=${youtubeVideoId}" frameborder="0" allow="autoplay"></iframe>`;
+  }
+
+  function stopYouTubeAudio() {
+    // إزالة المشغل لإيقاف الصوت
+    ytContainer.innerHTML = '';
+  }
+
+  const quizQuestions = [
+    "سؤال 1: بتفضلي أكل إيه أكتر حاجة؟",
+    "سؤال 2: إيه أكتر لون بتحبيه؟",
+    "سؤال 3: مين أكتر حد بيحبك في الدنيا؟",
+    "سؤال 4: فاكرة أول مرة اتقابلنا كانت فين؟",
+    "سؤال 5: جاهزة تشوفي المفاجأة؟"
+  ];
+  let currentQ = 0;
 
   function showQuiz() {
     document.getElementById('game-section').style.display = 'none';
     document.getElementById('quiz-section').style.display = 'block';
-    currentQuiz = 0;
-    loadQuizQuestion();
+    // تشغيل الموسيقى التلقائية عند دخول صفحة الأسئلة
+    playYouTubeAudio();
+    loadQuestion();
   }
 
-  function loadQuizQuestion() {
-    document.getElementById('quiz-question').textContent = quizQuestions[currentQuiz].q;
+  function loadQuestion() {
+    if (currentQ >= quizQuestions.length) {
+      // إنهاء الأسئلة والانتقال لصفحة عيد الميلاد
+      document.getElementById('quiz-section').style.display = 'none';
+      document.getElementById('birthday-screen').style.display = 'block';
+      
+      // إيقاف الموسيقى بعد الخروج من صفحة الأسئلة
+      stopYouTubeAudio();
+      
+      startCountdown();
+      return;
+    }
+    document.getElementById('quiz-question').innerText = quizQuestions[currentQ];
     document.getElementById('quiz-input').value = '';
-    document.getElementById('quiz-feedback').className = 'quiz-feedback';
-    document.getElementById('quiz-feedback').textContent = '';
-    updateQuizDots();
-  }
-
-  function updateQuizDots() {
-    for (let i = 0; i < quizQuestions.length; i++) {
-      const dot = document.getElementById('dot-' + i);
-      if(dot) {
-        dot.className = 'quiz-dot';
-        if (i < currentQuiz) dot.classList.add('done');
-        else if (i === currentQuiz) dot.classList.add('active');
+    
+    // تحديث شريط التقدم
+    for(let i = 0; i <= currentQ; i++) {
+      if(i === currentQ) {
+        document.getElementById('dot-'+i).classList.add('active');
+      } else {
+        document.getElementById('dot-'+i).classList.remove('active');
+        document.getElementById('dot-'+i).classList.add('done');
       }
     }
   }
 
   function checkQuizAnswer() {
-    // تنظيف الإجابة من المسافات لضمان عدم حدوث خطأ لو كتبت مسافة زيادة
-    const input = document.getElementById('quiz-input').value.trim().toLowerCase().replace(/\s/g, '');
-    const q = quizQuestions[currentQuiz];
-    const feedback = document.getElementById('quiz-feedback');
-    const isCorrect = q.answers.some(a => a.toLowerCase().replace(/\s/g, '') === input);
-
-    feedback.className = 'quiz-feedback show ' + (isCorrect ? 'correct' : 'wrong');
-    feedback.textContent = isCorrect ? q.correctMsg : q.wrongMsg;
-
-    if (isCorrect) {
-      // وقت أطول شوية بعد آخر سؤال عشان تقرأ الكلمة الحلوة
-      const waitTime = (currentQuiz === quizQuestions.length - 1) ? 3500 : 2500;
-      
-      setTimeout(() => {
-        currentQuiz++;
-        if (currentQuiz >= quizQuestions.length) {
-          document.getElementById('quiz-section').style.display = 'none';
-          document.getElementById('birthday-screen').style.display = 'block';
-          document.getElementById('countdown-section').style.display = 'block';
-          startConfetti();
-          createSparkles();
-          startCountdown();
-        } else {
-          loadQuizQuestion();
-        }
-      }, waitTime);
+    const val = document.getElementById('quiz-input').value.trim();
+    if(val.length > 0) { // يقبل أي إجابة للمرح، يمكنك تغيير هذا الشرط
+      document.getElementById('dot-' + currentQ).classList.remove('active');
+      document.getElementById('dot-' + currentQ).classList.add('done');
+      currentQ++;
+      loadQuestion();
     }
   }
 
-  document.getElementById('quiz-input').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') checkQuizAnswer();
-  });
-
-  // ========== COUNTDOWN ==========
+  // عداد عيد الميلاد
   function startCountdown() {
-    const target = new Date('2027-08-06T00:00:00').getTime();
-    function update() {
-      const now = new Date().getTime();
-      const diff = target - now;
-      if (diff > 0) {
-        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const s = Math.floor((diff % (1000 * 60)) / 1000);
-        document.getElementById('cd-days').textContent = d;
-        document.getElementById('cd-hours').textContent = h;
-        document.getElementById('cd-minutes').textContent = m;
-        document.getElementById('cd-seconds').textContent = s;
+    const updateCountdown = () => {
+      const now = new Date();
+      let nextBirthday = new Date(now.getFullYear(), 7, 6); // 7 يعني أغسطس (0 هو يناير)
+      
+      if (now > nextBirthday) {
+        nextBirthday.setFullYear(now.getFullYear() + 1);
       }
-    }
-    update();
-    setInterval(update, 1000);
+      
+      const diff = nextBirthday - now;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      
+      document.getElementById('cd-days').innerText = days;
+      document.getElementById('cd-hours').innerText = hours;
+      document.getElementById('cd-minutes').innerText = minutes;
+      document.getElementById('cd-seconds').innerText = seconds;
+    };
+    
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
   }
-
-  // ========== SECRET MESSAGE ==========
-  function toggleSecret() {
-    const msg = document.getElementById('secret-message');
-    msg.style.display = msg.style.display === 'block' ? 'none' : 'block';
-  }
-
-  // ========== SHARE ==========
-  function copyLink() {
-    const url = window.location.href;
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(url).then(() => alert('تم نسخ اللينك! 💕'));
-    } else {
-      const ta = document.createElement('textarea');
-      ta.value = url;
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand('copy');
-      document.body.removeChild(ta);
-      alert('تم نسخ اللينك! 💕');
-    }
-  }
-
-  function shareWhatsApp() {
-    const text = encodeURIComponent('شوفي الموقع الحلو ده! 🌹\n' + window.location.href);
-    window.open('https://wa.me/?text=' + text, '_blank');
-  }
-
-  // ========== MULTI-AUDIO / PLAYLIST LOGIC ==========
-  const musicTracks = [
-    { name: "🎵 أغنية عيد الميلاد (music.mp3)", file: "music.mp3" },
-    { name: "🎶 أغنية الحب الأولى (music2.mp3)", file: "music2.mp3" },
-    { name: "🎼 موسيقى هادئة (music3.mp3)", file: "music3.mp3" }
-  ];
-
-  let currentTrackIndex = 0;
-  const audioEl = document.getElementById('bg-music');
-
-  function renderPlaylist() {
-    const container = document.getElementById('playlist-container');
-    container.innerHTML = '';
-
-    musicTracks.forEach((track, idx) => {
-      const item = document.createElement('div');
-      item.className = 'playlist-track' + (idx === currentTrackIndex ? ' active' : '');
-      item.innerHTML = `<span>${track.name}</span> <span>${idx === currentTrackIndex && !audioEl.paused ? '▶️' : '🎧'}</span>`;
-      item.onclick = () => playSelectedTrack(idx);
-      container.appendChild(item);
-    });
-  }
-
-  function openMusicModal() {
-    renderPlaylist();
-    document.getElementById('music-modal').style.display = 'flex';
-  }
-
-  function closeMusicModal() {
-    document.getElementById('music-modal').style.display = 'none';
-  }
-
-  function playSelectedTrack(index) {
-    currentTrackIndex = index;
-    audioEl.src = musicTracks[currentTrackIndex].file;
-    audioEl.play().then(() => {
-      updateMainAudioBtn(true);
-      renderPlaylist();
-      setTimeout(closeMusicModal, 500);
-    }).catch(err => {
-      alert('تأكدي من رفع ملف الصوت برابط: ' + musicTracks[currentTrackIndex].file);
-    });
-  }
-
-  function togglePlayPauseCurrent() {
-    if (audioEl.paused) {
-      if (!audioEl.src) {
-        playSelectedTrack(0);
-      } else {
-        audioEl.play().then(() => {
-          updateMainAudioBtn(true);
-          renderPlaylist();
-        });
-      }
-    } else {
-      audioEl.pause();
-      updateMainAudioBtn(false);
-      renderPlaylist();
-    }
-  }
-
-  function updateMainAudioBtn(isPlaying) {
-    const btn = document.getElementById('audio-btn');
-    if (isPlaying) {
-      btn.textContent = '⏸️ ' + musicTracks[currentTrackIndex].name;
-      btn.classList.add('playing');
-    } else {
-      btn.textContent = '🎵 شغلي موسيقى الحب';
-      btn.classList.remove('playing');
-    }
-  }
-
-  audioEl.addEventListener('ended', () => {
-    currentTrackIndex = (currentTrackIndex + 1) % musicTracks.length;
-    playSelectedTrack(currentTrackIndex);
-  });
-
-  // ========== CONFETTI ==========
-  function startConfetti() {
-    const canvas = document.getElementById('confetti-canvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    const colors = ['#8b0000', '#dc143c', '#ff0040', '#ffd700', '#ff69b4', '#fff'];
-    const particles = [];
-
-    for (let i = 0; i < 150; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height - canvas.height,
-        vx: (Math.random() - 0.5) * 4,
-        vy: Math.random() * 3 + 2,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        size: Math.random() * 8 + 4,
-        rotation: Math.random() * 360,
-        rotationSpeed: (Math.random() - 0.5) * 10,
-        shape: Math.random() > 0.5 ? 'rect' : 'circle'
-      });
-    }
-
-    let animationId;
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => {
-        p.x += p.vx;
-        p.y += p.vy;
-        p.rotation += p.rotationSpeed;
-        if (p.y > canvas.height + 20) {
-          p.y = -20;
-          p.x = Math.random() * canvas.width;
-        }
-        ctx.save();
-        ctx.translate(p.x, p.y);
-        ctx.rotate(p.rotation * Math.PI / 180);
-        ctx.fillStyle = p.color;
-        if (p.shape === 'rect') {
-          ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size);
-        } else {
-          ctx.beginPath();
-          ctx.arc(0, 0, p.size/2, 0, Math.PI * 2);
-          ctx.fill();
-        }
-        ctx.restore();
-      });
-      animationId = requestAnimationFrame(animate);
-    }
-    animate();
-    setTimeout(() => {
-      cancelAnimationFrame(animationId);
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-    }, 12000);
-  }
-
-  function createSparkles() {
-    const card = document.getElementById('main-card');
-    if (!card) return;
-    const rect = card.getBoundingClientRect();
-    for (let i = 0; i < 30; i++) {
-      setTimeout(() => {
-        const s = document.createElement('div');
-        s.className = 'sparkle';
-        s.style.left = (rect.left + Math.random() * rect.width) + 'px';
-        s.style.top = (rect.top + Math.random() * rect.height) + 'px';
-        s.style.background = ['#ffd700', '#dc143c', '#ff0040', '#fff'][Math.floor(Math.random() * 4)];
-        document.body.appendChild(s);
-        setTimeout(() => s.remove(), 1500);
-      }, i * 80);
-    }
-  }
-
-  window.addEventListener('resize', () => {
-    const canvas = document.getElementById('confetti-canvas');
-    if (canvas) {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-  });
 </script>
-
 </body>
 </html>
