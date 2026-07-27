@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>كل سنة وانتي طيبة يا اسماء 🖤</title>
+<title>كل سنة وانتي طيبة يا اسماء 💞</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
 
@@ -427,7 +427,7 @@
   }
 
   .game-card::before {
-    content: '🖤';
+    content: 'أسماء';
     font-size: 22px;
     opacity: 0.6;
     transition: all 0.3s ease;
@@ -618,6 +618,39 @@
   .quiz-feedback.wrong {
     color: #ff4444;
     text-shadow: 0 0 10px rgba(255,0,0,0.3);
+  }
+
+  /* quiz music button */
+  .quiz-music-btn {
+    margin: 8px 0 12px 0;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-family: inherit;
+    font-weight: 700;
+    border: 1px solid rgba(220, 20, 60, 0.4);
+    border-radius: 20px;
+    background: rgba(139, 0, 0, 0.2);
+    color: rgba(255,255,255,0.9);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .quiz-music-btn:hover {
+    background: rgba(220, 20, 60, 0.3);
+    color: #fff;
+    border-color: var(--crimson);
+    box-shadow: 0 0 15px rgba(220,20,60,0.3);
+  }
+
+  .quiz-music-btn.playing {
+    background: rgba(220, 20, 60, 0.35);
+    border-color: var(--gold);
+    animation: audioPulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes audioPulse {
+    0%, 100% { box-shadow: 0 0 8px rgba(220,20,60,0.3); }
+    50% { box-shadow: 0 0 25px rgba(220,20,60,0.7); }
   }
 
   /* Countdown */
@@ -896,11 +929,6 @@
     animation: audioPulse 1.5s ease-in-out infinite;
   }
 
-  @keyframes audioPulse {
-    0%, 100% { box-shadow: 0 0 8px rgba(220,20,60,0.3); }
-    50% { box-shadow: 0 0 25px rgba(220,20,60,0.7); }
-  }
-
   /* Music Selector Modal Style */
   .music-modal-overlay {
     position: fixed;
@@ -1009,7 +1037,7 @@
 
 <!-- Splash -->
 <div class="splash-screen" id="splash-screen">
-  <div class="splash-text">كل سنة وانتي طيبة يا سمسم 🖤</div>
+  <div class="splash-text">كل سنة وانتي طيبة يا سمسم 💞</div>
   <div class="splash-sub">جاري فتح قصر الحب...</div>
 </div>
 
@@ -1032,7 +1060,7 @@
 
     <!-- Password -->
     <div class="password-section-wrapper" id="password-screen">
-      <div class="big-heart">🖤</div>
+      <div class="big-heart">💞</div>
       <h1 class="title">يا أجمل حاجة في حياتي</h1>
       <p class="subtitle"> ده موقع مخصوص ليكي يا سمسم...<br>عشان أقولك كلمة من قلبي</p>
 
@@ -1092,11 +1120,14 @@
         <button class="enter-btn" onclick="checkQuizAnswer()">تأكدي 💘</button>
         <div class="quiz-feedback" id="quiz-feedback"></div>
       </div>
+
+      <!-- زر التحكم في موسيقى الأسئلة -->
+      <button class="quiz-music-btn playing" id="quiz-music-btn" onclick="toggleQuizMusic()">🎵 إيقاف الموسيقى</button>
     </div>
 
     <!-- Birthday -->
     <div class="birthday-section" id="birthday-screen">
-      <div class="big-heart">🎂🖤</div>
+      <div class="big-heart">🎂💞</div>
       <h1 class="birthday-title">كل سنة وانتي طيبة</h1>
       <div class="name-highlight">يا اسماء</div>
 
@@ -1130,7 +1161,7 @@
         <span class="love-line">🌸 كل سنة وانتي كل حاجة حلوة في الدنيا</span>
         <span class="love-line">🔐 كل سنة وانتي السر الجميل في حياتي</span>
         <span class="love-line">💍 ربنا يخليكي ليا ويحميكي يا أغلى من الدنيا</span>
-        <span class="love-line">🖤 بحبك أكتر من أي حاجة في الكون ده كله</span>
+        <span class="love-line">💞 بحبك أكتر من أي حاجة في الكون ده كله</span>
         <span class="love-line">👑 انتي أميرتي اللي مالكيش مثيل</span>
         <span class="love-line">🌹 وعقبال 100 سنة مع بعض يا حبيبتي</span>
       </div>
@@ -1157,7 +1188,7 @@
       <!-- Secret message -->
       <button class="secret-btn" onclick="toggleSecret()">🔐 اضغطي هنا يا سمسم</button>
       <div class="secret-message" id="secret-message">
-        🖤 يا اسماء...<br>
+        💞 يا اسماء...<br>
         أنا عارف إنك بتقرأي الكلام ده دلوقتي وبتحاولي تخبي دموعك و مشاعرك يا هبلة ...<br>
         بس متخبيش، عشان كل دمعة من عينيكي دي أغلى من الدنيا كلها عندي.<br>
         أنا مش بعرف أعبر كويس، بس أنا بحبك...<br>
@@ -1192,6 +1223,9 @@
     </div>
   </div>
 </div>
+
+<!-- موسيقى الأسئلة الرومانسية -->
+<audio id="quiz-music" preload="auto" loop></audio>
 
 <script>
   // ========== BACKGROUND EFFECTS ==========
@@ -1232,7 +1266,7 @@
   function createHearts() {
     const container = document.getElementById('hearts-container');
     if(!container) return;
-    const emojis = ['🖤', '❤️', '💖', '💕', '💗', '💝', '🌹', '✨'];
+    const emojis = ['💞', '❤️', '💖', '💕', '💗', '💝', '🌹', '✨'];
     for (let i = 0; i < 25; i++) {
       const h = document.createElement('div');
       h.className = 'heart';
@@ -1289,7 +1323,7 @@
   });
 
   // ========== MEMORY GAME ==========
-  const gameEmojis = ['❤️', '🖤', '🌹', '💍', '👑', '🎁'];
+  const gameEmojis = ['❤️', '💞', '🌹', '💍', '👑', '🎁'];
   let cards = [], flippedCards = [], matchedPairs = 0, moves = 0, canFlip = true;
 
   function initGame() {
@@ -1355,8 +1389,72 @@
     }
   }
 
-  // ========== QUIZ ==========
-  // القصة والأسئلة الرومانسية الـ 5 المترتبة
+  // ========== QUIZ MUSIC LOGIC ==========
+  function startQuizMusic() {
+    const quizMusic = document.getElementById('quiz-music');
+    const btn = document.getElementById('quiz-music-btn');
+    quizMusic.src = 'quiz_music.mp3';
+    quizMusic.volume = 0.7;
+    quizMusic.play().then(() => {
+      if (btn) {
+        btn.textContent = '🎵 إيقاف الموسيقى';
+        btn.classList.add('playing');
+      }
+    }).catch(e => {
+      console.log('محتاجة تفاعل من المستخدم لتشغيل الموسيقى:', e);
+      if (btn) {
+        btn.textContent = '🔊 تشغيل الموسيقى';
+        btn.classList.remove('playing');
+      }
+    });
+  }
+
+  function fadeOutQuizMusic(callback) {
+    const quizMusic = document.getElementById('quiz-music');
+    const btn = document.getElementById('quiz-music-btn');
+    if (!quizMusic || quizMusic.paused || quizMusic.volume === 0) {
+      if (callback) callback();
+      return;
+    }
+    let vol = quizMusic.volume;
+    const fadeInterval = setInterval(() => {
+      vol -= 0.05;
+      if (vol <= 0) {
+        clearInterval(fadeInterval);
+        quizMusic.pause();
+        quizMusic.volume = 0.7; // reset for next time
+        if (btn) {
+          btn.textContent = '🔊 تشغيل الموسيقى';
+          btn.classList.remove('playing');
+        }
+        if (callback) callback();
+      } else {
+        quizMusic.volume = vol;
+      }
+    }, 100);
+  }
+
+  function toggleQuizMusic() {
+    const quizMusic = document.getElementById('quiz-music');
+    const btn = document.getElementById('quiz-music-btn');
+    if (!quizMusic.src || quizMusic.src === window.location.href) {
+      // لم يتم تحميل المصدر بعد، حمله وشغله
+      startQuizMusic();
+      return;
+    }
+    if (quizMusic.paused) {
+      quizMusic.play().then(() => {
+        btn.textContent = '🎵 إيقاف الموسيقى';
+        btn.classList.add('playing');
+      });
+    } else {
+      quizMusic.pause();
+      btn.textContent = '🔊 تشغيل الموسيقى';
+      btn.classList.remove('playing');
+    }
+  }
+
+  // ========== QUIZ LOGIC ==========
   const quizQuestions = [
     {
       q: "كان يا ما كان وما يحلى الكلام إلا بذكر النبي عليه الصلاة والسلام... كان في ولد بيحب بنت اسمها اسماء، كبروا وتربوا في نفس المكان... سؤالنا الأول: هل تعرفي اسم الولد ده ثلاثي اللي بيعشقك؟",
@@ -1397,6 +1495,8 @@
     document.getElementById('quiz-section').style.display = 'block';
     currentQuiz = 0;
     loadQuizQuestion();
+    // تشغيل الموسيقى الرومانسية تلقائياً مع بداية الأسئلة
+    startQuizMusic();
   }
 
   function loadQuizQuestion() {
@@ -1418,8 +1518,19 @@
     }
   }
 
+  function goToBirthday() {
+    // إيقاف موسيقى الأسئلة تدريجياً قبل الانتقال لرسالة عيد الميلاد
+    fadeOutQuizMusic(() => {
+      document.getElementById('quiz-section').style.display = 'none';
+      document.getElementById('birthday-screen').style.display = 'block';
+      document.getElementById('countdown-section').style.display = 'block';
+      startConfetti();
+      createSparkles();
+      startCountdown();
+    });
+  }
+
   function checkQuizAnswer() {
-    // تنظيف الإجابة من المسافات لضمان عدم حدوث خطأ لو كتبت مسافة زيادة
     const input = document.getElementById('quiz-input').value.trim().toLowerCase().replace(/\s/g, '');
     const q = quizQuestions[currentQuiz];
     const feedback = document.getElementById('quiz-feedback');
@@ -1429,18 +1540,12 @@
     feedback.textContent = isCorrect ? q.correctMsg : q.wrongMsg;
 
     if (isCorrect) {
-      // وقت أطول شوية بعد آخر سؤال عشان تقرأ الكلمة الحلوة
       const waitTime = (currentQuiz === quizQuestions.length - 1) ? 3500 : 2500;
       
       setTimeout(() => {
         currentQuiz++;
         if (currentQuiz >= quizQuestions.length) {
-          document.getElementById('quiz-section').style.display = 'none';
-          document.getElementById('birthday-screen').style.display = 'block';
-          document.getElementById('countdown-section').style.display = 'block';
-          startConfetti();
-          createSparkles();
-          startCountdown();
+          goToBirthday();
         } else {
           loadQuizQuestion();
         }
@@ -1483,7 +1588,7 @@
   function copyLink() {
     const url = window.location.href;
     if (navigator.clipboard) {
-      navigator.clipboard.writeText(url).then(() => alert('تم نسخ اللينك! 💕'));
+      navigator.clipboard.writeText(url).then(() => alert('تم نسخ اللينك! 💞'));
     } else {
       const ta = document.createElement('textarea');
       ta.value = url;
@@ -1491,12 +1596,12 @@
       ta.select();
       document.execCommand('copy');
       document.body.removeChild(ta);
-      alert('تم نسخ اللينك! 💕');
+      alert('تم نسخ اللينك! 💞');
     }
   }
 
   function shareWhatsApp() {
-    const text = encodeURIComponent('شوفي الموقع الحلو ده! 🖤\n' + window.location.href);
+    const text = encodeURIComponent('شوفي الموقع الحلو ده! 💞\n' + window.location.href);
     window.open('https://wa.me/?text=' + text, '_blank');
   }
 
