@@ -427,7 +427,7 @@
   }
 
   .game-card::before {
-    content: '🖤';
+    content: '🌹';
     font-size: 22px;
     opacity: 0.6;
     transition: all 0.3s ease;
@@ -1009,7 +1009,7 @@
 
 <!-- Splash -->
 <div class="splash-screen" id="splash-screen">
-  <div class="splash-text">كل سنة وانتي طيبة يا سمسم 🖤</div>
+  <div class="splash-text">كل سنة وانتي طيبة يا سمسم 🌹</div>
   <div class="splash-sub">جاري فتح قصر الحب...</div>
 </div>
 
@@ -1032,7 +1032,7 @@
 
     <!-- Password -->
     <div class="password-section-wrapper" id="password-screen">
-      <div class="big-heart">🖤</div>
+      <div class="big-heart">🌹</div>
       <h1 class="title">يا أجمل حاجة في حياتي</h1>
       <p class="subtitle"> ده موقع مخصوص ليكي يا سمسم...<br>عشان أقولك كلمة من قلبي</p>
 
@@ -1096,7 +1096,7 @@
 
     <!-- Birthday -->
     <div class="birthday-section" id="birthday-screen">
-      <div class="big-heart">🎂🖤</div>
+      <div class="big-heart">🎂🌹</div>
       <h1 class="birthday-title">كل سنة وانتي طيبة</h1>
       <div class="name-highlight">يا اسماء</div>
 
@@ -1130,7 +1130,7 @@
         <span class="love-line">🌸 كل سنة وانتي كل حاجة حلوة في الدنيا</span>
         <span class="love-line">🔐 كل سنة وانتي السر الجميل في حياتي</span>
         <span class="love-line">💍 ربنا يخليكي ليا ويحميكي يا أغلى من الدنيا</span>
-        <span class="love-line">🖤 بحبك أكتر من أي حاجة في الكون ده كله</span>
+        <span class="love-line">🫂 بحبك أكتر من أي حاجة في الكون ده كله</span>
         <span class="love-line">👑 انتي أميرتي اللي مالكيش مثيل</span>
         <span class="love-line">🌹 وعقبال 100 سنة مع بعض يا حبيبتي</span>
       </div>
@@ -1157,7 +1157,7 @@
       <!-- Secret message -->
       <button class="secret-btn" onclick="toggleSecret()">🔐 اضغطي هنا يا سمسم</button>
       <div class="secret-message" id="secret-message">
-        🖤 يا اسماء...<br>
+        🌹 يا اسماء...<br>
         أنا عارف إنك بتقرأي الكلام ده دلوقتي وبتحاولي تخبي دموعك و مشاعرك يا هبلة ...<br>
         بس متخبيش، عشان كل دمعة من عينيكي دي أغلى من الدنيا كلها عندي.<br>
         أنا مش بعرف أعبر كويس، بس أنا بحبك...<br>
@@ -1232,7 +1232,7 @@
   function createHearts() {
     const container = document.getElementById('hearts-container');
     if(!container) return;
-    const emojis = ['🖤', '❤️', '💖', '💕', '💗', '💝', '🌹', '✨'];
+    const emojis = ['😁', '❤️', '💖', '💕', '💗', '💝', '🌹', '✨'];
     for (let i = 0; i < 25; i++) {
       const h = document.createElement('div');
       h.className = 'heart';
@@ -1289,7 +1289,7 @@
   });
 
   // ========== MEMORY GAME ==========
-  const gameEmojis = ['❤️', '🖤', '🌹', '💍', '👑', '🎁'];
+  const gameEmojis = ['❤️', '😜', '🌹', '💍', '👑', '🎁'];
   let cards = [], flippedCards = [], matchedPairs = 0, moves = 0, canFlip = true;
 
   function initGame() {
@@ -1496,7 +1496,7 @@
   }
 
   function shareWhatsApp() {
-    const text = encodeURIComponent('شوفي الموقع الحلو ده! 🖤\n' + window.location.href);
+    const text = encodeURIComponent('شوفي الموقع الحلو ده! 🌹\n' + window.location.href);
     window.open('https://wa.me/?text=' + text, '_blank');
   }
 
