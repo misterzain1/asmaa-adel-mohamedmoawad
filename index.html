@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>كل سنة وانتي طيبة يا اسماء 🌹</title>
+<title>كل سنة وانتي طيبة يا اسماء 🌹 </title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
 
@@ -746,6 +746,238 @@
     box-shadow: 0 0 12px rgba(220,20,60,0.2);
   }
 
+  /* Story Box Added */
+  .story-box {
+    background: rgba(139, 0, 0, 0.15);
+    border: 1px solid rgba(220, 20, 60, 0.3);
+    border-radius: 16px;
+    padding: 20px;
+    margin: 20px 0;
+    position: relative;
+    overflow: hidden;
+    text-align: right;
+  }
+
+  .story-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .story-title {
+    font-size: 18px;
+    color: var(--gold);
+    margin-bottom: 12px;
+    font-weight: 900;
+    text-align: center;
+    text-shadow: 0 0 15px rgba(255,215,0,0.3);
+  }
+
+  .story-text {
+    font-size: 14.5px;
+    line-height: 2.2;
+    color: #ffcccc;
+    font-weight: 700;
+  }
+
+  .signature {
+    margin-top: 16px;
+    font-size: 15px;
+    color: #ffcccc;
+    font-weight: 700;
+  }
+
+  .signature .from {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  /* Secret message button */
+  .secret-btn {
+    margin-top: 16px;
+    padding: 8px 20px;
+    font-size: 13px;
+    font-family: inherit;
+    font-weight: 700;
+    border: 1px solid rgba(220, 20, 60, 0.4);
+    border-radius: 20px;
+    background: rgba(139, 0, 0, 0.2);
+    color: rgba(255,255,255,0.8);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .secret-btn:hover {
+    background: rgba(220, 20, 60, 0.3);
+    color: #fff;
+    border-color: var(--crimson);
+    box-shadow: 0 0 15px rgba(220,20,60,0.3);
+  }
+
+  .secret-message {
+    display: none;
+    margin-top: 12px;
+    padding: 14px;
+    background: rgba(139, 0, 0, 0.15);
+    border: 1px solid rgba(220, 20, 60, 0.25);
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffcccc;
+    line-height: 1.8;
+    animation: secretIn 0.6s ease-out;
+  }
+
+  @keyframes secretIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  /* Share button */
+  .share-section {
+    margin-top: 14px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .share-btn {
+    padding: 8px 18px;
+    font-size: 13px;
+    font-family: inherit;
+    font-weight: 700;
+    border: 1px solid rgba(220, 20, 60, 0.4);
+    border-radius: 20px;
+    background: rgba(0,0,0,0.3);
+    color: rgba(255,255,255,0.8);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .share-btn:hover {
+    background: rgba(220, 20, 60, 0.2);
+    color: #fff;
+    border-color: var(--crimson);
+  }
+
+  /* Audio */
+  .audio-section {
+    margin: 12px 0;
+  }
+
+  .audio-btn {
+    padding: 10px 22px;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 700;
+    border: 1px solid rgba(220, 20, 60, 0.4);
+    border-radius: 20px;
+    background: rgba(0,0,0,0.4);
+    color: rgba(255,255,255,0.9);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .audio-btn:hover {
+    background: rgba(220, 20, 60, 0.25);
+    color: #fff;
+    border-color: var(--crimson);
+  }
+
+  .audio-btn.playing {
+    background: rgba(220, 20, 60, 0.35);
+    color: #fff;
+    border-color: var(--gold);
+    animation: audioPulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes audioPulse {
+    0%, 100% { box-shadow: 0 0 8px rgba(220,20,60,0.3); }
+    50% { box-shadow: 0 0 25px rgba(220,20,60,0.7); }
+  }
+
+  /* Music Selector Modal Style */
+  .music-modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    animation: modalFadeIn 0.3s ease-out;
+  }
+
+  @keyframes modalFadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .music-modal-card {
+    background: rgba(15, 0, 0, 0.95);
+    border: 1px solid rgba(220, 20, 60, 0.5);
+    border-radius: 20px;
+    padding: 22px;
+    max-width: 360px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 0 50px rgba(220, 20, 60, 0.4);
+  }
+
+  .playlist-track {
+    background: rgba(139, 0, 0, 0.2);
+    border: 1px solid rgba(220, 20, 60, 0.3);
+    border-radius: 12px;
+    padding: 12px 14px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    margin-bottom: 8px;
+  }
+
+  .playlist-track:hover, .playlist-track.active {
+    background: linear-gradient(135deg, #8b0000, #dc143c);
+    border-color: var(--gold);
+    box-shadow: 0 0 15px rgba(220,20,60,0.4);
+  }
+
+  /* Confetti */
+  #confetti-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  .sparkle {
+    position: absolute;
+    width: 4px; height: 4px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: sparkleAnim 1.5s ease-out forwards;
+    pointer-events: none;
+  }
+
+  @keyframes sparkleAnim {
+    0% { transform: scale(0) rotate(0deg); opacity: 1; }
+    100% { transform: scale(1.5) rotate(180deg); opacity: 0; }
+  }
+
   /* Responsive */
   @media (max-width: 480px) {
     .glass-card { padding: 18px; margin: 6px; }
@@ -762,6 +994,7 @@
     .quiz-question { font-size: 15px; }
     .count-box { min-width: 45px; padding: 6px 8px; }
     .count-box .num { font-size: 18px; }
+    .story-text { font-size: 13px; }
   }
 </style>
 </head>
@@ -772,6 +1005,7 @@
 <div class="stars-container" id="stars-container"></div>
 <div class="snow-container" id="snow-container"></div>
 <div class="hearts-container" id="hearts-container"></div>
+<canvas id="confetti-canvas"></canvas>
 
 <!-- Splash -->
 <div class="splash-screen" id="splash-screen">
@@ -822,7 +1056,7 @@
     <div class="game-section" id="game-section">
       <div class="big-heart">🎮</div>
       <h1 class="game-title">لعبة الحب</h1>
-      <p class="game-subtitle">لازم تلاقي كل الأزواج المتشابهة يا سمسم<br> عشان تدخلي جوة قلبي و تشوفي اللي جواه  </p>
+      <p class="game-subtitle">لازم تلاقي كل الأزواج المتشابهة يا سمسم<br> عشان تدخلي جوة قلبي و تشوفي الجواة  </p>
 
       <div class="game-stats">
         <div>المحاولات: <span id="moves-count">0</span></div>
@@ -843,6 +1077,7 @@
       <h1 class="quiz-title">لغز الحب</h1>
       <p class="quiz-subtitle">جاوبي صح عشان تدخلي قلبي كله</p>
 
+      <!-- 5 نقاط لـ 5 أسئلة -->
       <div class="quiz-progress" id="quiz-progress">
         <div class="quiz-dot active" id="dot-0"></div>
         <div class="quiz-dot" id="dot-1"></div>
@@ -868,7 +1103,7 @@
       <div class="date-badge">6 / 8 / 1997</div>
 
       <!-- Countdown -->
-      <div class="countdown-section" style="display:block;" id="countdown-section">
+      <div class="countdown-section" id="countdown-section">
         <div class="countdown-title">⏳ متبقي على عيد ميلادك القادم:</div>
         <div class="countdown-boxes" id="countdown-boxes">
           <div class="count-box"><span class="num" id="cd-days">--</span><span class="label">يوم</span></div>
@@ -876,6 +1111,12 @@
           <div class="count-box"><span class="num" id="cd-minutes">--</span><span class="label">دقيقة</span></div>
           <div class="count-box"><span class="num" id="cd-seconds">--</span><span class="label">ثانية</span></div>
         </div>
+      </div>
+
+      <!-- Audio Button Section -->
+      <div class="audio-section">
+        <button class="audio-btn" id="audio-btn" onclick="openMusicModal()">🎵 شغلي موسيقى الحب</button>
+        <audio id="bg-music"></audio>
       </div>
 
       <div class="birthday-message">
@@ -887,197 +1128,3 @@
         <span class="love-line">💫 كل سنة وانتي جميلة زي ما انتي كده</span>
         <span class="love-line">😍 كل سنة وانتي عبيطة... عبيطة في حبك ليا</span>
         <span class="love-line">🌸 كل سنة وانتي كل حاجة حلوة في الدنيا</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- حاوية مشغل اليوتيوب المخفي -->
-<div id="youtube-audio-container" style="display:none;"></div>
-
-<script>
-  // تأثير إخفاء شاشة البداية
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      document.getElementById('splash-screen').style.opacity = '0';
-      setTimeout(() => {
-        document.getElementById('splash-screen').style.display = 'none';
-        document.getElementById('intro-screen').style.display = 'block';
-      }, 800);
-    }, 2000);
-  });
-
-  // التنقل بين الشاشات
-  function showPasswordScreen() {
-    document.getElementById('intro-screen').style.display = 'none';
-    document.getElementById('password-screen').style.display = 'block';
-  }
-
-  function checkPassword() {
-    const pass = document.getElementById('password-input').value;
-    if(pass === '681995') {
-      document.getElementById('password-screen').style.display = 'none';
-      document.getElementById('game-section').style.display = 'block';
-      initGame();
-    } else {
-      const err = document.getElementById('error-msg');
-      err.classList.add('show');
-      setTimeout(() => err.classList.remove('show'), 2000);
-    }
-  }
-
-  // لعبة الذاكرة
-  const gameItems = ['❤️', '🌹', '👑', '💍', '🎁', '✨', '❤️', '🌹', '👑', '💍', '🎁', '✨'];
-  let flippedCards = [];
-  let matchedPairs = 0;
-  let moves = 0;
-
-  function initGame() {
-    const grid = document.getElementById('game-grid');
-    grid.innerHTML = '';
-    // خلط البطاقات
-    gameItems.sort(() => Math.random() - 0.5);
-    
-    gameItems.forEach((item, index) => {
-      const card = document.createElement('div');
-      card.className = 'game-card';
-      card.dataset.value = item;
-      card.dataset.index = index;
-      
-      const content = document.createElement('div');
-      content.className = 'card-content';
-      content.innerText = item;
-      
-      card.appendChild(content);
-      card.addEventListener('click', flipCard);
-      grid.appendChild(card);
-    });
-  }
-
-  function flipCard() {
-    if (flippedCards.length >= 2 || this.classList.contains('flipped') || this.classList.contains('matched')) return;
-    
-    this.classList.add('flipped');
-    flippedCards.push(this);
-
-    if (flippedCards.length === 2) {
-      moves++;
-      document.getElementById('moves-count').innerText = moves;
-      setTimeout(checkMatch, 800);
-    }
-  }
-
-  function checkMatch() {
-    const [card1, card2] = flippedCards;
-    if (card1.dataset.value === card2.dataset.value) {
-      card1.classList.replace('flipped', 'matched');
-      card2.classList.replace('flipped', 'matched');
-      matchedPairs++;
-      document.getElementById('pairs-count').innerText = matchedPairs;
-      
-      if (matchedPairs === 6) {
-        document.getElementById('game-win-msg').style.display = 'block';
-      }
-    } else {
-      card1.classList.remove('flipped');
-      card2.classList.remove('flipped');
-    }
-    flippedCards = [];
-  }
-
-  // الأسئلة والموسيقى
-  const ytContainer = document.getElementById('youtube-audio-container');
-  // يمكنك تغيير معرف الفيديو qgYWN2E3_60 لأي فيديو موسيقى هادئة من اليوتيوب
-  const youtubeVideoId = 'qgYWN2E3_60'; 
-
-  function playYouTubeAudio() {
-    // نقوم بإضافة iframe الخاص باليوتيوب مع خاصية autoplay
-    ytContainer.innerHTML = `<iframe width="10" height="10" src="https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&loop=1&playlist=${youtubeVideoId}" frameborder="0" allow="autoplay"></iframe>`;
-  }
-
-  function stopYouTubeAudio() {
-    // إزالة المشغل لإيقاف الصوت
-    ytContainer.innerHTML = '';
-  }
-
-  const quizQuestions = [
-    "سؤال 1: بتفضلي أكل إيه أكتر حاجة؟",
-    "سؤال 2: إيه أكتر لون بتحبيه؟",
-    "سؤال 3: مين أكتر حد بيحبك في الدنيا؟",
-    "سؤال 4: فاكرة أول مرة اتقابلنا كانت فين؟",
-    "سؤال 5: جاهزة تشوفي المفاجأة؟"
-  ];
-  let currentQ = 0;
-
-  function showQuiz() {
-    document.getElementById('game-section').style.display = 'none';
-    document.getElementById('quiz-section').style.display = 'block';
-    // تشغيل الموسيقى التلقائية عند دخول صفحة الأسئلة
-    playYouTubeAudio();
-    loadQuestion();
-  }
-
-  function loadQuestion() {
-    if (currentQ >= quizQuestions.length) {
-      // إنهاء الأسئلة والانتقال لصفحة عيد الميلاد
-      document.getElementById('quiz-section').style.display = 'none';
-      document.getElementById('birthday-screen').style.display = 'block';
-      
-      // إيقاف الموسيقى بعد الخروج من صفحة الأسئلة
-      stopYouTubeAudio();
-      
-      startCountdown();
-      return;
-    }
-    document.getElementById('quiz-question').innerText = quizQuestions[currentQ];
-    document.getElementById('quiz-input').value = '';
-    
-    // تحديث شريط التقدم
-    for(let i = 0; i <= currentQ; i++) {
-      if(i === currentQ) {
-        document.getElementById('dot-'+i).classList.add('active');
-      } else {
-        document.getElementById('dot-'+i).classList.remove('active');
-        document.getElementById('dot-'+i).classList.add('done');
-      }
-    }
-  }
-
-  function checkQuizAnswer() {
-    const val = document.getElementById('quiz-input').value.trim();
-    if(val.length > 0) { // يقبل أي إجابة للمرح، يمكنك تغيير هذا الشرط
-      document.getElementById('dot-' + currentQ).classList.remove('active');
-      document.getElementById('dot-' + currentQ).classList.add('done');
-      currentQ++;
-      loadQuestion();
-    }
-  }
-
-  // عداد عيد الميلاد
-  function startCountdown() {
-    const updateCountdown = () => {
-      const now = new Date();
-      let nextBirthday = new Date(now.getFullYear(), 7, 6); // 7 يعني أغسطس (0 هو يناير)
-      
-      if (now > nextBirthday) {
-        nextBirthday.setFullYear(now.getFullYear() + 1);
-      }
-      
-      const diff = nextBirthday - now;
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-      
-      document.getElementById('cd-days').innerText = days;
-      document.getElementById('cd-hours').innerText = hours;
-      document.getElementById('cd-minutes').innerText = minutes;
-      document.getElementById('cd-seconds').innerText = seconds;
-    };
-    
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  }
-</script>
-</body>
-</html>
