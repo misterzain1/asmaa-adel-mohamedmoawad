@@ -781,7 +781,7 @@
     box-shadow: 0 0 12px rgba(220,20,60,0.2);
   }
 
-  /* Story Box */
+  /* Story Box Added */
   .story-box {
     background: rgba(139, 0, 0, 0.15);
     border: 1px solid rgba(220, 20, 60, 0.3);
@@ -931,7 +931,7 @@
     animation: audioPulse 1.5s ease-in-out infinite;
   }
 
-  /* Music Selector Modal */
+  /* Music Selector Modal Style */
   .music-modal-overlay {
     position: fixed;
     top: 0; left: 0;
@@ -1094,13 +1094,6 @@
     width:100%; padding:10px; border-radius:10px; border:1px solid rgba(220,20,60,0.4);
     background:rgba(0,0,0,0.4); color:#fff; font-family:inherit; margin-bottom:8px;
   }
-  .wall-messages {
-    max-height:150px; overflow-y:auto; margin-top:10px;
-  }
-  .wall-msg {
-    background: rgba(139,0,0,0.15); border-radius:10px; padding:8px; margin-bottom:6px;
-    border-right:3px solid var(--crimson); color:#ffcccc;
-  }
 
   /* Light mode overrides */
   .light-mode {
@@ -1218,6 +1211,7 @@
       <h1 class="quiz-title">لغز الحب</h1>
       <p class="quiz-subtitle">جاوبي صح عشان تدخلي قلبي كله</p>
 
+      <!-- 5 نقاط لـ 5 أسئلة -->
       <div class="quiz-progress" id="quiz-progress">
         <div class="quiz-dot active" id="dot-0"></div>
         <div class="quiz-dot" id="dot-1"></div>
@@ -1233,6 +1227,7 @@
         <div class="quiz-feedback" id="quiz-feedback"></div>
       </div>
 
+      <!-- زر التحكم في موسيقى الأسئلة -->
       <button class="quiz-music-btn playing" id="quiz-music-btn" onclick="toggleQuizMusic()">🎵 إيقاف الموسيقى</button>
     </div>
 
@@ -1241,8 +1236,10 @@
       <div class="big-heart">🎂💞</div>
       <h1 class="birthday-title">كل سنة وانتي طيبة</h1>
       <div class="name-highlight">يا اسماء</div>
+
       <div class="date-badge">6 / 8 / 1997</div>
 
+      <!-- Countdown -->
       <div class="countdown-section" id="countdown-section">
         <div class="countdown-title">⏳ متبقي على عيد ميلادك القادم:</div>
         <div class="countdown-boxes" id="countdown-boxes">
@@ -1253,12 +1250,13 @@
         </div>
       </div>
 
+      <!-- Audio Buttons -->
       <div class="audio-section" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
         <button class="audio-btn" id="audio-btn" onclick="openMusicModal()">🎵 شغلي موسيقى الحب</button>
         <button class="audio-btn" onclick="toggleVoiceMessage()">🔊 اسمعي رسالتي</button>
       </div>
       <audio id="bg-music"></audio>
-      <audio id="voice-message" src="ZAIN.mp3"></audio>
+      <audio id="voice-message" src="ZAIN.mp3" preload="auto"></audio>
 
       <div class="birthday-message">
         <span class="love-line">🌹 يوم 6/8/1997 ده أحسن يوم في الدنيا</span>
@@ -1276,6 +1274,7 @@
         <span class="love-line">🌹 وعقبال 100 سنة مع بعض يا حبيبتي</span>
       </div>
 
+      <!-- Photo Slider (without real images, will hide if not found) -->
       <div class="photo-slider" id="photo-slider">
         <img src="images/1.jpg" class="slide active" onerror="this.style.display='none'">
         <img src="images/2.jpg" class="slide" onerror="this.style.display='none'">
@@ -1284,10 +1283,12 @@
         <img src="images/5.jpg" class="slide" onerror="this.style.display='none'">
       </div>
 
+      <!-- Love Counter -->
       <div style="margin:20px 0; font-size:18px; color:var(--gold); font-weight:900;">
         💖 عدد الدقائق اللي فكرت فيكي النهاردة: <span id="love-counter" style="font-size:24px;">0</span>
       </div>
 
+      <!-- صندوق القصة -->
       <div class="story-box">
         <h2 class="story-title">📖 سمسمتي الحلوة </h2>
         <p class="story-text">احنا بنتصالح ونتخانق بنحب بعض وبنزعل من بعض بنقرب من بعض بس عمرنا ما بنبعد عن بعض بس عشان احنا واحد ما نروح واحده من جسد واحد كل سنه وانت طيبه يا اجمل سمسم في الدنيا كلها السنه دي ما تعديش علينا غير وانت في البيتي ان شاء الله
@@ -1296,6 +1297,7 @@
         </p>
       </div>
 
+      <!-- Timeline -->
       <div class="timeline">
         <div class="timeline-item"><span class="timeline-year">2022</span> أول تعارف وقرب حقيقي</div>
         <div class="timeline-item"><span class="timeline-year">2025</span> خطوبة الحب 💍</div>
@@ -1303,6 +1305,7 @@
         <div class="timeline-item"><span class="timeline-year">المستقبل</span> بيت واحد، عمر واحد 💞</div>
       </div>
 
+      <!-- Star Certificate -->
       <div class="star-cert">
         <h3 style="color:var(--gold);">✨ شهادة نجمة ✨</h3>
         <p style="color:#ffcccc;">نهدي النجمة رقم <strong style="color:#ffd700;">681997</strong> إلى الملكة <strong style="color:#ffd700;">أسماء عادل محمد</strong></p>
@@ -1314,6 +1317,7 @@
         <div style="color:#ffd700; margin-top:4px; font-size:18px;">محمد أحمد معوض ❤️</div>
       </div>
 
+      <!-- Secret message -->
       <button class="secret-btn" onclick="toggleSecret()">🔐 اضغطي هنا يا سمسم</button>
       <div class="secret-message" id="secret-message">
         💞 يا اسماء...<br>
@@ -1324,16 +1328,18 @@
         ربنا يخليكي ليا يا أغلى حاجة في حياتي. 💍❤️
       </div>
 
+      <!-- رسالة واتساب -->
       <div class="message-wall">
-        <h3 style="color:var(--gold);">💌 رسالتك ليا</h3>
+        <h3 style="color:var(--gold);">💌 اكتبي رسالة وتبعت على واتساب</h3>
         <textarea class="wall-input" id="wall-input" placeholder="اكتبي رسالة حب هنا..." rows="2"></textarea>
-        <button class="enter-btn" onclick="addWallMessage()">إرسال 💌</button>
-        <div class="wall-messages" id="wall-messages"></div>
+        <button class="enter-btn" onclick="sendWhatsAppMessage()">إرسال 💌</button>
       </div>
 
+      <!-- Share -->
       <div class="share-section">
         <button class="share-btn" onclick="copyLink()">📋 انسخي اللينك</button>
         <button class="share-btn" onclick="shareWhatsApp()">📱 شاركي على واتساب</button>
+        <button class="share-btn" onclick="openMyWhatsApp()">📲 كلميني واتساب</button>
       </div>
     </div>
 
@@ -1349,6 +1355,7 @@
       <input type="password" class="gift-input" id="gift-password" placeholder="4 أرقام" maxlength="4">
       <button class="enter-btn" onclick="openGift()" style="margin-top:10px;">فتح 🎀</button>
       <p class="error-msg" id="gift-error">❌ غلط... جربي تاني!</p>
+      <button class="close-gift-btn" onclick="closeGift()" style="margin-top:10px;">إغلاق ✖</button>
     </div>
     <div class="gift-content">
       <div style="font-size:40px;">💖</div>
@@ -1365,7 +1372,11 @@
     <div style="font-size: 32px; margin-bottom: 6px;">🎵</div>
     <h2 style="font-size: 17px; color: var(--gold); margin-bottom: 4px;">اختاري الأغنية اللي تحبيها</h2>
     <p style="font-size: 12px; color: rgba(255,255,255,0.7); margin-bottom: 14px;">هتشتغل الموسيقى في الخلفية فوراً</p>
-    <div id="playlist-container" style="max-height: 200px; overflow-y: auto; margin-bottom: 12px; padding-left: 2px;"></div>
+
+    <div id="playlist-container" style="max-height: 200px; overflow-y: auto; margin-bottom: 12px; padding-left: 2px;">
+      <!-- Tracks loaded dynamically -->
+    </div>
+
     <div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top: 10px;">
       <button class="share-btn" style="border-color: var(--gold); color: var(--gold);" onclick="togglePlayPauseCurrent()" id="modal-play-btn">⏸️ إيقاف / تشغيل</button>
       <button class="share-btn" onclick="closeMusicModal()">إغلاق ✖</button>
@@ -1373,6 +1384,7 @@
   </div>
 </div>
 
+<!-- موسيقى الأسئلة الرومانسية -->
 <audio id="quiz-music" preload="auto" loop></audio>
 
 <script>
@@ -1428,7 +1440,7 @@
   }
   createHearts();
 
-  // ========== SPLASH -> INTRO ==========
+  // ========== SPLASH -> INTRO SAFE TRANSITION ==========
   setTimeout(() => {
     const splash = document.getElementById('splash-screen');
     const intro = document.getElementById('intro-screen');
@@ -1537,7 +1549,7 @@
     }
   }
 
-  // ========== QUIZ MUSIC ==========
+  // ========== QUIZ MUSIC LOGIC ==========
   function startQuizMusic() {
     const quizMusic = document.getElementById('quiz-music');
     const btn = document.getElementById('quiz-music-btn');
@@ -1570,7 +1582,7 @@
       if (vol <= 0) {
         clearInterval(fadeInterval);
         quizMusic.pause();
-        quizMusic.volume = 0.7;
+        quizMusic.volume = 0.7; // reset for next time
         if (btn) {
           btn.textContent = '🔊 تشغيل الموسيقى';
           btn.classList.remove('playing');
@@ -1586,6 +1598,7 @@
     const quizMusic = document.getElementById('quiz-music');
     const btn = document.getElementById('quiz-music-btn');
     if (!quizMusic.src || quizMusic.src === window.location.href) {
+      // لم يتم تحميل المصدر بعد، حمله وشغله
       startQuizMusic();
       return;
     }
@@ -1642,6 +1655,7 @@
     document.getElementById('quiz-section').style.display = 'block';
     currentQuiz = 0;
     loadQuizQuestion();
+    // تشغيل الموسيقى الرومانسية تلقائياً مع بداية الأسئلة
     startQuizMusic();
   }
 
@@ -1665,6 +1679,7 @@
   }
 
   function goToBirthday() {
+    // إيقاف موسيقى الأسئلة تدريجياً قبل الانتقال لرسالة عيد الميلاد
     fadeOutQuizMusic(() => {
       document.getElementById('quiz-section').style.display = 'none';
       document.getElementById('birthday-screen').style.display = 'block';
@@ -1672,13 +1687,13 @@
       startConfetti();
       createSparkles();
       startCountdown();
+      // new additions triggers
       launchBalloons();
       startLoveCounter();
       setTimeout(() => {
         document.getElementById('gift-overlay').style.display = 'flex';
       }, 3000);
       startPhotoSlider();
-      loadWallMessages();
     });
   }
 
@@ -1693,6 +1708,7 @@
 
     if (isCorrect) {
       const waitTime = (currentQuiz === quizQuestions.length - 1) ? 3500 : 2500;
+      
       setTimeout(() => {
         currentQuiz++;
         if (currentQuiz >= quizQuestions.length) {
@@ -1715,10 +1731,14 @@
       const now = new Date().getTime();
       const diff = target - now;
       if (diff > 0) {
-        document.getElementById('cd-days').textContent = Math.floor(diff / (1000 * 60 * 60 * 24));
-        document.getElementById('cd-hours').textContent = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        document.getElementById('cd-minutes').textContent = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        document.getElementById('cd-seconds').textContent = Math.floor((diff % (1000 * 60)) / 1000);
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((diff % (1000 * 60)) / 1000);
+        document.getElementById('cd-days').textContent = d;
+        document.getElementById('cd-hours').textContent = h;
+        document.getElementById('cd-minutes').textContent = m;
+        document.getElementById('cd-seconds').textContent = s;
       }
     }
     update();
@@ -1752,7 +1772,7 @@
     window.open('https://wa.me/?text=' + text, '_blank');
   }
 
-  // ========== MULTI-AUDIO / PLAYLIST ==========
+  // ========== MULTI-AUDIO / PLAYLIST LOGIC ==========
   const musicTracks = [
     { name: "🎵 أغنية عيد الميلاد (music.mp3)", file: "music.mp3" },
     { name: "🎶 أغنية الحب الأولى (music2.mp3)", file: "music2.mp3" },
@@ -1765,6 +1785,7 @@
   function renderPlaylist() {
     const container = document.getElementById('playlist-container');
     container.innerHTML = '';
+
     musicTracks.forEach((track, idx) => {
       const item = document.createElement('div');
       item.className = 'playlist-track' + (idx === currentTrackIndex ? ' active' : '');
@@ -1904,6 +1925,7 @@
   }
 
   // ========== NEW FEATURES JS ==========
+  // Gift box
   function openGift() {
     if (document.getElementById('gift-password').value === '6895') {
       document.getElementById('gift-box').classList.add('open');
@@ -1917,11 +1939,18 @@
     document.getElementById('gift-overlay').style.display = 'none';
   }
 
+  // Voice message
   function toggleVoiceMessage() {
     const v = document.getElementById('voice-message');
-    if (v.paused) v.play(); else v.pause();
+    if (!v) return;
+    if (v.paused) {
+      v.play().catch(() => alert('تأكدي من وجود ملف ZAIN.mp3 في نفس المجلد'));
+    } else {
+      v.pause();
+    }
   }
 
+  // Photo slider
   function startPhotoSlider() {
     const slides = document.querySelectorAll('#photo-slider img');
     if (slides.length === 0) return;
@@ -1933,6 +1962,7 @@
     }, 3000);
   }
 
+  // Love counter
   function startLoveCounter() {
     const counter = document.getElementById('love-counter');
     let count = 0;
@@ -1943,6 +1973,7 @@
     }, 15);
   }
 
+  // Balloons
   function launchBalloons() {
     const letters = ['أ', 'س', 'م', 'ا', 'ء'];
     letters.forEach((letter, i) => {
@@ -1957,6 +1988,7 @@
     });
   }
 
+  // Light mode toggle
   function toggleMode() {
     document.body.classList.toggle('light-mode');
     const isLight = document.body.classList.contains('light-mode');
@@ -1968,20 +2000,15 @@
     document.getElementById('mode-toggle').textContent = '🌙 وضع داكن';
   }
 
-  function addWallMessage() {
-    const input = document.getElementById('wall-input');
-    const msg = input.value.trim();
-    if (!msg) return;
-    const messages = JSON.parse(localStorage.getItem('asmaa_wall') || '[]');
-    messages.push(msg);
-    localStorage.setItem('asmaa_wall', JSON.stringify(messages));
-    input.value = '';
-    loadWallMessages();
+  // Wall messages (WhatsApp)
+  function sendWhatsAppMessage() {
+    const msg = document.getElementById('wall-input').value.trim();
+    if (!msg) { alert('اكتبي رسالة الأول يا سمسم! 💌'); return; }
+    window.open('https://wa.me/201289997048?text=' + encodeURIComponent(msg), '_blank');
   }
-  function loadWallMessages() {
-    const container = document.getElementById('wall-messages');
-    const messages = JSON.parse(localStorage.getItem('asmaa_wall') || '[]');
-    container.innerHTML = messages.map(m => `<div class="wall-msg">${m}</div>`).join('');
+
+  function openMyWhatsApp() {
+    window.open('https://wa.me/201289997048?text=' + encodeURIComponent('كل سنة وانتي طيبة يا أجمل بنت في الدنيا 💞'), '_blank');
   }
 
   window.addEventListener('resize', () => {
@@ -1992,5 +2019,6 @@
     }
   });
 </script>
+
 </body>
 </html>
