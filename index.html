@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>كل سنة وانتي طيبة يا اسماء 💞</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
@@ -11,8 +11,69 @@
     --blood-red: #8b0000;
     --crimson: #dc143c;
     --rose: #ff0040;
-    --gold: #ffd700;
+    --gold: #d4a017;
+    --gold-light: #e6b800;
     --black: #0a0a0a;
+    --bg-overlay: rgba(10, 0, 0, 0.85);
+    --text-primary: #fff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(139, 0, 0, 0.4);
+    --input-bg: rgba(0, 0, 0, 0.5);
+    --hint-bg: rgba(139, 0, 0, 0.2);
+    --hint-text: #ffcccc;
+    --card-shadow: 0 0 60px rgba(139, 0, 0, 0.3), inset 0 0 30px rgba(139, 0, 0, 0.05);
+    --btn-gradient: linear-gradient(135deg, #8b0000, #dc143c);
+    --game-card-bg: linear-gradient(135deg, #1a0000, #2d0000);
+    --game-card-flipped: linear-gradient(135deg, #2d0000, #4a0000);
+    --game-card-matched: linear-gradient(135deg, #1a3a1a, #0d2b0b);
+    --countdown-bg: rgba(139, 0, 0, 0.15);
+    --story-bg: rgba(139, 0, 0, 0.15);
+    --story-text: #ffcccc;
+    --love-line-bg: rgba(139, 0, 0, 0.15);
+    --secret-bg: rgba(139, 0, 0, 0.15);
+    --star-cert-bg: linear-gradient(135deg, #1a0000, #2d0000);
+    --music-modal-bg: rgba(15, 0, 0, 0.95);
+    --playlist-track-bg: rgba(139, 0, 0, 0.2);
+    --quiz-dot-bg: rgba(139, 0, 0, 0.4);
+    --count-box-bg: rgba(0, 0, 0, 0.4);
+    --divider-gradient: linear-gradient(90deg, transparent, var(--crimson), transparent);
+    --snow-color: rgba(255, 200, 200, 0.6);
+    --heart-color: rgba(220, 20, 60, 0.2);
+    --glow-text-shadow: 0 0 30px rgba(220, 20, 60, 0.8), 0 0 60px rgba(139, 0, 0, 0.5);
+    --glow-text-shadow-alt: 0 0 50px rgba(220, 20, 60, 1), 0 0 100px rgba(139, 0, 0, 0.8);
+  }
+
+  /* Light mode overrides */
+  body.light-mode {
+    --bg-overlay: rgba(255, 245, 245, 0.92);
+    --text-primary: #1a0000;
+    --text-secondary: rgba(50, 0, 0, 0.8);
+    --text-muted: rgba(50, 0, 0, 0.6);
+    --border-color: rgba(180, 0, 0, 0.35);
+    --input-bg: rgba(255, 240, 240, 0.8);
+    --hint-bg: rgba(200, 0, 0, 0.1);
+    --hint-text: #4a0000;
+    --card-shadow: 0 0 40px rgba(180, 0, 0, 0.2), inset 0 0 20px rgba(180, 0, 0, 0.03);
+    --btn-gradient: linear-gradient(135deg, #b30000, #e63946);
+    --game-card-bg: linear-gradient(135deg, #ffe0e0, #ffcccc);
+    --game-card-flipped: linear-gradient(135deg, #ffb3b3, #ff9999);
+    --game-card-matched: linear-gradient(135deg, #d4edda, #c3e6cb);
+    --countdown-bg: rgba(180, 0, 0, 0.08);
+    --story-bg: rgba(180, 0, 0, 0.08);
+    --story-text: #2c0a0a;
+    --love-line-bg: rgba(180, 0, 0, 0.08);
+    --secret-bg: rgba(180, 0, 0, 0.08);
+    --star-cert-bg: linear-gradient(135deg, #fff0f0, #ffe0e0);
+    --music-modal-bg: rgba(255, 245, 245, 0.97);
+    --playlist-track-bg: rgba(180, 0, 0, 0.08);
+    --quiz-dot-bg: rgba(180, 0, 0, 0.3);
+    --count-box-bg: rgba(255, 240, 240, 0.6);
+    --divider-gradient: linear-gradient(90deg, transparent, #b30000, transparent);
+    --snow-color: rgba(180, 0, 0, 0.4);
+    --heart-color: rgba(180, 0, 0, 0.15);
+    --glow-text-shadow: 0 0 20px rgba(180, 0, 0, 0.5), 0 0 40px rgba(139, 0, 0, 0.3);
+    --glow-text-shadow-alt: 0 0 35px rgba(180, 0, 0, 0.7), 0 0 70px rgba(139, 0, 0, 0.5);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -22,103 +83,168 @@
     background: #000;
     min-height: 100vh;
     overflow-x: hidden;
-    color: #fff;
+    color: var(--text-primary);
     transition: background 0.5s, color 0.5s;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body.light-mode {
+    background: #fff5f5;
   }
 
   /* Background layers */
   .bg-layer {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: 0;
     pointer-events: none;
+    transition: all 0.5s ease;
   }
 
   .bg-gradient {
     background: radial-gradient(ellipse at center, #1a0000 0%, #0a0a0a 60%, #000000 100%);
   }
 
+  body.light-mode .bg-gradient {
+    background: radial-gradient(ellipse at center, #fff0f0 0%, #ffe8e8 60%, #ffdede 100%);
+  }
+
   .bg-red-glow {
-    background: radial-gradient(circle at 50% 50%, rgba(139,0,0,0.25) 0%, transparent 70%);
+    background: radial-gradient(circle at 50% 50%, rgba(139, 0, 0, 0.25) 0%, transparent 70%);
     animation: glowMove 8s ease-in-out infinite;
   }
 
+  body.light-mode .bg-red-glow {
+    background: radial-gradient(circle at 50% 50%, rgba(200, 0, 0, 0.08) 0%, transparent 70%);
+  }
+
   @keyframes glowMove {
-    0%, 100% { transform: scale(1); opacity: 0.6; }
-    50% { transform: scale(1.2); opacity: 1; }
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.6;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 1;
+    }
   }
 
   /* Stars */
   .stars-container {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
     z-index: 1;
     overflow: hidden;
+    transition: opacity 0.5s;
   }
 
   .star {
     position: absolute;
-    width: 2px; height: 2px;
+    width: 2px;
+    height: 2px;
     background: #fff;
     border-radius: 50%;
     animation: twinkle ease-in-out infinite;
   }
 
+  body.light-mode .star {
+    background: #b30000;
+  }
+
   @keyframes twinkle {
-    0%, 100% { opacity: 0.2; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.5); }
+    0%,
+    100% {
+      opacity: 0.2;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.5);
+    }
   }
 
   /* Snow */
   .snow-container {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
     z-index: 2;
     overflow: hidden;
+    transition: opacity 0.5s;
   }
 
   .snowflake {
     position: absolute;
-    color: rgba(255, 200, 200, 0.6);
+    color: var(--snow-color);
     font-size: 12px;
     animation: snowFall linear infinite;
     user-select: none;
   }
 
   @keyframes snowFall {
-    0% { transform: translateY(-10px) rotate(0deg); opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 0.8; }
-    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    0% {
+      transform: translateY(-10px) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateY(100vh) rotate(360deg);
+      opacity: 0;
+    }
   }
 
   /* Floating hearts */
   .hearts-container {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
     z-index: 3;
     overflow: hidden;
+    transition: opacity 0.5s;
   }
 
   .heart {
     position: absolute;
-    color: rgba(220, 20, 60, 0.2);
+    color: var(--heart-color);
     font-size: 20px;
     animation: floatUp linear infinite;
   }
 
   @keyframes floatUp {
-    0% { transform: translateY(100vh) scale(0.4) rotate(0deg); opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 0.6; }
-    100% { transform: translateY(-10vh) scale(1.3) rotate(360deg); opacity: 0; }
+    0% {
+      transform: translateY(100vh) scale(0.4) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 0.6;
+    }
+    100% {
+      transform: translateY(-10vh) scale(1.3) rotate(360deg);
+      opacity: 0;
+    }
   }
 
   .main-container {
@@ -133,30 +259,39 @@
   }
 
   .glass-card {
-    background: rgba(10, 0, 0, 0.85);
+    background: var(--bg-overlay);
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
-    border: 1px solid rgba(139, 0, 0, 0.4);
+    border: 1px solid var(--border-color);
     border-radius: 25px;
     padding: 28px;
     max-width: 520px;
     width: 100%;
     text-align: center;
-    box-shadow: 0 0 60px rgba(139,0,0,0.3), inset 0 0 30px rgba(139,0,0,0.05);
+    box-shadow: var(--card-shadow);
     animation: cardIn 1s ease-out;
-    transition: background 0.5s, border 0.5s;
+    transition: all 0.5s ease;
+    position: relative;
   }
 
   @keyframes cardIn {
-    from { opacity: 0; transform: translateY(40px) scale(0.9); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
+    from {
+      opacity: 0;
+      transform: translateY(40px) scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
   }
 
   /* Splash */
   .splash-screen {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: #000;
     display: flex;
     flex-direction: column;
@@ -170,25 +305,40 @@
     font-size: 32px;
     font-weight: 900;
     color: #fff;
-    text-shadow: 0 0 30px rgba(220,20,60,0.8), 0 0 60px rgba(139,0,0,0.5);
+    text-shadow: var(--glow-text-shadow);
     animation: splashIn 0.8s ease-out, glowText 2s ease-in-out infinite;
+    text-align: center;
+    padding: 0 20px;
   }
 
   .splash-sub {
     font-size: 15px;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255, 255, 255, 0.5);
     margin-top: 12px;
     font-weight: 700;
+    text-align: center;
+    padding: 0 20px;
   }
 
   @keyframes splashIn {
-    from { opacity: 0; transform: scale(0.5); }
-    to { opacity: 1; transform: scale(1); }
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 
   @keyframes glowText {
-    0%, 100% { text-shadow: 0 0 30px rgba(220,20,60,0.8), 0 0 60px rgba(139,0,0,0.5); }
-    50% { text-shadow: 0 0 50px rgba(220,20,60,1), 0 0 100px rgba(139,0,0,0.8); }
+    0%,
+    100% {
+      text-shadow: var(--glow-text-shadow);
+    }
+    50% {
+      text-shadow: var(--glow-text-shadow-alt);
+    }
   }
 
   /* Intro */
@@ -198,30 +348,38 @@
   }
 
   @keyframes introIn {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .intro-from {
     font-size: 14px;
-    color: rgba(255,255,255,0.8);
+    color: var(--text-secondary);
     font-weight: 700;
     margin-bottom: 8px;
     line-height: 1.8;
+    transition: color 0.5s;
   }
 
   .intro-to {
     font-size: 19px;
     font-weight: 900;
     color: var(--crimson);
-    text-shadow: 0 0 20px rgba(220,20,60,0.5);
+    text-shadow: 0 0 20px rgba(220, 20, 60, 0.5);
     margin: 10px 0;
     line-height: 1.6;
+    transition: color 0.5s, text-shadow 0.5s;
   }
 
   .intro-name {
     font-size: 28px;
-    background: linear-gradient(135deg, #ff0040, #ffd700);
+    background: linear-gradient(135deg, #ff0040, var(--gold));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -230,87 +388,120 @@
     margin: 4px 0;
   }
 
-  .crown { font-size: 36px; margin-bottom: 8px; }
+  .crown {
+    font-size: 36px;
+    margin-bottom: 8px;
+  }
 
   .divider {
     width: 50px;
     height: 2px;
-    background: linear-gradient(90deg, transparent, var(--crimson), transparent);
+    background: var(--divider-gradient);
     margin: 10px auto;
     opacity: 0.6;
+    transition: background 0.5s;
   }
 
   /* Password */
-  .password-section-wrapper { display: none; }
+  .password-section-wrapper {
+    display: none;
+  }
 
   .big-heart {
     font-size: 48px;
     margin-bottom: 10px;
     animation: heartbeat 1.2s ease-in-out infinite;
     display: inline-block;
-    filter: drop-shadow(0 0 15px rgba(220,20,60,0.6));
+    filter: drop-shadow(0 0 15px rgba(220, 20, 60, 0.6));
   }
 
   @keyframes heartbeat {
-    0%, 100% { transform: scale(1); }
-    15% { transform: scale(1.3); }
-    30% { transform: scale(1); }
-    45% { transform: scale(1.15); }
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    15% {
+      transform: scale(1.3);
+    }
+    30% {
+      transform: scale(1);
+    }
+    45% {
+      transform: scale(1.15);
+    }
   }
 
   .title {
     font-size: 22px;
     font-weight: 900;
-    color: #fff;
+    color: var(--text-primary);
     margin-bottom: 6px;
-    text-shadow: 0 0 25px rgba(220,20,60,0.7);
+    text-shadow: 0 0 25px rgba(220, 20, 60, 0.7);
+    transition: color 0.5s, text-shadow 0.5s;
+  }
+
+  body.light-mode .title {
+    text-shadow: 0 0 15px rgba(180, 0, 0, 0.3);
   }
 
   .subtitle {
     font-size: 13px;
-    color: rgba(255,255,255,0.7);
+    color: var(--text-secondary);
     margin-bottom: 16px;
     line-height: 1.7;
     font-weight: 700;
+    transition: color 0.5s;
   }
 
   .hint-box {
-    background: rgba(139, 0, 0, 0.2);
+    background: var(--hint-bg);
     border: 1px solid rgba(220, 20, 60, 0.35);
     border-radius: 16px;
     padding: 16px;
     margin-bottom: 10px;
     position: relative;
     overflow: hidden;
+    transition: all 0.5s;
   }
 
   .hint-box::before {
     content: '';
     position: absolute;
-    top: -50%; left: -50%;
-    width: 200%; height: 200%;
-    background: radial-gradient(circle, rgba(220,20,60,0.1) 0%, transparent 70%);
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(220, 20, 60, 0.1) 0%, transparent 70%);
     animation: pulseGlow 3s ease-in-out infinite;
   }
 
   @keyframes pulseGlow {
-    0%, 100% { transform: scale(1); opacity: 0.5; }
-    50% { transform: scale(1.1); opacity: 1; }
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.5;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 1;
+    }
   }
 
   .hint-text {
     font-size: 14px;
     line-height: 2;
-    color: #ffcccc;
+    color: var(--hint-text);
     position: relative;
     z-index: 1;
     font-weight: 700;
+    transition: color 0.5s;
   }
 
   .hint-text .highlight {
     color: var(--gold);
     font-weight: 900;
-    text-shadow: 0 0 15px rgba(255,215,0,0.4);
+    text-shadow: 0 0 15px rgba(212, 160, 23, 0.4);
+    transition: color 0.5s, text-shadow 0.5s;
   }
 
   .password-input {
@@ -322,22 +513,28 @@
     letter-spacing: 8px;
     border: 2px solid rgba(139, 0, 0, 0.5);
     border-radius: 12px;
-    background: rgba(0,0,0,0.5);
-    color: #fff;
+    background: var(--input-bg);
+    color: var(--text-primary);
     outline: none;
     transition: all 0.3s ease;
     font-weight: 900;
-    text-shadow: 0 0 5px rgba(255,255,255,0.3);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  body.light-mode .password-input {
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   }
 
   .password-input:focus {
     border-color: var(--crimson);
-    box-shadow: 0 0 25px rgba(220,20,60,0.4);
+    box-shadow: 0 0 25px rgba(220, 20, 60, 0.4);
   }
 
   .password-input::placeholder {
     letter-spacing: 2px;
-    color: rgba(255,255,255,0.4);
+    color: var(--text-muted);
     font-size: 12px;
     font-weight: 400;
   }
@@ -349,20 +546,24 @@
     font-weight: 900;
     border: none;
     border-radius: 12px;
-    background: linear-gradient(135deg, #8b0000, #dc143c);
+    background: var(--btn-gradient);
     color: #fff;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 5px 25px rgba(139,0,0,0.5);
-    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    box-shadow: 0 5px 25px rgba(139, 0, 0, 0.5);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
 
   .enter-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 35px rgba(220,20,60,0.7);
+    box-shadow: 0 10px 35px rgba(220, 20, 60, 0.7);
   }
 
-  .enter-btn:active { transform: translateY(0); }
+  .enter-btn:active {
+    transform: translateY(0);
+  }
 
   .error-msg {
     color: #ff4444;
@@ -371,10 +572,12 @@
     opacity: 0;
     transition: opacity 0.3s;
     font-weight: 700;
-    text-shadow: 0 0 5px rgba(255,0,0,0.3);
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.3);
   }
 
-  .error-msg.show { opacity: 1; }
+  .error-msg.show {
+    opacity: 1;
+  }
 
   /* Memory Game */
   .game-section {
@@ -383,8 +586,14 @@
   }
 
   @keyframes gameIn {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 
   .game-title {
@@ -392,14 +601,16 @@
     font-weight: 900;
     color: var(--gold);
     margin-bottom: 6px;
-    text-shadow: 0 0 20px rgba(255,215,0,0.3);
+    text-shadow: 0 0 20px rgba(212, 160, 23, 0.3);
+    transition: color 0.5s, text-shadow 0.5s;
   }
 
   .game-subtitle {
     font-size: 13px;
-    color: rgba(255,255,255,0.7);
+    color: var(--text-secondary);
     margin-bottom: 14px;
     font-weight: 700;
+    transition: color 0.5s;
   }
 
   .game-grid {
@@ -414,7 +625,7 @@
 
   .game-card {
     aspect-ratio: 1;
-    background: linear-gradient(135deg, #1a0000, #2d0000);
+    background: var(--game-card-bg);
     border: 2px solid rgba(139, 0, 0, 0.5);
     border-radius: 14px;
     display: flex;
@@ -426,6 +637,7 @@
     user-select: none;
     position: relative;
     overflow: hidden;
+    touch-action: manipulation;
   }
 
   .game-card::before {
@@ -436,33 +648,43 @@
   }
 
   .game-card.flipped::before,
-  .game-card.matched::before { opacity: 0; }
+  .game-card.matched::before {
+    opacity: 0;
+  }
 
   .game-card.flipped {
-    background: linear-gradient(135deg, #2d0000, #4a0000);
+    background: var(--game-card-flipped);
     border-color: rgba(220, 20, 60, 0.6);
-    box-shadow: 0 0 20px rgba(220,20,60,0.3);
+    box-shadow: 0 0 20px rgba(220, 20, 60, 0.3);
     transform: rotateY(180deg);
   }
 
   .game-card.matched {
-    background: linear-gradient(135deg, #1a3a1a, #0d2b0d);
+    background: var(--game-card-matched);
     border-color: rgba(50, 205, 50, 0.5);
-    box-shadow: 0 0 20px rgba(50,205,50,0.3);
+    box-shadow: 0 0 20px rgba(50, 205, 50, 0.3);
     cursor: default;
     animation: matchPulse 0.5s ease;
   }
 
   @keyframes matchPulse {
-    0% { transform: scale(1) rotateY(180deg); }
-    50% { transform: scale(1.15) rotateY(180deg); }
-    100% { transform: scale(1) rotateY(180deg); }
+    0% {
+      transform: scale(1) rotateY(180deg);
+    }
+    50% {
+      transform: scale(1.15) rotateY(180deg);
+    }
+    100% {
+      transform: scale(1) rotateY(180deg);
+    }
   }
 
   .game-card .card-content {
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -485,10 +707,14 @@
     margin: 8px 0;
     font-size: 13px;
     font-weight: 700;
-    color: rgba(255,255,255,0.8);
+    color: var(--text-secondary);
+    transition: color 0.5s;
   }
 
-  .game-stats span { color: var(--gold); }
+  .game-stats span {
+    color: var(--gold);
+    transition: color 0.5s;
+  }
 
   .game-win-msg {
     display: none;
@@ -497,8 +723,14 @@
   }
 
   @keyframes winIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .game-win-text {
@@ -506,7 +738,8 @@
     font-weight: 900;
     color: var(--gold);
     margin-bottom: 10px;
-    text-shadow: 0 0 20px rgba(255,215,0,0.4);
+    text-shadow: 0 0 20px rgba(212, 160, 23, 0.4);
+    transition: color 0.5s, text-shadow 0.5s;
   }
 
   /* Quiz */
@@ -516,8 +749,14 @@
   }
 
   @keyframes quizIn {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .quiz-title {
@@ -525,14 +764,16 @@
     font-weight: 900;
     color: var(--gold);
     margin-bottom: 4px;
-    text-shadow: 0 0 20px rgba(255,215,0,0.3);
+    text-shadow: 0 0 20px rgba(212, 160, 23, 0.3);
+    transition: color 0.5s, text-shadow 0.5s;
   }
 
   .quiz-subtitle {
     font-size: 13px;
-    color: rgba(255,255,255,0.7);
+    color: var(--text-secondary);
     margin-bottom: 16px;
     font-weight: 700;
+    transition: color 0.5s;
   }
 
   .quiz-progress {
@@ -543,31 +784,37 @@
   }
 
   .quiz-dot {
-    width: 10px; height: 10px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    background: rgba(139, 0, 0, 0.4);
+    background: var(--quiz-dot-bg);
     border: 1px solid rgba(220, 20, 60, 0.3);
     transition: all 0.3s ease;
   }
 
   .quiz-dot.active {
     background: var(--crimson);
-    box-shadow: 0 0 10px rgba(220,20,60,0.6);
+    box-shadow: 0 0 10px rgba(220, 20, 60, 0.6);
   }
 
   .quiz-dot.done {
     background: #32cd32;
-    box-shadow: 0 0 10px rgba(50,205,50,0.5);
+    box-shadow: 0 0 10px rgba(50, 205, 50, 0.5);
     border-color: #32cd32;
   }
 
   .quiz-question {
     font-size: 17px;
     font-weight: 900;
-    color: #fff;
+    color: var(--text-primary);
     margin-bottom: 14px;
     line-height: 1.6;
-    text-shadow: 0 0 10px rgba(220,20,60,0.3);
+    text-shadow: 0 0 10px rgba(220, 20, 60, 0.3);
+    transition: color 0.5s, text-shadow 0.5s;
+  }
+
+  body.light-mode .quiz-question {
+    text-shadow: 0 0 10px rgba(180, 0, 0, 0.15);
   }
 
   .quiz-input {
@@ -578,21 +825,23 @@
     text-align: center;
     border: 2px solid rgba(139, 0, 0, 0.5);
     border-radius: 12px;
-    background: rgba(0,0,0,0.5);
-    color: #fff;
+    background: var(--input-bg);
+    color: var(--text-primary);
     outline: none;
     transition: all 0.3s ease;
     font-weight: 700;
     margin-bottom: 10px;
+    -webkit-appearance: none;
+    appearance: none;
   }
 
   .quiz-input:focus {
     border-color: var(--crimson);
-    box-shadow: 0 0 20px rgba(220,20,60,0.3);
+    box-shadow: 0 0 20px rgba(220, 20, 60, 0.3);
   }
 
   .quiz-input::placeholder {
-    color: rgba(255,255,255,0.4);
+    color: var(--text-muted);
     font-size: 13px;
     font-weight: 400;
   }
@@ -614,12 +863,12 @@
 
   .quiz-feedback.correct {
     color: #32cd32;
-    text-shadow: 0 0 10px rgba(50,205,50,0.4);
+    text-shadow: 0 0 10px rgba(50, 205, 50, 0.4);
   }
 
   .quiz-feedback.wrong {
     color: #ff4444;
-    text-shadow: 0 0 10px rgba(255,0,0,0.3);
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
   }
 
   /* quiz music button */
@@ -632,16 +881,18 @@
     border: 1px solid rgba(220, 20, 60, 0.4);
     border-radius: 20px;
     background: rgba(139, 0, 0, 0.2);
-    color: rgba(255,255,255,0.9);
+    color: var(--text-secondary);
     cursor: pointer;
     transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
 
   .quiz-music-btn:hover {
     background: rgba(220, 20, 60, 0.3);
     color: #fff;
     border-color: var(--crimson);
-    box-shadow: 0 0 15px rgba(220,20,60,0.3);
+    box-shadow: 0 0 15px rgba(220, 20, 60, 0.3);
   }
 
   .quiz-music-btn.playing {
@@ -651,8 +902,13 @@
   }
 
   @keyframes audioPulse {
-    0%, 100% { box-shadow: 0 0 8px rgba(220,20,60,0.3); }
-    50% { box-shadow: 0 0 25px rgba(220,20,60,0.7); }
+    0%,
+    100% {
+      box-shadow: 0 0 8px rgba(220, 20, 60, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 25px rgba(220, 20, 60, 0.7);
+    }
   }
 
   /* Countdown */
@@ -660,22 +916,30 @@
     display: none;
     margin: 16px 0;
     padding: 14px;
-    background: rgba(139, 0, 0, 0.15);
+    background: var(--countdown-bg);
     border: 1px solid rgba(220, 20, 60, 0.25);
     border-radius: 16px;
     animation: countIn 0.8s ease-out;
+    transition: all 0.5s;
   }
 
   @keyframes countIn {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 
   .countdown-title {
     font-size: 14px;
     font-weight: 700;
-    color: rgba(255,255,255,0.8);
+    color: var(--text-secondary);
     margin-bottom: 8px;
+    transition: color 0.5s;
   }
 
   .countdown-boxes {
@@ -686,11 +950,12 @@
   }
 
   .count-box {
-    background: rgba(0,0,0,0.4);
+    background: var(--count-box-bg);
     border: 1px solid rgba(220, 20, 60, 0.3);
     border-radius: 10px;
     padding: 8px 12px;
     min-width: 55px;
+    transition: all 0.5s;
   }
 
   .count-box .num {
@@ -698,13 +963,15 @@
     font-weight: 900;
     color: var(--gold);
     display: block;
-    text-shadow: 0 0 10px rgba(255,215,0,0.3);
+    text-shadow: 0 0 10px rgba(212, 160, 23, 0.3);
+    transition: color 0.5s, text-shadow 0.5s;
   }
 
   .count-box .label {
     font-size: 11px;
-    color: rgba(255,255,255,0.6);
+    color: var(--text-secondary);
     font-weight: 700;
+    transition: color 0.5s;
   }
 
   /* Birthday */
@@ -714,8 +981,14 @@
   }
 
   @keyframes revealIn {
-    from { opacity: 0; transform: scale(0.8); }
-    to { opacity: 1; transform: scale(1); }
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 
   .birthday-title {
@@ -723,12 +996,13 @@
     font-weight: 900;
     color: var(--gold);
     margin-bottom: 4px;
-    text-shadow: 0 0 30px rgba(255,215,0,0.4);
+    text-shadow: 0 0 30px rgba(212, 160, 23, 0.4);
+    transition: color 0.5s, text-shadow 0.5s;
   }
 
   .name-highlight {
     font-size: 34px;
-    background: linear-gradient(135deg, #ff0040, #ffd700);
+    background: linear-gradient(135deg, #ff0040, var(--gold));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -746,29 +1020,35 @@
     font-weight: 900;
     color: #fff;
     margin: 10px 0;
-    box-shadow: 0 5px 25px rgba(139,0,0,0.5);
+    box-shadow: 0 5px 25px rgba(139, 0, 0, 0.5);
     animation: glowPulse 2s ease-in-out infinite;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   }
 
   @keyframes glowPulse {
-    0%, 100% { box-shadow: 0 5px 25px rgba(139,0,0,0.5); }
-    50% { box-shadow: 0 5px 45px rgba(220,20,60,0.8); }
+    0%,
+    100% {
+      box-shadow: 0 5px 25px rgba(139, 0, 0, 0.5);
+    }
+    50% {
+      box-shadow: 0 5px 45px rgba(220, 20, 60, 0.8);
+    }
   }
 
   .birthday-message {
     font-size: 14px;
     line-height: 2.3;
-    color: rgba(255,255,255,0.95);
+    color: var(--text-primary);
     margin: 14px 0;
     text-align: center;
+    transition: color 0.5s;
   }
 
   .birthday-message .love-line {
     display: block;
     margin: 5px 0;
     padding: 7px 12px;
-    background: rgba(139, 0, 0, 0.15);
+    background: var(--love-line-bg);
     border-radius: 10px;
     border-right: 3px solid var(--crimson);
     transition: all 0.3s ease;
@@ -778,12 +1058,17 @@
   .birthday-message .love-line:hover {
     background: rgba(139, 0, 0, 0.3);
     transform: translateX(-4px);
-    box-shadow: 0 0 12px rgba(220,20,60,0.2);
+    box-shadow: 0 0 12px rgba(220, 20, 60, 0.2);
+  }
+
+  body.light-mode .birthday-message .love-line:hover {
+    background: rgba(180, 0, 0, 0.18);
+    box-shadow: 0 0 12px rgba(180, 0, 0, 0.15);
   }
 
   /* Story Box Added */
   .story-box {
-    background: rgba(139, 0, 0, 0.15);
+    background: var(--story-bg);
     border: 1px solid rgba(220, 20, 60, 0.3);
     border-radius: 16px;
     padding: 20px;
@@ -791,13 +1076,16 @@
     position: relative;
     overflow: hidden;
     text-align: right;
+    transition: all 0.5s;
   }
 
   .story-box::before {
     content: '';
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 3px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
     background: linear-gradient(90deg, transparent, var(--gold), transparent);
   }
 
@@ -807,28 +1095,32 @@
     margin-bottom: 12px;
     font-weight: 900;
     text-align: center;
-    text-shadow: 0 0 15px rgba(255,215,0,0.3);
+    text-shadow: 0 0 15px rgba(212, 160, 23, 0.3);
+    transition: color 0.5s, text-shadow 0.5s;
   }
 
   .story-text {
     font-size: 14.5px;
     line-height: 2.2;
-    color: #ffcccc;
+    color: var(--story-text);
     font-weight: 700;
+    transition: color 0.5s;
   }
 
   .signature {
     margin-top: 16px;
     font-size: 15px;
-    color: #ffcccc;
+    color: var(--story-text);
     font-weight: 700;
+    transition: color 0.5s;
   }
 
   .signature .from {
     font-size: 12px;
-    color: rgba(255,255,255,0.6);
+    color: var(--text-secondary);
     margin-bottom: 4px;
     font-weight: 700;
+    transition: color 0.5s;
   }
 
   /* Secret message button */
@@ -841,35 +1133,44 @@
     border: 1px solid rgba(220, 20, 60, 0.4);
     border-radius: 20px;
     background: rgba(139, 0, 0, 0.2);
-    color: rgba(255,255,255,0.8);
+    color: var(--text-secondary);
     cursor: pointer;
     transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
 
   .secret-btn:hover {
     background: rgba(220, 20, 60, 0.3);
     color: #fff;
     border-color: var(--crimson);
-    box-shadow: 0 0 15px rgba(220,20,60,0.3);
+    box-shadow: 0 0 15px rgba(220, 20, 60, 0.3);
   }
 
   .secret-message {
     display: none;
     margin-top: 12px;
     padding: 14px;
-    background: rgba(139, 0, 0, 0.15);
+    background: var(--secret-bg);
     border: 1px solid rgba(220, 20, 60, 0.25);
     border-radius: 14px;
     font-size: 15px;
     font-weight: 700;
-    color: #ffcccc;
+    color: var(--story-text);
     line-height: 1.8;
     animation: secretIn 0.6s ease-out;
+    transition: all 0.5s;
   }
 
   @keyframes secretIn {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 
   /* Share button */
@@ -888,10 +1189,12 @@
     font-weight: 700;
     border: 1px solid rgba(220, 20, 60, 0.4);
     border-radius: 20px;
-    background: rgba(0,0,0,0.3);
-    color: rgba(255,255,255,0.8);
+    background: rgba(0, 0, 0, 0.3);
+    color: var(--text-secondary);
     cursor: pointer;
     transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
 
   .share-btn:hover {
@@ -912,10 +1215,12 @@
     font-weight: 700;
     border: 1px solid rgba(220, 20, 60, 0.4);
     border-radius: 20px;
-    background: rgba(0,0,0,0.4);
-    color: rgba(255,255,255,0.9);
+    background: rgba(0, 0, 0, 0.4);
+    color: var(--text-primary);
     cursor: pointer;
     transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
 
   .audio-btn:hover {
@@ -934,8 +1239,10 @@
   /* Music Selector Modal Style */
   .music-modal-overlay {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
@@ -948,12 +1255,18 @@
   }
 
   @keyframes modalFadeIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 
   .music-modal-card {
-    background: rgba(15, 0, 0, 0.95);
+    background: var(--music-modal-bg);
     border: 1px solid rgba(220, 20, 60, 0.5);
     border-radius: 20px;
     padding: 22px;
@@ -961,14 +1274,15 @@
     width: 100%;
     text-align: center;
     box-shadow: 0 0 50px rgba(220, 20, 60, 0.4);
+    transition: all 0.5s;
   }
 
   .playlist-track {
-    background: rgba(139, 0, 0, 0.2);
+    background: var(--playlist-track-bg);
     border: 1px solid rgba(220, 20, 60, 0.3);
     border-radius: 12px;
     padding: 12px 14px;
-    color: #fff;
+    color: var(--text-primary);
     font-size: 13px;
     font-weight: 700;
     cursor: pointer;
@@ -979,24 +1293,29 @@
     margin-bottom: 8px;
   }
 
-  .playlist-track:hover, .playlist-track.active {
+  .playlist-track:hover,
+  .playlist-track.active {
     background: linear-gradient(135deg, #8b0000, #dc143c);
     border-color: var(--gold);
-    box-shadow: 0 0 15px rgba(220,20,60,0.4);
+    box-shadow: 0 0 15px rgba(220, 20, 60, 0.4);
+    color: #fff;
   }
 
   /* Confetti */
   #confetti-canvas {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
     z-index: 100;
   }
 
   .sparkle {
     position: absolute;
-    width: 4px; height: 4px;
+    width: 4px;
+    height: 4px;
     background: var(--gold);
     border-radius: 50%;
     animation: sparkleAnim 1.5s ease-out forwards;
@@ -1004,1021 +1323,1418 @@
   }
 
   @keyframes sparkleAnim {
-    0% { transform: scale(0) rotate(0deg); opacity: 1; }
-    100% { transform: scale(1.5) rotate(180deg); opacity: 0; }
+    0% {
+      transform: scale(0) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1.5) rotate(180deg);
+      opacity: 0;
+    }
   }
 
   /* ====== NEW ADDITIONS STYLES ====== */
   /* Gift Box */
   .gift-box-overlay {
-    position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8);
-    backdrop-filter:blur(10px); z-index:3000; display:none; align-items:center; justify-content:center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 3000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
   }
   .gift-box {
-    background: rgba(10,0,0,0.9); border-radius:20px; padding:30px; text-align:center;
-    border:2px solid var(--gold); box-shadow:0 0 60px rgba(255,215,0,0.5); max-width:320px; width:90%;
-    transition: 0.5s; position: relative;
+    background: rgba(10, 0, 0, 0.95);
+    border-radius: 20px;
+    padding: 25px;
+    text-align: center;
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 60px rgba(212, 160, 23, 0.5);
+    max-width: 350px;
+    width: 90%;
+    transition: 0.5s;
+    position: relative;
   }
-  .gift-box.open .gift-content { display:block; }
-  .gift-box.open .gift-lock { display:none; }
-  .gift-content { display:none; }
+  .gift-box.open .gift-content {
+    display: block;
+  }
+  .gift-box.open .gift-lock {
+    display: none;
+  }
+  .gift-content {
+    display: none;
+  }
+  .gift-content img.gift-image {
+    max-width: 200px;
+    width: 100%;
+    border-radius: 15px;
+    margin: 12px auto;
+    border: 2px solid rgba(220, 20, 60, 0.5);
+    box-shadow: 0 0 25px rgba(220, 20, 60, 0.4);
+    display: block;
+  }
   .gift-input {
-    width: 100%; padding: 12px; font-size: 20px; text-align: center; letter-spacing: 4px;
-    border: 2px solid var(--border-color); border-radius: 12px; background: rgba(0,0,0,0.5);
-    color: #fff; outline: none; margin-top: 10px;
+    width: 100%;
+    padding: 12px;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 4px;
+    border: 2px solid rgba(220, 20, 60, 0.5);
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    outline: none;
+    margin-top: 10px;
+    -webkit-appearance: none;
+    appearance: none;
   }
   .close-gift-btn {
-    margin-top: 20px; padding: 10px 24px; background: transparent; border: 1px solid var(--gold);
-    color: var(--gold); border-radius: 20px; cursor: pointer; font-weight: 700; font-size: 14px;
-    transition: 0.3s; display: inline-block;
+    margin-top: 20px;
+    padding: 10px 24px;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+    transition: 0.3s;
+    display: inline-block;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
   .close-gift-btn:hover {
-    background: rgba(220,20,60,0.3); color: #fff; border-color: #fff;
+    background: rgba(220, 20, 60, 0.3);
+    color: #fff;
+    border-color: #fff;
   }
 
   /* Slider */
   .photo-slider {
-    margin:20px auto; max-width:300px; height:250px; border-radius:20px; overflow:hidden;
-    position:relative; border:2px solid rgba(220,20,60,0.3);
+    margin: 20px auto;
+    max-width: 300px;
+    height: 250px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    border: 2px solid rgba(220, 20, 60, 0.3);
   }
   .photo-slider img {
-    width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0;
-    opacity:0; transition:opacity 1s;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s;
   }
-  .photo-slider img.active { opacity:1; }
+  .photo-slider img.active {
+    opacity: 1;
+  }
 
   /* Timeline */
   .timeline {
-    margin:25px 0; text-align:right; position:relative; padding-right:30px;
+    margin: 25px 0;
+    text-align: right;
+    position: relative;
+    padding-right: 30px;
   }
   .timeline::before {
-    content:''; position:absolute; right:10px; top:0; height:100%; width:2px;
-    background:linear-gradient(to bottom, var(--crimson), var(--gold));
+    content: '';
+    position: absolute;
+    right: 10px;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--crimson), var(--gold));
   }
   .timeline-item {
-    margin-bottom:20px; position:relative; color:#ffcccc; font-weight:700;
+    margin-bottom: 20px;
+    position: relative;
+    color: var(--story-text);
+    font-weight: 700;
+    transition: color 0.5s;
   }
   .timeline-item::before {
-    content:''; position:absolute; right:-26px; top:8px; width:14px; height:14px;
-    border-radius:50%; background:var(--crimson); border:2px solid var(--gold);
+    content: '';
+    position: absolute;
+    right: -26px;
+    top: 8px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--crimson);
+    border: 2px solid var(--gold);
   }
-  .timeline-year { color:var(--gold); font-weight:900; margin-left:5px; }
+  .timeline-year {
+    color: var(--gold);
+    font-weight: 900;
+    margin-left: 5px;
+    transition: color 0.5s;
+  }
 
   /* Star cert */
   .star-cert {
-    background:linear-gradient(135deg, #1a0000, #2d0000); border:1px solid var(--gold);
-    border-radius:16px; padding:15px; margin:25px 0; text-align:center;
+    background: var(--star-cert-bg);
+    border: 1px solid var(--gold);
+    border-radius: 16px;
+    padding: 15px;
+    margin: 25px 0;
+    text-align: center;
+    transition: all 0.5s;
   }
 
   /* Balloons */
   .balloon {
-    position:fixed; bottom:-100px; font-size:40px; z-index:150; pointer-events:none;
-    animation:balloonUp 8s linear forwards;
+    position: fixed;
+    bottom: -100px;
+    font-size: 40px;
+    z-index: 150;
+    pointer-events: none;
+    animation: balloonUp 8s linear forwards;
   }
   @keyframes balloonUp {
-    0%{ bottom:-100px; opacity:1; } 100%{ bottom:110%; opacity:0; }
+    0% {
+      bottom: -100px;
+      opacity: 1;
+    }
+    100% {
+      bottom: 110%;
+      opacity: 0;
+    }
   }
 
   /* Mode toggle */
   .mode-toggle {
-    position:absolute; top:10px; left:10px; background:transparent; border:1px solid var(--gold);
-    color:var(--gold); border-radius:20px; padding:5px 12px; font-weight:700; cursor:pointer;
-    z-index:20; font-size:12px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-weight: 700;
+    cursor: pointer;
+    z-index: 20;
+    font-size: 12px;
+    transition: all 0.3s;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
 
   /* Wall */
   .message-wall {
-    margin-top:25px; text-align:right;
+    margin-top: 25px;
+    text-align: right;
   }
   .wall-input {
-    width:100%; padding:10px; border-radius:10px; border:1px solid rgba(220,20,60,0.4);
-    background:rgba(0,0,0,0.4); color:#fff; font-family:inherit; margin-bottom:8px;
-  }
-
-  /* Light mode overrides */
-  .light-mode {
-    --bg-gradient: radial-gradient(ellipse at center, #ffe0e0 0%, #f8c8c8 60%, #f0b0b0 100%);
-  }
-  .light-mode .glass-card {
-    background: rgba(255,240,240,0.9);
-    border-color: rgba(180,0,0,0.3);
-  }
-  .light-mode .title, .light-mode .subtitle, .light-mode .quiz-question,
-  .light-mode .game-subtitle, .light-mode .intro-from, .light-mode .intro-to,
-  .light-mode .birthday-message, .light-mode .story-text, .light-mode .signature {
-    color: #2c0a0a;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(220, 20, 60, 0.4);
+    background: var(--input-bg);
+    color: var(--text-primary);
+    font-family: inherit;
+    margin-bottom: 8px;
+    transition: all 0.5s;
+    -webkit-appearance: none;
+    appearance: none;
   }
 
   /* Responsive */
   @media (max-width: 480px) {
-    .glass-card { padding: 18px; margin: 6px; }
-    .splash-text { font-size: 24px; }
-    .title { font-size: 18px; }
-    .birthday-title { font-size: 20px; }
-    .name-highlight { font-size: 26px; }
-    .birthday-message { font-size: 13px; }
-    .intro-to { font-size: 16px; }
-    .intro-name { font-size: 22px; }
-    .game-grid { gap: 8px; }
-    .game-card { font-size: 22px; }
-    .game-card .card-content { font-size: 26px; }
-    .quiz-question { font-size: 15px; }
-    .count-box { min-width: 45px; padding: 6px 8px; }
-    .count-box .num { font-size: 18px; }
-    .story-text { font-size: 13px; }
+    .glass-card {
+      padding: 16px;
+      margin: 4px;
+      border-radius: 20px;
+    }
+    .splash-text {
+      font-size: 22px;
+    }
+    .splash-sub {
+      font-size: 13px;
+    }
+    .title {
+      font-size: 18px;
+    }
+    .birthday-title {
+      font-size: 20px;
+    }
+    .name-highlight {
+      font-size: 26px;
+    }
+    .birthday-message {
+      font-size: 12px;
+    }
+    .intro-to {
+      font-size: 16px;
+    }
+    .intro-name {
+      font-size: 22px;
+    }
+    .game-grid {
+      gap: 6px;
+      max-width: 260px;
+    }
+    .game-card {
+      font-size: 22px;
+      border-radius: 12px;
+    }
+    .game-card::before {
+      font-size: 18px;
+    }
+    .game-card .card-content {
+      font-size: 24px;
+    }
+    .quiz-question {
+      font-size: 15px;
+    }
+    .count-box {
+      min-width: 40px;
+      padding: 6px 8px;
+    }
+    .count-box .num {
+      font-size: 18px;
+    }
+    .count-box .label {
+      font-size: 10px;
+    }
+    .story-text {
+      font-size: 13px;
+    }
+    .gift-box {
+      padding: 20px;
+      max-width: 300px;
+    }
+    .gift-content img.gift-image {
+      max-width: 160px;
+    }
+    .photo-slider {
+      height: 200px;
+      max-width: 260px;
+    }
+    .mode-toggle {
+      font-size: 10px;
+      padding: 4px 10px;
+    }
+    .enter-btn,
+    .audio-btn,
+    .share-btn,
+    .secret-btn,
+    .quiz-music-btn {
+      padding: 10px 20px;
+      font-size: 13px;
+    }
+    .password-input {
+      font-size: 18px;
+      letter-spacing: 6px;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .glass-card {
+      padding: 12px;
+    }
+    .splash-text {
+      font-size: 18px;
+    }
+    .game-grid {
+      max-width: 230px;
+      gap: 5px;
+    }
+    .game-card::before {
+      font-size: 15px;
+    }
+    .game-card .card-content {
+      font-size: 20px;
+    }
+    .countdown-boxes {
+      gap: 6px;
+    }
+    .count-box {
+      min-width: 35px;
+      padding: 5px 6px;
+    }
+    .count-box .num {
+      font-size: 16px;
+    }
   }
 </style>
 </head>
 <body>
 
-<div class="bg-layer bg-gradient"></div>
-<div class="bg-layer bg-red-glow"></div>
-<div class="stars-container" id="stars-container"></div>
-<div class="snow-container" id="snow-container"></div>
-<div class="hearts-container" id="hearts-container"></div>
-<canvas id="confetti-canvas"></canvas>
+  <div class="bg-layer bg-gradient"></div>
+  <div class="bg-layer bg-red-glow"></div>
+  <div class="stars-container" id="stars-container"></div>
+  <div class="snow-container" id="snow-container"></div>
+  <div class="hearts-container" id="hearts-container"></div>
+  <canvas id="confetti-canvas"></canvas>
 
-<!-- Splash -->
-<div class="splash-screen" id="splash-screen">
-  <div class="splash-text">كل سنة وانتي طيبة يا سمسم 💞</div>
-  <div class="splash-sub">جاري فتح قصر الحب...</div>
-</div>
+  <!-- Splash -->
+  <div class="splash-screen" id="splash-screen">
+    <div class="splash-text">كل سنة وانتي طيبة يا سمسم 💞</div>
+    <div class="splash-sub">جاري فتح قصر الحب...</div>
+  </div>
 
-<div class="main-container">
-  <div class="glass-card" id="main-card">
+  <div class="main-container">
+    <div class="glass-card" id="main-card">
 
-    <!-- Mode toggle button -->
-    <button class="mode-toggle" id="mode-toggle" onclick="toggleMode()">☀️ وضع فاتح</button>
+      <!-- Mode toggle button -->
+      <button class="mode-toggle" id="mode-toggle" onclick="toggleMode()">☀️ وضع فاتح</button>
 
-    <!-- Intro -->
-    <div class="intro-screen" id="intro-screen">
-      <div class="crown">👑</div>
-      <div class="intro-from">
-        رسالة من حبيبك وخطيبك<br>وزوجك المستقبلي<br>
-        <span style="color:#ffd700; font-size:16px; text-shadow:0 0 10px rgba(255,215,0,0.4);">محمد أحمد معوض</span>
-      </div>
-      <div class="divider"></div>
-      <div class="intro-to">إلى ملكة هذا القصر</div>
-      <div class="intro-name">الملكة اسماء عادل محمد</div>
-      <div class="divider"></div>
-      <button class="enter-btn" style="margin-top:12px;" onclick="showPasswordScreen()">ادخلي  قلبك يا أميرتي 💝</button>
-    </div>
-
-    <!-- Password -->
-    <div class="password-section-wrapper" id="password-screen">
-      <div class="big-heart">💞</div>
-      <h1 class="title">يا أجمل حاجة في حياتي</h1>
-      <p class="subtitle"> ده موقع مخصوص ليكي يا سمسم...<br>عشان أقولك كلمة من قلبي</p>
-
-      <div class="hint-box">
-        <p class="hint-text">
-          🌙 <span class="highlight">التلميحة:</span> يوم اتولدت فيه الملكة<br>
-          شهر اتولدت فيه القمر<br>
-          وسنة اتولد فيها حبيبك<br>
-          <span style="font-size:11px; opacity:0.7;">اكتبي التاريخ كرقم واحد من غير /</span>
-        </p>
+      <!-- Intro -->
+      <div class="intro-screen" id="intro-screen">
+        <div class="crown">👑</div>
+        <div class="intro-from">
+          رسالة من حبيبك وخطيبك<br>وزوجك المستقبلي<br>
+          <span style="color:#d4a017; font-size:16px; text-shadow:0 0 10px rgba(212,160,23,0.4);">محمد أحمد معوض</span>
+        </div>
+        <div class="divider"></div>
+        <div class="intro-to">إلى ملكة هذا القصر</div>
+        <div class="intro-name">الملكة اسماء عادل محمد</div>
+        <div class="divider"></div>
+        <button class="enter-btn" style="margin-top:12px;" onclick="showPasswordScreen()">ادخلي  قلبك يا أميرتي 💝</button>
       </div>
 
-      <div style="display:flex; flex-direction:column; gap:10px;">
-        <input type="password" class="password-input" id="password-input" placeholder="كلمة السر" maxlength="6">
-        <button class="enter-btn" onclick="checkPassword()">ادخلي قلبي 💝</button>
-        <p class="error-msg" id="error-msg">❌ مش دي كلمة السر يا حبيبتي ياغبية 🥲😒... فكري تاني!</p>
-      </div>
-    </div>
+      <!-- Password -->
+      <div class="password-section-wrapper" id="password-screen">
+        <div class="big-heart">💞</div>
+        <h1 class="title">يا أجمل حاجة في حياتي</h1>
+        <p class="subtitle"> ده موقع مخصوص ليكي يا سمسم...<br>عشان أقولك كلمة من قلبي</p>
 
-    <!-- Memory Game -->
-    <div class="game-section" id="game-section">
-      <div class="big-heart">🎮</div>
-      <h1 class="game-title">لعبة الحب</h1>
-      <p class="game-subtitle">لازم تلاقي كل الأزواج المتشابهة يا سمسم<br>عشان تدخلي قلبي وتشوفي اللي فيه الحب رومانسيه ليكي    </p>
+        <div class="hint-box">
+          <p class="hint-text">
+            🌙 <span class="highlight">التلميحة:</span> يوم اتولدت فيه الملكة<br>
+            شهر اتولدت فيه القمر<br>
+            وسنة اتولد فيها حبيبك<br>
+            <span style="font-size:11px; opacity:0.7;">اكتبي التاريخ كرقم واحد من غير /</span>
+          </p>
+        </div>
 
-      <div class="game-stats">
-        <div>المحاولات: <span id="moves-count">0</span></div>
-        <div>الأزواج: <span id="pairs-count">0</span>/6</div>
-      </div>
-
-      <div class="game-grid" id="game-grid"></div>
-
-      <div class="game-win-msg" id="game-win-msg">
-        <div class="game-win-text">🎉 برافو يا ذكية! كسبتي اللعبة!</div>
-        <button class="enter-btn" onclick="showQuiz()">اختبري ذكاءك يا سمسم 🧠</button>
-      </div>
-    </div>
-
-    <!-- Quiz -->
-    <div class="quiz-section" id="quiz-section">
-      <div class="big-heart">🧩</div>
-      <h1 class="quiz-title">لغز الحب</h1>
-      <p class="quiz-subtitle">جاوبي صح عشان تدخلي قلبي كله</p>
-
-      <!-- 5 نقاط لـ 5 أسئلة -->
-      <div class="quiz-progress" id="quiz-progress">
-        <div class="quiz-dot active" id="dot-0"></div>
-        <div class="quiz-dot" id="dot-1"></div>
-        <div class="quiz-dot" id="dot-2"></div>
-        <div class="quiz-dot" id="dot-3"></div>
-        <div class="quiz-dot" id="dot-4"></div>
-      </div>
-
-      <div id="quiz-content">
-        <div class="quiz-question" id="quiz-question">جاري التحميل...</div>
-        <input type="text" class="quiz-input" id="quiz-input" placeholder="اكتبي إجابتك هنا...">
-        <button class="enter-btn" onclick="checkQuizAnswer()">تأكدي 💘</button>
-        <div class="quiz-feedback" id="quiz-feedback"></div>
-      </div>
-
-      <!-- زر التحكم في موسيقى الأسئلة -->
-      <button class="quiz-music-btn playing" id="quiz-music-btn" onclick="toggleQuizMusic()">🎵 إيقاف الموسيقى</button>
-    </div>
-
-    <!-- Birthday -->
-    <div class="birthday-section" id="birthday-screen">
-      <div class="big-heart">🎂💞</div>
-      <h1 class="birthday-title">كل سنة وانتي طيبة</h1>
-      <div class="name-highlight">يا اسماء</div>
-
-      <div class="date-badge">6 / 8 / 1997</div>
-
-      <!-- Countdown -->
-      <div class="countdown-section" id="countdown-section">
-        <div class="countdown-title">⏳ متبقي على عيد ميلادك القادم:</div>
-        <div class="countdown-boxes" id="countdown-boxes">
-          <div class="count-box"><span class="num" id="cd-days">--</span><span class="label">يوم</span></div>
-          <div class="count-box"><span class="num" id="cd-hours">--</span><span class="label">ساعة</span></div>
-          <div class="count-box"><span class="num" id="cd-minutes">--</span><span class="label">دقيقة</span></div>
-          <div class="count-box"><span class="num" id="cd-seconds">--</span><span class="label">ثانية</span></div>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <input type="password" class="password-input" id="password-input" placeholder="كلمة السر" maxlength="6">
+          <button class="enter-btn" onclick="checkPassword()">ادخلي قلبي 💝</button>
+          <p class="error-msg" id="error-msg">❌ مش دي كلمة السر يا حبيبتي ياغبية 🥲😒... فكري تاني!</p>
         </div>
       </div>
 
-      <!-- Audio Buttons -->
-      <div class="audio-section" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
-        <button class="audio-btn" id="audio-btn" onclick="openMusicModal()">🎵 شغلي موسيقى الحب</button>
-        <button class="audio-btn" onclick="toggleVoiceMessage()">🔊 اسمعي رسالتي</button>
-      </div>
-      <audio id="bg-music"></audio>
-      <audio id="voice-message" src="ZAIN.mp3" preload="auto"></audio>
+      <!-- Memory Game -->
+      <div class="game-section" id="game-section">
+        <div class="big-heart">🎮</div>
+        <h1 class="game-title">لعبة الحب</h1>
+        <p class="game-subtitle">لازم تلاقي كل الأزواج المتشابهة يا سمسم<br>عشان تدخلي قلبي وتشوفي اللي فيه الحب رومانسيه ليكي    </p>
 
-      <div class="birthday-message">
-        <span class="love-line">🌹 يوم 6/8/1997 ده أحسن يوم في الدنيا</span>
-        <span class="love-line">✨ يوم اتولد فيه الجميلة</span>
-        <span class="love-line">🌙 يوم اتولد فيه القمر</span>
-        <span class="love-line">💖 يوم اتولد فيه حبيبي ونصي التاني</span>
-        <span class="love-line">🎈 كل سنة وانتي طيبة يا أغلى حاجة عندي</span>
-        <span class="love-line">💫 كل سنة وانتي جميلة زي ما انتي كده</span>
-        <span class="love-line">😍 كل سنة وانتي عبيطة... عبيطة في حبك ليا</span>
-        <span class="love-line">🌸 كل سنة وانتي كل حاجة حلوة في الدنيا</span>
-        <span class="love-line">🔐 كل سنة وانتي السر الجميل في حياتي</span>
-        <span class="love-line">💍 ربنا يخليكي ليا ويحميكي يا أغلى من الدنيا</span>
-        <span class="love-line">💞 بحبك أكتر من أي حاجة في الكون ده كله</span>
-        <span class="love-line">👑 انتي أميرتي اللي مالكيش مثيل</span>
-        <span class="love-line">🌹 وعقبال 100 سنة مع بعض يا حبيبتي</span>
+        <div class="game-stats">
+          <div>المحاولات: <span id="moves-count">0</span></div>
+          <div>الأزواج: <span id="pairs-count">0</span>/6</div>
+        </div>
+
+        <div class="game-grid" id="game-grid"></div>
+
+        <div class="game-win-msg" id="game-win-msg">
+          <div class="game-win-text">🎉 برافو يا ذكية! كسبتي اللعبة!</div>
+          <button class="enter-btn" onclick="showQuiz()">اختبري ذكاءك يا سمسم 🧠</button>
+        </div>
       </div>
 
-      <!-- Photo Slider (without real images, will hide if not found) -->
-      <div class="photo-slider" id="photo-slider">
-        <img src="1.jpg" class="slide active" onerror="this.style.display='none'">
-        <img src="2.jpg" class="slide" onerror="this.style.display='none'">
-        <img src="3.jpg" class="slide" onerror="this.style.display='none'">
-        <img src="4.jpg" class="slide" onerror="this.style.display='none'">
-        <img src="5.jpg" class="slide" onerror="this.style.display='none'">
+      <!-- Quiz -->
+      <div class="quiz-section" id="quiz-section">
+        <div class="big-heart">🧩</div>
+        <h1 class="quiz-title">لغز الحب</h1>
+        <p class="quiz-subtitle">جاوبي صح عشان تدخلي قلبي كله</p>
+
+        <!-- 5 نقاط لـ 5 أسئلة -->
+        <div class="quiz-progress" id="quiz-progress">
+          <div class="quiz-dot active" id="dot-0"></div>
+          <div class="quiz-dot" id="dot-1"></div>
+          <div class="quiz-dot" id="dot-2"></div>
+          <div class="quiz-dot" id="dot-3"></div>
+          <div class="quiz-dot" id="dot-4"></div>
+        </div>
+
+        <div id="quiz-content">
+          <div class="quiz-question" id="quiz-question">جاري التحميل...</div>
+          <input type="text" class="quiz-input" id="quiz-input" placeholder="اكتبي إجابتك هنا...">
+          <button class="enter-btn" onclick="checkQuizAnswer()">تأكدي 💘</button>
+          <div class="quiz-feedback" id="quiz-feedback"></div>
+        </div>
+
+        <!-- زر التحكم في موسيقى الأسئلة -->
+        <button class="quiz-music-btn playing" id="quiz-music-btn" onclick="toggleQuizMusic()">🎵 إيقاف الموسيقى</button>
       </div>
 
-      <!-- Love Counter -->
-      <div style="margin:20px 0; font-size:18px; color:var(--gold); font-weight:900;">
-        💖 عدد الدقائق اللي فكرت فيكي النهاردة: <span id="love-counter" style="font-size:24px;">0</span>
+      <!-- Birthday -->
+      <div class="birthday-section" id="birthday-screen">
+        <div class="big-heart">🎂💞</div>
+        <h1 class="birthday-title">كل سنة وانتي طيبة</h1>
+        <div class="name-highlight">يا اسماء</div>
+
+        <div class="date-badge">6 / 8 / 1997</div>
+
+        <!-- Countdown -->
+        <div class="countdown-section" id="countdown-section">
+          <div class="countdown-title">⏳ متبقي على عيد ميلادك القادم:</div>
+          <div class="countdown-boxes" id="countdown-boxes">
+            <div class="count-box"><span class="num" id="cd-days">--</span><span class="label">يوم</span></div>
+            <div class="count-box"><span class="num" id="cd-hours">--</span><span class="label">ساعة</span></div>
+            <div class="count-box"><span class="num" id="cd-minutes">--</span><span class="label">دقيقة</span></div>
+            <div class="count-box"><span class="num" id="cd-seconds">--</span><span class="label">ثانية</span></div>
+          </div>
+        </div>
+
+        <!-- Audio Buttons -->
+        <div class="audio-section" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+          <button class="audio-btn" id="audio-btn" onclick="openMusicModal()">🎵 شغلي موسيقى الحب</button>
+          <button class="audio-btn" onclick="toggleVoiceMessage()">🔊 اسمعي رسالتي</button>
+        </div>
+        <audio id="bg-music"></audio>
+        <audio id="voice-message" src="ZAIN.mp3" preload="auto"></audio>
+
+        <div class="birthday-message">
+          <span class="love-line">🌹 يوم 6/8/1997 ده أحسن يوم في الدنيا</span>
+          <span class="love-line">✨ يوم اتولد فيه الجميلة</span>
+          <span class="love-line">🌙 يوم اتولد فيه القمر</span>
+          <span class="love-line">💖 يوم اتولد فيه حبيبي ونصي التاني</span>
+          <span class="love-line">🎈 كل سنة وانتي طيبة يا أغلى حاجة عندي</span>
+          <span class="love-line">💫 كل سنة وانتي جميلة زي ما انتي كده</span>
+          <span class="love-line">😍 كل سنة وانتي عبيطة... عبيطة في حبك ليا</span>
+          <span class="love-line">🌸 كل سنة وانتي كل حاجة حلوة في الدنيا</span>
+          <span class="love-line">🔐 كل سنة وانتي السر الجميل في حياتي</span>
+          <span class="love-line">💍 ربنا يخليكي ليا ويحميكي يا أغلى من الدنيا</span>
+          <span class="love-line">💞 بحبك أكتر من أي حاجة في الكون ده كله</span>
+          <span class="love-line">👑 انتي أميرتي اللي مالكيش مثيل</span>
+          <span class="love-line">🌹 وعقبال 100 سنة مع بعض يا حبيبتي</span>
+        </div>
+
+        <!-- Photo Slider (without real images, will hide if not found) -->
+        <div class="photo-slider" id="photo-slider">
+          <img src="1.jpg" class="slide active" onerror="this.style.display='none'">
+          <img src="2.jpg" class="slide" onerror="this.style.display='none'">
+          <img src="3.jpg" class="slide" onerror="this.style.display='none'">
+          <img src="4.jpg" class="slide" onerror="this.style.display='none'">
+          <img src="5.jpg" class="slide" onerror="this.style.display='none'">
+        </div>
+
+        <!-- Love Counter -->
+        <div style="margin:20px 0; font-size:18px; color:#d4a017; font-weight:900;">
+          💖 عدد الدقائق اللي فكرت فيكي النهاردة: <span id="love-counter" style="font-size:24px;">0</span>
+        </div>
+
+        <!-- صندوق القصة -->
+        <div class="story-box">
+          <h2 class="story-title">📖 سمسمتي الحلوة </h2>
+          <p class="story-text">احنا بنتصالح ونتخانق بنحب بعض وبنزعل من بعض بنقرب من بعض بس عمرنا ما بنبعد عن بعض بس عشان احنا واحد ما نروح واحده من جسد واحد كل سنه وانت طيبه يا اجمل سمسم في الدنيا كلها السنه دي ما تعديش علينا غير وانت في البيتي ان شاء الله
+            زي ما أنا أبوكي وأخوكي وسندك وضهرك، إنتي برضه أهم حاجة عندي في دنيتي كلها 🌍.<br>
+            كل سنة وانتي أجمل وأحسن وأرق بنت في الدنيا دي كلها... كل سنة وانتي طيبة يا سمسوم 🥰.
+          </p>
+        </div>
+
+        <!-- Timeline -->
+        <div class="timeline">
+          <div class="timeline-item"><span class="timeline-year">2022</span> أول تعارف وقرب حقيقي</div>
+          <div class="timeline-item"><span class="timeline-year">2025</span> خطوبة الحب 💍</div>
+          <div class="timeline-item"><span class="timeline-year">2026</span> عيد ميلادك معايا 🎂</div>
+          <div class="timeline-item"><span class="timeline-year">المستقبل</span> بيت واحد، عمر واحد 💞</div>
+        </div>
+
+        <!-- Star Certificate -->
+        <div class="star-cert">
+          <h3 style="color:#d4a017;">✨ شهادة نجمة ✨</h3>
+          <p style="color: var(--story-text);">نهدي النجمة رقم <strong style="color:#d4a017;">681997</strong> إلى الملكة <strong style="color:#d4a017;">أسماء عادل محمد</strong></p>
+        </div>
+
+        <div class="signature">
+          <div class="from">مع كل نبضة قلب بحبك</div>
+          <div>من حبيبك وخطيبك وزوجك المستقبلي</div>
+          <div style="color:#d4a017; margin-top:4px; font-size:18px;">محمد أحمد معوض ❤️</div>
+        </div>
+
+        <!-- Secret message -->
+        <button class="secret-btn" onclick="toggleSecret()">🔐 اضغطي هنا يا سمسم</button>
+        <div class="secret-message" id="secret-message">
+          💞 يا اسماء...<br>
+          أنا عارف إنك بتقرأي الكلام ده دلوقتي وبتحاولي تخبي دموعك و مشاعرك يا هبلة ...<br>
+          بس متخبيش، عشان كل دمعة من عينيكي دي أغلى من الدنيا كلها عندي.<br>
+          أنا مش بعرف أعبر كويس، بس أنا بحبك...<br>
+          بحبك أكتر من أي كلمة ممكن أقولها، وأكتر من أي موقع ممكن أعمله.<br>
+          ربنا يخليكي ليا يا أغلى حاجة في حياتي. 💍❤️
+        </div>
+
+        <!-- رسالة واتساب -->
+        <div class="message-wall">
+          <h3 style="color:#d4a017;">💌 اكتبي رسالة وتبعت على واتساب</h3>
+          <textarea class="wall-input" id="wall-input" placeholder="اكتبي رسالة حب هنا..." rows="2"></textarea>
+          <button class="enter-btn" onclick="sendWhatsAppMessage()">إرسال 💌</button>
+        </div>
+
+        <!-- Share -->
+        <div class="share-section">
+          <button class="share-btn" onclick="copyLink()">📋 انسخي اللينك</button>
+          <button class="share-btn" onclick="shareWhatsApp()">📱 شاركي على واتساب</button>
+          <button class="share-btn" onclick="openMyWhatsApp()">📲 كلميني واتساب</button>
+        </div>
       </div>
 
-      <!-- صندوق القصة -->
-      <div class="story-box">
-        <h2 class="story-title">📖 سمسمتي الحلوة </h2>
-        <p class="story-text">احنا بنتصالح ونتخانق بنحب بعض وبنزعل من بعض بنقرب من بعض بس عمرنا ما بنبعد عن بعض بس عشان احنا واحد ما نروح واحده من جسد واحد كل سنه وانت طيبه يا اجمل سمسم في الدنيا كلها السنه دي ما تعديش علينا غير وانت في البيتي ان شاء الله
-          زي ما أنا أبوكي وأخوكي وسندك وضهرك، إنتي برضه أهم حاجة عندي في دنيتي كلها 🌍.<br>
-          كل سنة وانتي أجمل وأحسن وأرق بنت في الدنيا دي كلها... كل سنة وانتي طيبة يا سمسوم 🥰.
-        </p>
-      </div>
-
-      <!-- Timeline -->
-      <div class="timeline">
-        <div class="timeline-item"><span class="timeline-year">2022</span> أول تعارف وقرب حقيقي</div>
-        <div class="timeline-item"><span class="timeline-year">2025</span> خطوبة الحب 💍</div>
-        <div class="timeline-item"><span class="timeline-year">2026</span> عيد ميلادك معايا 🎂</div>
-        <div class="timeline-item"><span class="timeline-year">المستقبل</span> بيت واحد، عمر واحد 💞</div>
-      </div>
-
-      <!-- Star Certificate -->
-      <div class="star-cert">
-        <h3 style="color:var(--gold);">✨ شهادة نجمة ✨</h3>
-        <p style="color:#ffcccc;">نهدي النجمة رقم <strong style="color:#ffd700;">681997</strong> إلى الملكة <strong style="color:#ffd700;">أسماء عادل محمد</strong></p>
-      </div>
-
-      <div class="signature">
-        <div class="from">مع كل نبضة قلب بحبك</div>
-        <div>من حبيبك وخطيبك وزوجك المستقبلي</div>
-        <div style="color:#ffd700; margin-top:4px; font-size:18px;">محمد أحمد معوض ❤️</div>
-      </div>
-
-      <!-- Secret message -->
-      <button class="secret-btn" onclick="toggleSecret()">🔐 اضغطي هنا يا سمسم</button>
-      <div class="secret-message" id="secret-message">
-        💞 يا اسماء...<br>
-        أنا عارف إنك بتقرأي الكلام ده دلوقتي وبتحاولي تخبي دموعك و مشاعرك يا هبلة ...<br>
-        بس متخبيش، عشان كل دمعة من عينيكي دي أغلى من الدنيا كلها عندي.<br>
-        أنا مش بعرف أعبر كويس، بس أنا بحبك...<br>
-        بحبك أكتر من أي كلمة ممكن أقولها، وأكتر من أي موقع ممكن أعمله.<br>
-        ربنا يخليكي ليا يا أغلى حاجة في حياتي. 💍❤️
-      </div>
-
-      <!-- رسالة واتساب -->
-      <div class="message-wall">
-        <h3 style="color:var(--gold);">💌 اكتبي رسالة وتبعت على واتساب</h3>
-        <textarea class="wall-input" id="wall-input" placeholder="اكتبي رسالة حب هنا..." rows="2"></textarea>
-        <button class="enter-btn" onclick="sendWhatsAppMessage()">إرسال 💌</button>
-      </div>
-
-      <!-- Share -->
-      <div class="share-section">
-        <button class="share-btn" onclick="copyLink()">📋 انسخي اللينك</button>
-        <button class="share-btn" onclick="shareWhatsApp()">📱 شاركي على واتساب</button>
-        <button class="share-btn" onclick="openMyWhatsApp()">📲 كلميني واتساب</button>
-      </div>
     </div>
-
   </div>
-</div>
 
-<!-- Gift Box Overlay -->
-<div class="gift-box-overlay" id="gift-overlay" onclick="if(event.target === this) closeGift()">
-  <div class="gift-box" id="gift-box">
-    <div class="gift-lock">
-      <div style="font-size:60px;">🎁</div>
-      <p style="margin-bottom:10px; color:#fff;">🔒 افتحي الصندوق - باسورد الكمبيوتر</p>
-      <input type="password" class="gift-input" id="gift-password" placeholder="4 أرقام" maxlength="4">
-      <button class="enter-btn" onclick="openGift()" style="margin-top:10px;">فتح 🎀</button>
-      <p class="error-msg" id="gift-error">❌ غلط... جربي تاني!</p>
-      <button class="close-gift-btn" onclick="closeGift()" style="margin-top:10px;">إغلاق ✖</button>
-    </div>
-    <div class="gift-content">
-      <div style="font-size:40px;">💖</div>
-      <h3 style="color:#ffd700;">أنتي أغلى هدية من ربنا ليا</h3>
-      <p style="color:#fff;">بحبك قد الدنيا وما فيها ❤️</p>
-      <button class="close-gift-btn" onclick="closeGift()">إغلاق ✖</button>
-    </div>
-  </div>
-</div>
-
-<!-- Music Selector Modal -->
-<div class="music-modal-overlay" id="music-modal">
-  <div class="music-modal-card">
-    <div style="font-size: 32px; margin-bottom: 6px;">🎵</div>
-    <h2 style="font-size: 17px; color: var(--gold); margin-bottom: 4px;">اختاري الأغنية اللي تحبيها</h2>
-    <p style="font-size: 12px; color: rgba(255,255,255,0.7); margin-bottom: 14px;">هتشتغل الموسيقى في الخلفية فوراً</p>
-
-    <div id="playlist-container" style="max-height: 200px; overflow-y: auto; margin-bottom: 12px; padding-left: 2px;">
-      <!-- Tracks loaded dynamically -->
-    </div>
-
-    <div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top: 10px;">
-      <button class="share-btn" style="border-color: var(--gold); color: var(--gold);" onclick="togglePlayPauseCurrent()" id="modal-play-btn">⏸️ إيقاف / تشغيل</button>
-      <button class="share-btn" onclick="closeMusicModal()">إغلاق ✖</button>
+  <!-- Gift Box Overlay -->
+  <div class="gift-box-overlay" id="gift-overlay" onclick="if(event.target === this) closeGift()">
+    <div class="gift-box" id="gift-box">
+      <div class="gift-lock">
+        <div style="font-size:60px;">🎁</div>
+        <p style="margin-bottom:10px; color:#fff;">🔒 افتحي الصندوق - باسورد الكمبيوتر</p>
+        <input type="password" class="gift-input" id="gift-password" placeholder="4 أرقام" maxlength="4">
+        <button class="enter-btn" onclick="openGift()" style="margin-top:10px;">فتح 🎀</button>
+        <p class="error-msg" id="gift-error">❌ غلط... جربي تاني!</p>
+        <button class="close-gift-btn" onclick="closeGift()" style="margin-top:10px;">إغلاق ✖</button>
+      </div>
+      <div class="gift-content">
+        <div style="font-size:40px;">💖</div>
+        <h3 style="color:#d4a017;">أنتي أغلى هدية من ربنا ليا</h3>
+        <img src="as1.jpg" alt="صورة المفاجأة" class="gift-image" onerror="this.style.display='none'; this.insertAdjacentHTML('afterend', '<p style=color:#ffcccc;margin-top:10px;>📷 الصورة مش موجودة... بس إنتي الأجمل ❤️</p>');">
+        <p style="color:#fff; margin-top:8px;">بحبك قد الدنيا وما فيها ❤️</p>
+        <button class="close-gift-btn" onclick="closeGift()">إغلاق ✖</button>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- موسيقى الأسئلة الرومانسية -->
-<audio id="quiz-music" preload="auto" loop></audio>
+  <!-- Music Selector Modal -->
+  <div class="music-modal-overlay" id="music-modal">
+    <div class="music-modal-card">
+      <div style="font-size: 32px; margin-bottom: 6px;">🎵</div>
+      <h2 style="font-size: 17px; color: #d4a017; margin-bottom: 4px;">اختاري الأغنية اللي تحبيها</h2>
+      <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 14px;">هتشتغل الموسيقى في الخلفية فوراً</p>
 
-<script>
-  // ========== BACKGROUND EFFECTS ==========
-  function createStars() {
-    const container = document.getElementById('stars-container');
-    if(!container) return;
-    for (let i = 0; i < 60; i++) {
-      const star = document.createElement('div');
-      star.className = 'star';
-      star.style.left = Math.random() * 100 + '%';
-      star.style.top = Math.random() * 100 + '%';
-      star.style.animationDuration = (2 + Math.random() * 4) + 's';
-      star.style.animationDelay = Math.random() * 5 + 's';
-      star.style.width = star.style.height = (1 + Math.random() * 2) + 'px';
-      container.appendChild(star);
-    }
-  }
-  createStars();
+      <div id="playlist-container" style="max-height: 200px; overflow-y: auto; margin-bottom: 12px; padding-left: 2px;">
+        <!-- Tracks loaded dynamically -->
+      </div>
 
-  function createSnow() {
-    const container = document.getElementById('snow-container');
-    if(!container) return;
-    const flakes = ['❄', '💐', '🍑', '🫶🏻'];
-    for (let i = 0; i < 30; i++) {
-      const flake = document.createElement('div');
-      flake.className = 'snowflake';
-      flake.textContent = flakes[Math.floor(Math.random() * flakes.length)];
-      flake.style.left = Math.random() * 100 + '%';
-      flake.style.fontSize = (8 + Math.random() * 14) + 'px';
-      flake.style.animationDuration = (6 + Math.random() * 10) + 's';
-      flake.style.animationDelay = Math.random() * 10 + 's';
-      flake.style.opacity = 0.3 + Math.random() * 0.5;
-      container.appendChild(flake);
-    }
-  }
-  createSnow();
+      <div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top: 10px;">
+        <button class="share-btn" style="border-color: #d4a017; color: #d4a017;" onclick="togglePlayPauseCurrent()" id="modal-play-btn">⏸️ إيقاف / تشغيل</button>
+        <button class="share-btn" onclick="closeMusicModal()">إغلاق ✖</button>
+      </div>
+    </div>
+  </div>
 
-  function createHearts() {
-    const container = document.getElementById('hearts-container');
-    if(!container) return;
-    const emojis = ['💞', '❤️', '💖', '💕', '💗', '💝', '🌹', '🫂'];
-    for (let i = 0; i < 25; i++) {
-      const h = document.createElement('div');
-      h.className = 'heart';
-      h.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-      h.style.left = Math.random() * 100 + '%';
-      h.style.fontSize = (14 + Math.random() * 22) + 'px';
-      h.style.animationDuration = (8 + Math.random() * 14) + 's';
-      h.style.animationDelay = Math.random() * 10 + 's';
-      container.appendChild(h);
-    }
-  }
-  createHearts();
+  <!-- موسيقى الأسئلة الرومانسية -->
+  <audio id="quiz-music" preload="auto" loop></audio>
 
-  // ========== SPLASH -> INTRO SAFE TRANSITION ==========
-  setTimeout(() => {
-    const splash = document.getElementById('splash-screen');
-    const intro = document.getElementById('intro-screen');
-    if (splash) {
-      splash.style.opacity = '0';
-      splash.style.visibility = 'hidden';
-      setTimeout(() => { splash.style.display = 'none'; }, 800);
-    }
-    if (intro) {
-      intro.style.display = 'block';
-    }
-  }, 2800);
+  <script>
+    // ========== GLOBAL STATE FOR PAUSING ANIMATIONS ==========
+    let animationsPaused = false;
+    let pausedElements = {
+      stars: null,
+      snow: null,
+      hearts: null,
+      balloons: [],
+      confettiActive: false,
+      confettiAnimationId: null,
+      confettiParticles: [],
+      confettiCanvas: null,
+      confettiCtx: null
+    };
 
-  function showPasswordScreen() {
-    document.getElementById('intro-screen').style.display = 'none';
-    document.getElementById('password-screen').style.display = 'block';
-    document.getElementById('password-screen').style.animation = 'cardIn 0.8s ease-out';
-  }
+    function pauseAllAnimations() {
+      if (animationsPaused) return;
+      animationsPaused = true;
 
-  // ========== PASSWORD ==========
-  function checkPassword() {
-    const input = document.getElementById('password-input').value.trim();
-    const errorMsg = document.getElementById('error-msg');
-    if (input === '681997' || input === '681995') {
-      document.getElementById('password-screen').style.display = 'none';
-      document.getElementById('game-section').style.display = 'block';
-      initGame();
-    } else {
-      errorMsg.classList.add('show');
-      document.getElementById('password-input').style.borderColor = '#ff4444';
-      setTimeout(() => {
-        errorMsg.classList.remove('show');
-        document.getElementById('password-input').style.borderColor = 'rgba(139, 0, 0, 0.5)';
-      }, 2500);
-    }
-  }
+      // Pause CSS animations by setting animation-play-state
+      const starsContainer = document.getElementById('stars-container');
+      const snowContainer = document.getElementById('snow-container');
+      const heartsContainer = document.getElementById('hearts-container');
 
-  document.getElementById('password-input').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') checkPassword();
-  });
+      if (starsContainer) {
+        starsContainer.style.animationPlayState = 'paused';
+        starsContainer.querySelectorAll('.star').forEach(el => el.style.animationPlayState = 'paused');
+      }
+      if (snowContainer) {
+        snowContainer.style.animationPlayState = 'paused';
+        snowContainer.querySelectorAll('.snowflake').forEach(el => el.style.animationPlayState = 'paused');
+      }
+      if (heartsContainer) {
+        heartsContainer.style.animationPlayState = 'paused';
+        heartsContainer.querySelectorAll('.heart').forEach(el => el.style.animationPlayState = 'paused');
+      }
 
-  // ========== MEMORY GAME ==========
-  const gameEmojis = ['😜', '🍉', '🌹', '💍', '👑', '🎁'];
-  let cards = [], flippedCards = [], matchedPairs = 0, moves = 0, canFlip = true;
+      // Pause balloon animations
+      document.querySelectorAll('.balloon').forEach(el => el.style.animationPlayState = 'paused');
 
-  function initGame() {
-    const grid = document.getElementById('game-grid');
-    grid.innerHTML = '';
-    cards = []; flippedCards = []; matchedPairs = 0; moves = 0; canFlip = true;
-    document.getElementById('moves-count').textContent = '0';
-    document.getElementById('pairs-count').textContent = '0';
-    document.getElementById('game-win-msg').style.display = 'none';
+      // Pause confetti if active
+      if (pausedElements.confettiAnimationId) {
+        cancelAnimationFrame(pausedElements.confettiAnimationId);
+        pausedElements.confettiAnimationId = null;
+      }
 
-    let deck = [...gameEmojis, ...gameEmojis];
-    for (let i = deck.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [deck[i], deck[j]] = [deck[j], deck[i]];
+      // Pause glow animations on bg layers
+      document.querySelectorAll('.bg-red-glow').forEach(el => el.style.animationPlayState = 'paused');
+      // Pause heartbeat
+      document.querySelectorAll('.big-heart').forEach(el => el.style.animationPlayState = 'paused');
+      // Pause glowPulse
+      document.querySelectorAll('.date-badge').forEach(el => el.style.animationPlayState = 'paused');
+      // Pause audioPulse
+      document.querySelectorAll('.audio-btn.playing, .quiz-music-btn.playing').forEach(el => el.style.animationPlayState = 'paused');
     }
 
-    deck.forEach((emoji, index) => {
-      const card = document.createElement('div');
-      card.className = 'game-card';
-      card.dataset.index = index;
-      card.dataset.emoji = emoji;
-      const content = document.createElement('div');
-      content.className = 'card-content';
-      content.textContent = emoji;
-      card.appendChild(content);
-      card.addEventListener('click', () => flipCard(card));
-      grid.appendChild(card);
-      cards.push(card);
-    });
-  }
+    function resumeAllAnimations() {
+      if (!animationsPaused) return;
+      animationsPaused = false;
 
-  function flipCard(card) {
-    if (!canFlip || card.classList.contains('flipped') || card.classList.contains('matched')) return;
-    card.classList.add('flipped');
-    flippedCards.push(card);
-    if (flippedCards.length === 2) {
-      moves++;
-      document.getElementById('moves-count').textContent = moves;
-      canFlip = false;
-      const [c1, c2] = flippedCards;
-      if (c1.dataset.emoji === c2.dataset.emoji) {
-        setTimeout(() => {
-          c1.classList.remove('flipped');
-          c2.classList.remove('flipped');
-          c1.classList.add('matched');
-          c2.classList.add('matched');
-          matchedPairs++;
-          document.getElementById('pairs-count').textContent = matchedPairs;
-          flippedCards = [];
-          canFlip = true;
-          if (matchedPairs === 6) {
-            setTimeout(() => { document.getElementById('game-win-msg').style.display = 'block'; }, 600);
+      const starsContainer = document.getElementById('stars-container');
+      const snowContainer = document.getElementById('snow-container');
+      const heartsContainer = document.getElementById('hearts-container');
+
+      if (starsContainer) {
+        starsContainer.style.animationPlayState = 'running';
+        starsContainer.querySelectorAll('.star').forEach(el => el.style.animationPlayState = 'running');
+      }
+      if (snowContainer) {
+        snowContainer.style.animationPlayState = 'running';
+        snowContainer.querySelectorAll('.snowflake').forEach(el => el.style.animationPlayState = 'running');
+      }
+      if (heartsContainer) {
+        heartsContainer.style.animationPlayState = 'running';
+        heartsContainer.querySelectorAll('.heart').forEach(el => el.style.animationPlayState = 'running');
+      }
+
+      document.querySelectorAll('.balloon').forEach(el => el.style.animationPlayState = 'running');
+
+      // Restart confetti if it was active
+      if (pausedElements.confettiActive) {
+        restartConfettiFromPause();
+      }
+
+      document.querySelectorAll('.bg-red-glow').forEach(el => el.style.animationPlayState = 'running');
+      document.querySelectorAll('.big-heart').forEach(el => el.style.animationPlayState = 'running');
+      document.querySelectorAll('.date-badge').forEach(el => el.style.animationPlayState = 'running');
+      document.querySelectorAll('.audio-btn.playing, .quiz-music-btn.playing').forEach(el => el.style.animationPlayState = 'running');
+    }
+
+    function restartConfettiFromPause() {
+      if (!pausedElements.confettiCanvas || !pausedElements.confettiCtx) return;
+      const canvas = pausedElements.confettiCanvas;
+      const ctx = pausedElements.confettiCtx;
+      const particles = pausedElements.confettiParticles;
+
+      function animate() {
+        if (animationsPaused) {
+          pausedElements.confettiAnimationId = null;
+          return;
+        }
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.rotation += p.rotationSpeed;
+          if (p.y > canvas.height + 20) {
+            p.y = -20;
+            p.x = Math.random() * canvas.width;
           }
-        }, 500);
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rotation * Math.PI / 180);
+          ctx.fillStyle = p.color;
+          if (p.shape === 'rect') {
+            ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+          } else {
+            ctx.beginPath();
+            ctx.arc(0, 0, p.size / 2, 0, Math.PI * 2);
+            ctx.fill();
+          }
+          ctx.restore();
+        });
+        pausedElements.confettiAnimationId = requestAnimationFrame(animate);
+      }
+      animate();
+    }
+
+    // ========== BACKGROUND EFFECTS ==========
+    function createStars() {
+      const container = document.getElementById('stars-container');
+      if (!container) return;
+      for (let i = 0; i < 60; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.animationDuration = (2 + Math.random() * 4) + 's';
+        star.style.animationDelay = Math.random() * 5 + 's';
+        star.style.width = star.style.height = (1 + Math.random() * 2) + 'px';
+        container.appendChild(star);
+      }
+    }
+    createStars();
+
+    function createSnow() {
+      const container = document.getElementById('snow-container');
+      if (!container) return;
+      const flakes = ['❄', '💐', '🍑', '🫶🏻'];
+      for (let i = 0; i < 30; i++) {
+        const flake = document.createElement('div');
+        flake.className = 'snowflake';
+        flake.textContent = flakes[Math.floor(Math.random() * flakes.length)];
+        flake.style.left = Math.random() * 100 + '%';
+        flake.style.fontSize = (8 + Math.random() * 14) + 'px';
+        flake.style.animationDuration = (6 + Math.random() * 10) + 's';
+        flake.style.animationDelay = Math.random() * 10 + 's';
+        flake.style.opacity = 0.3 + Math.random() * 0.5;
+        container.appendChild(flake);
+      }
+    }
+    createSnow();
+
+    function createHearts() {
+      const container = document.getElementById('hearts-container');
+      if (!container) return;
+      const emojis = ['💞', '❤️', '💖', '💕', '💗', '💝', '🌹', '🫂'];
+      for (let i = 0; i < 25; i++) {
+        const h = document.createElement('div');
+        h.className = 'heart';
+        h.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        h.style.left = Math.random() * 100 + '%';
+        h.style.fontSize = (14 + Math.random() * 22) + 'px';
+        h.style.animationDuration = (8 + Math.random() * 14) + 's';
+        h.style.animationDelay = Math.random() * 10 + 's';
+        container.appendChild(h);
+      }
+    }
+    createHearts();
+
+    // ========== SPLASH -> INTRO SAFE TRANSITION ==========
+    setTimeout(() => {
+      const splash = document.getElementById('splash-screen');
+      const intro = document.getElementById('intro-screen');
+      if (splash) {
+        splash.style.opacity = '0';
+        splash.style.visibility = 'hidden';
+        setTimeout(() => { splash.style.display = 'none'; }, 800);
+      }
+      if (intro) {
+        intro.style.display = 'block';
+      }
+    }, 2800);
+
+    function showPasswordScreen() {
+      document.getElementById('intro-screen').style.display = 'none';
+      document.getElementById('password-screen').style.display = 'block';
+      document.getElementById('password-screen').style.animation = 'cardIn 0.8s ease-out';
+    }
+
+    // ========== PASSWORD ==========
+    function checkPassword() {
+      const input = document.getElementById('password-input').value.trim();
+      const errorMsg = document.getElementById('error-msg');
+      if (input === '681997' || input === '681995') {
+        document.getElementById('password-screen').style.display = 'none';
+        document.getElementById('game-section').style.display = 'block';
+        initGame();
       } else {
+        errorMsg.classList.add('show');
+        document.getElementById('password-input').style.borderColor = '#ff4444';
         setTimeout(() => {
-          c1.classList.remove('flipped');
-          c2.classList.remove('flipped');
-          flippedCards = [];
-          canFlip = true;
-        }, 1000);
+          errorMsg.classList.remove('show');
+          document.getElementById('password-input').style.borderColor = 'rgba(139, 0, 0, 0.5)';
+        }, 2500);
       }
     }
-  }
 
-  // ========== QUIZ MUSIC LOGIC ==========
-  function startQuizMusic() {
-    const quizMusic = document.getElementById('quiz-music');
-    const btn = document.getElementById('quiz-music-btn');
-    quizMusic.src = 'quiz_music.mp3';
-    quizMusic.volume = 0.7;
-    quizMusic.play().then(() => {
-      if (btn) {
-        btn.textContent = '🎵 إيقاف الموسيقى';
-        btn.classList.add('playing');
-      }
-    }).catch(e => {
-      console.log('محتاجة تفاعل من المستخدم لتشغيل الموسيقى:', e);
-      if (btn) {
-        btn.textContent = '🔊 تشغيل الموسيقى';
-        btn.classList.remove('playing');
-      }
+    document.getElementById('password-input').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') checkPassword();
     });
-  }
 
-  function fadeOutQuizMusic(callback) {
-    const quizMusic = document.getElementById('quiz-music');
-    const btn = document.getElementById('quiz-music-btn');
-    if (!quizMusic || quizMusic.paused || quizMusic.volume === 0) {
-      if (callback) callback();
-      return;
+    // ========== MEMORY GAME ==========
+    const gameEmojis = ['😜', '🍉', '🌹', '💍', '👑', '🎁'];
+    let cards = [],
+      flippedCards = [],
+      matchedPairs = 0,
+      moves = 0,
+      canFlip = true;
+
+    function initGame() {
+      const grid = document.getElementById('game-grid');
+      grid.innerHTML = '';
+      cards = [];
+      flippedCards = [];
+      matchedPairs = 0;
+      moves = 0;
+      canFlip = true;
+      document.getElementById('moves-count').textContent = '0';
+      document.getElementById('pairs-count').textContent = '0';
+      document.getElementById('game-win-msg').style.display = 'none';
+
+      let deck = [...gameEmojis, ...gameEmojis];
+      for (let i = deck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [deck[i], deck[j]] = [deck[j], deck[i]];
+      }
+
+      deck.forEach((emoji, index) => {
+        const card = document.createElement('div');
+        card.className = 'game-card';
+        card.dataset.index = index;
+        card.dataset.emoji = emoji;
+        const content = document.createElement('div');
+        content.className = 'card-content';
+        content.textContent = emoji;
+        card.appendChild(content);
+        card.addEventListener('click', () => flipCard(card));
+        grid.appendChild(card);
+        cards.push(card);
+      });
     }
-    let vol = quizMusic.volume;
-    const fadeInterval = setInterval(() => {
-      vol -= 0.05;
-      if (vol <= 0) {
-        clearInterval(fadeInterval);
-        quizMusic.pause();
-        quizMusic.volume = 0.7; // reset for next time
+
+    function flipCard(card) {
+      if (!canFlip || card.classList.contains('flipped') || card.classList.contains('matched')) return;
+      card.classList.add('flipped');
+      flippedCards.push(card);
+      if (flippedCards.length === 2) {
+        moves++;
+        document.getElementById('moves-count').textContent = moves;
+        canFlip = false;
+        const [c1, c2] = flippedCards;
+        if (c1.dataset.emoji === c2.dataset.emoji) {
+          setTimeout(() => {
+            c1.classList.remove('flipped');
+            c2.classList.remove('flipped');
+            c1.classList.add('matched');
+            c2.classList.add('matched');
+            matchedPairs++;
+            document.getElementById('pairs-count').textContent = matchedPairs;
+            flippedCards = [];
+            canFlip = true;
+            if (matchedPairs === 6) {
+              setTimeout(() => { document.getElementById('game-win-msg').style.display = 'block'; }, 600);
+            }
+          }, 500);
+        } else {
+          setTimeout(() => {
+            c1.classList.remove('flipped');
+            c2.classList.remove('flipped');
+            flippedCards = [];
+            canFlip = true;
+          }, 1000);
+        }
+      }
+    }
+
+    // ========== QUIZ MUSIC LOGIC ==========
+    function startQuizMusic() {
+      const quizMusic = document.getElementById('quiz-music');
+      const btn = document.getElementById('quiz-music-btn');
+      quizMusic.src = 'quiz_music.mp3';
+      quizMusic.volume = 0.7;
+      quizMusic.play().then(() => {
+        if (btn) {
+          btn.textContent = '🎵 إيقاف الموسيقى';
+          btn.classList.add('playing');
+        }
+      }).catch(e => {
+        console.log('محتاجة تفاعل من المستخدم لتشغيل الموسيقى:', e);
         if (btn) {
           btn.textContent = '🔊 تشغيل الموسيقى';
           btn.classList.remove('playing');
         }
-        if (callback) callback();
-      } else {
-        quizMusic.volume = vol;
-      }
-    }, 100);
-  }
-
-  function toggleQuizMusic() {
-    const quizMusic = document.getElementById('quiz-music');
-    const btn = document.getElementById('quiz-music-btn');
-    if (!quizMusic.src || quizMusic.src === window.location.href) {
-      // لم يتم تحميل المصدر بعد، حمله وشغله
-      startQuizMusic();
-      return;
-    }
-    if (quizMusic.paused) {
-      quizMusic.play().then(() => {
-        btn.textContent = '🎵 إيقاف الموسيقى';
-        btn.classList.add('playing');
       });
-    } else {
-      quizMusic.pause();
-      btn.textContent = '🔊 تشغيل الموسيقى';
-      btn.classList.remove('playing');
     }
-  }
 
-  // ========== QUIZ LOGIC ==========
-  const quizQuestions = [
-    {
+    function fadeOutQuizMusic(callback) {
+      const quizMusic = document.getElementById('quiz-music');
+      const btn = document.getElementById('quiz-music-btn');
+      if (!quizMusic || quizMusic.paused || quizMusic.volume === 0) {
+        if (callback) callback();
+        return;
+      }
+      let vol = quizMusic.volume;
+      const fadeInterval = setInterval(() => {
+        vol -= 0.05;
+        if (vol <= 0) {
+          clearInterval(fadeInterval);
+          quizMusic.pause();
+          quizMusic.volume = 0.7; // reset for next time
+          if (btn) {
+            btn.textContent = '🔊 تشغيل الموسيقى';
+            btn.classList.remove('playing');
+          }
+          if (callback) callback();
+        } else {
+          quizMusic.volume = vol;
+        }
+      }, 100);
+    }
+
+    function toggleQuizMusic() {
+      const quizMusic = document.getElementById('quiz-music');
+      const btn = document.getElementById('quiz-music-btn');
+      if (!quizMusic.src || quizMusic.src === window.location.href) {
+        startQuizMusic();
+        return;
+      }
+      if (quizMusic.paused) {
+        quizMusic.play().then(() => {
+          btn.textContent = '🎵 إيقاف الموسيقى';
+          btn.classList.add('playing');
+        });
+      } else {
+        quizMusic.pause();
+        btn.textContent = '🔊 تشغيل الموسيقى';
+        btn.classList.remove('playing');
+      }
+    }
+
+    // ========== QUIZ LOGIC ==========
+    const quizQuestions = [{
       q: "كان يا ما كان وما يحلى الكلام إلا بذكر النبي عليه الصلاة والسلام... كان في ولد بيحب بنت اسمها اسماء، كبروا وتربوا في نفس المكان... سؤالنا الأول: هل تعرفي اسم الولد ده ثلاثي اللي بيعشقك؟",
       answers: ["محمد احمد معوض", "محمد أحمد معوض", "محمداحمدمعوض"],
       correctMsg: "برافو شاطرة سمسومة القمر 🎉",
       wrongMsg: "ركزي بدل ما أزعلك عشان ده اسم حبيبك وخطيبك، معقولة مش عارفاه؟! 😤"
-    },
-    {
+    }, {
       q: "بس ما كانوش قريبين من بعض وهم بيتربوا مع بعض، لحد ما جت سنة حلوة زي ضحكتك، قربوا فيها من بعض وبدأت الحكاية... فاكرة أول سنة قربتوا وتعرفتوا فيها على بعض كانت سنة كام؟ (أرقام بس)",
       answers: ["2022"],
       correctMsg: "شطورة فاكراها، دي كانت أجمل بداية 💕",
       wrongMsg: "ركزي بدل ما آكلك على قفاكي! دي أول مرة نتعرف فيها مش فاكراها؟ 😒"
-    },
-    {
+    }, {
       q: "وعاشوا قصة حب جميلة، دافية زي حضنك، وانتهت بخطوبة بتجمع قلبين اتخلقوا لبعض... فاكرة خطوبتكم الجميلة كانت سنة كام؟ (أرقام بس)",
       answers: ["2025"],
       correctMsg: "شطورة يا عروسة قلبي 🎊",
       wrongMsg: "اعقلي وركزي بدل ما أطلعلك من التليفون 📱😡"
-    },
-    {
+    }, {
       q: "وفي وسط الأيام الحلوة دي، والمناسبات اللي بتفرح قلوبنا، حبيبك حب يفرحك ويدلعك في العيد... فاكرة أول عيدية أخدتيها من حبيبك كانت كام؟",
       answers: ["200", "٢٠٠", "200جنية", "200جنيه", "متينجنية", "ميتينجنية", "متين", "ميتين"],
       correctMsg: "شاطرة يا حبيبتي، أحلى عيدية طلعت من قلبي قبل جيبي 😘",
       wrongMsg: "إيه ده؟! نسيتي أول عيدية ولا إيه؟ زعلتيني ركزي يا سمسم! 😢"
-    },
-    {
+    }, {
       q: "وبعد كل السنين والمواقف دي، وبعد ما بقيتي كل دنيتي وحتة من روحي، لو سألتك... إيه الكلمة اللي دايماً بقولهالك وبتلخص كل اللي في قلبي ليكي؟ (اكتبي كلمة واحدة بس)",
       answers: ["بحبك", "بعشقك", "بموتفيكي"],
       correctMsg: "وأنا بعشقك وبموت فيكي يا روح قلبي ❤️💍",
       wrongMsg: "تؤ تؤ، فكري بقلبك مش بعقلك يا سمسم! 🥺"
+    }];
+
+    let currentQuiz = 0;
+
+    function showQuiz() {
+      document.getElementById('game-section').style.display = 'none';
+      document.getElementById('quiz-section').style.display = 'block';
+      currentQuiz = 0;
+      loadQuizQuestion();
+      startQuizMusic();
     }
-  ];
 
-  let currentQuiz = 0;
-
-  function showQuiz() {
-    document.getElementById('game-section').style.display = 'none';
-    document.getElementById('quiz-section').style.display = 'block';
-    currentQuiz = 0;
-    loadQuizQuestion();
-    // تشغيل الموسيقى الرومانسية تلقائياً مع بداية الأسئلة
-    startQuizMusic();
-  }
-
-  function loadQuizQuestion() {
-    document.getElementById('quiz-question').textContent = quizQuestions[currentQuiz].q;
-    document.getElementById('quiz-input').value = '';
-    document.getElementById('quiz-feedback').className = 'quiz-feedback';
-    document.getElementById('quiz-feedback').textContent = '';
-    updateQuizDots();
-  }
-
-  function updateQuizDots() {
-    for (let i = 0; i < quizQuestions.length; i++) {
-      const dot = document.getElementById('dot-' + i);
-      if(dot) {
-        dot.className = 'quiz-dot';
-        if (i < currentQuiz) dot.classList.add('done');
-        else if (i === currentQuiz) dot.classList.add('active');
-      }
+    function loadQuizQuestion() {
+      document.getElementById('quiz-question').textContent = quizQuestions[currentQuiz].q;
+      document.getElementById('quiz-input').value = '';
+      document.getElementById('quiz-feedback').className = 'quiz-feedback';
+      document.getElementById('quiz-feedback').textContent = '';
+      updateQuizDots();
     }
-  }
 
-  function goToBirthday() {
-    // إيقاف موسيقى الأسئلة تدريجياً قبل الانتقال لرسالة عيد الميلاد
-    fadeOutQuizMusic(() => {
-      document.getElementById('quiz-section').style.display = 'none';
-      document.getElementById('birthday-screen').style.display = 'block';
-      document.getElementById('countdown-section').style.display = 'block';
-      startConfetti();
-      createSparkles();
-      startCountdown();
-      // new additions triggers
-      launchBalloons();
-      startLoveCounter();
-      setTimeout(() => {
-        document.getElementById('gift-overlay').style.display = 'flex';
-      }, 3000);
-      startPhotoSlider();
-    });
-  }
-
-  function checkQuizAnswer() {
-    const input = document.getElementById('quiz-input').value.trim().toLowerCase().replace(/\s/g, '');
-    const q = quizQuestions[currentQuiz];
-    const feedback = document.getElementById('quiz-feedback');
-    const isCorrect = q.answers.some(a => a.toLowerCase().replace(/\s/g, '') === input);
-
-    feedback.className = 'quiz-feedback show ' + (isCorrect ? 'correct' : 'wrong');
-    feedback.textContent = isCorrect ? q.correctMsg : q.wrongMsg;
-
-    if (isCorrect) {
-      const waitTime = (currentQuiz === quizQuestions.length - 1) ? 3500 : 2500;
-      
-      setTimeout(() => {
-        currentQuiz++;
-        if (currentQuiz >= quizQuestions.length) {
-          goToBirthday();
-        } else {
-          loadQuizQuestion();
+    function updateQuizDots() {
+      for (let i = 0; i < quizQuestions.length; i++) {
+        const dot = document.getElementById('dot-' + i);
+        if (dot) {
+          dot.className = 'quiz-dot';
+          if (i < currentQuiz) dot.classList.add('done');
+          else if (i === currentQuiz) dot.classList.add('active');
         }
-      }, waitTime);
-    }
-  }
-
-  document.getElementById('quiz-input').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') checkQuizAnswer();
-  });
-
-  // ========== COUNTDOWN ==========
-  function startCountdown() {
-    const target = new Date('2027-08-06T00:00:00').getTime();
-    function update() {
-      const now = new Date().getTime();
-      const diff = target - now;
-      if (diff > 0) {
-        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const s = Math.floor((diff % (1000 * 60)) / 1000);
-        document.getElementById('cd-days').textContent = d;
-        document.getElementById('cd-hours').textContent = h;
-        document.getElementById('cd-minutes').textContent = m;
-        document.getElementById('cd-seconds').textContent = s;
       }
     }
-    update();
-    setInterval(update, 1000);
-  }
 
-  // ========== SECRET MESSAGE ==========
-  function toggleSecret() {
-    const msg = document.getElementById('secret-message');
-    msg.style.display = msg.style.display === 'block' ? 'none' : 'block';
-  }
-
-  // ========== SHARE ==========
-  function copyLink() {
-    const url = window.location.href;
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(url).then(() => alert('تم نسخ اللينك! 💞'));
-    } else {
-      const ta = document.createElement('textarea');
-      ta.value = url;
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand('copy');
-      document.body.removeChild(ta);
-      alert('تم نسخ اللينك! 💞');
+    function goToBirthday() {
+      fadeOutQuizMusic(() => {
+        document.getElementById('quiz-section').style.display = 'none';
+        document.getElementById('birthday-screen').style.display = 'block';
+        document.getElementById('countdown-section').style.display = 'block';
+        startConfetti();
+        createSparkles();
+        startCountdown();
+        launchBalloons();
+        startLoveCounter();
+        setTimeout(() => {
+          // Show gift overlay and pause all background animations
+          document.getElementById('gift-overlay').style.display = 'flex';
+          pauseAllAnimations();
+        }, 3000);
+        startPhotoSlider();
+      });
     }
-  }
 
-  function shareWhatsApp() {
-    const text = encodeURIComponent('شوفي الموقع الحلو ده! 💞\n' + window.location.href);
-    window.open('https://wa.me/?text=' + text, '_blank');
-  }
+    function checkQuizAnswer() {
+      const input = document.getElementById('quiz-input').value.trim().toLowerCase().replace(/\s/g, '');
+      const q = quizQuestions[currentQuiz];
+      const feedback = document.getElementById('quiz-feedback');
+      const isCorrect = q.answers.some(a => a.toLowerCase().replace(/\s/g, '') === input);
 
-  // ========== MULTI-AUDIO / PLAYLIST LOGIC ==========
-  const musicTracks = [
-    { name: "🎵 أغنية عيد الميلاد (music.mp3)", file: "music.mp3" },
-    { name: "🎶 أغنية الحب الأولى (music2.mp3)", file: "music2.mp3" },
-    { name: "🎼 موسيقى هادئة (music3.mp3)", file: "music3.mp3" }
-  ];
+      feedback.className = 'quiz-feedback show ' + (isCorrect ? 'correct' : 'wrong');
+      feedback.textContent = isCorrect ? q.correctMsg : q.wrongMsg;
 
-  let currentTrackIndex = 0;
-  const audioEl = document.getElementById('bg-music');
+      if (isCorrect) {
+        const waitTime = (currentQuiz === quizQuestions.length - 1) ? 3500 : 2500;
 
-  function renderPlaylist() {
-    const container = document.getElementById('playlist-container');
-    container.innerHTML = '';
+        setTimeout(() => {
+          currentQuiz++;
+          if (currentQuiz >= quizQuestions.length) {
+            goToBirthday();
+          } else {
+            loadQuizQuestion();
+          }
+        }, waitTime);
+      }
+    }
 
-    musicTracks.forEach((track, idx) => {
-      const item = document.createElement('div');
-      item.className = 'playlist-track' + (idx === currentTrackIndex ? ' active' : '');
-      item.innerHTML = `<span>${track.name}</span> <span>${idx === currentTrackIndex && !audioEl.paused ? '▶️' : '🎧'}</span>`;
-      item.onclick = () => playSelectedTrack(idx);
-      container.appendChild(item);
+    document.getElementById('quiz-input').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') checkQuizAnswer();
     });
-  }
 
-  function openMusicModal() {
-    renderPlaylist();
-    document.getElementById('music-modal').style.display = 'flex';
-  }
+    // ========== COUNTDOWN ==========
+    function startCountdown() {
+      const target = new Date('2027-08-06T00:00:00').getTime();
 
-  function closeMusicModal() {
-    document.getElementById('music-modal').style.display = 'none';
-  }
+      function update() {
+        const now = new Date().getTime();
+        const diff = target - now;
+        if (diff > 0) {
+          const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+          const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+          const s = Math.floor((diff % (1000 * 60)) / 1000);
+          document.getElementById('cd-days').textContent = d;
+          document.getElementById('cd-hours').textContent = h;
+          document.getElementById('cd-minutes').textContent = m;
+          document.getElementById('cd-seconds').textContent = s;
+        }
+      }
+      update();
+      setInterval(update, 1000);
+    }
 
-  function playSelectedTrack(index) {
-    currentTrackIndex = index;
-    audioEl.src = musicTracks[currentTrackIndex].file;
-    audioEl.play().then(() => {
-      updateMainAudioBtn(true);
-      renderPlaylist();
-      setTimeout(closeMusicModal, 500);
-    }).catch(err => {
-      alert('تأكدي من رفع ملف الصوت برابط: ' + musicTracks[currentTrackIndex].file);
-    });
-  }
+    // ========== SECRET MESSAGE ==========
+    function toggleSecret() {
+      const msg = document.getElementById('secret-message');
+      msg.style.display = msg.style.display === 'block' ? 'none' : 'block';
+    }
 
-  function togglePlayPauseCurrent() {
-    if (audioEl.paused) {
-      if (!audioEl.src) {
-        playSelectedTrack(0);
+    // ========== SHARE ==========
+    function copyLink() {
+      const url = window.location.href;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(() => alert('تم نسخ اللينك! 💞'));
       } else {
-        audioEl.play().then(() => {
-          updateMainAudioBtn(true);
-          renderPlaylist();
-        });
+        const ta = document.createElement('textarea');
+        ta.value = url;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        alert('تم نسخ اللينك! 💞');
       }
-    } else {
-      audioEl.pause();
-      updateMainAudioBtn(false);
+    }
+
+    function shareWhatsApp() {
+      const text = encodeURIComponent('شوفي الموقع الحلو ده! 💞\n' + window.location.href);
+      window.open('https://wa.me/?text=' + text, '_blank');
+    }
+
+    // ========== MULTI-AUDIO / PLAYLIST LOGIC ==========
+    const musicTracks = [
+      { name: "🎵 أغنية عيد الميلاد (music.mp3)", file: "music.mp3" },
+      { name: "🎶 أغنية الحب الأولى (music2.mp3)", file: "music2.mp3" },
+      { name: "🎼 موسيقى هادئة (music3.mp3)", file: "music3.mp3" }
+    ];
+
+    let currentTrackIndex = 0;
+    const audioEl = document.getElementById('bg-music');
+
+    function renderPlaylist() {
+      const container = document.getElementById('playlist-container');
+      container.innerHTML = '';
+
+      musicTracks.forEach((track, idx) => {
+        const item = document.createElement('div');
+        item.className = 'playlist-track' + (idx === currentTrackIndex ? ' active' : '');
+        item.innerHTML =
+          `<span>${track.name}</span> <span>${idx === currentTrackIndex && !audioEl.paused ? '▶️' : '🎧'}</span>`;
+        item.onclick = () => playSelectedTrack(idx);
+        container.appendChild(item);
+      });
+    }
+
+    function openMusicModal() {
       renderPlaylist();
+      document.getElementById('music-modal').style.display = 'flex';
     }
-  }
 
-  function updateMainAudioBtn(isPlaying) {
-    const btn = document.getElementById('audio-btn');
-    if (isPlaying) {
-      btn.textContent = '⏸️ ' + musicTracks[currentTrackIndex].name;
-      btn.classList.add('playing');
-    } else {
-      btn.textContent = '🎵 شغلي موسيقى الحب';
-      btn.classList.remove('playing');
+    function closeMusicModal() {
+      document.getElementById('music-modal').style.display = 'none';
     }
-  }
 
-  audioEl.addEventListener('ended', () => {
-    currentTrackIndex = (currentTrackIndex + 1) % musicTracks.length;
-    playSelectedTrack(currentTrackIndex);
-  });
-
-  // ========== CONFETTI ==========
-  function startConfetti() {
-    const canvas = document.getElementById('confetti-canvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    const colors = ['#8b0000', '#dc143c', '#ff0040', '#ffd700', '#ff69b4', '#fff'];
-    const particles = [];
-
-    for (let i = 0; i < 150; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height - canvas.height,
-        vx: (Math.random() - 0.5) * 4,
-        vy: Math.random() * 3 + 2,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        size: Math.random() * 8 + 4,
-        rotation: Math.random() * 360,
-        rotationSpeed: (Math.random() - 0.5) * 10,
-        shape: Math.random() > 0.5 ? 'rect' : 'circle'
+    function playSelectedTrack(index) {
+      currentTrackIndex = index;
+      audioEl.src = musicTracks[currentTrackIndex].file;
+      audioEl.play().then(() => {
+        updateMainAudioBtn(true);
+        renderPlaylist();
+        setTimeout(closeMusicModal, 500);
+      }).catch(err => {
+        alert('تأكدي من رفع ملف الصوت برابط: ' + musicTracks[currentTrackIndex].file);
       });
     }
 
-    let animationId;
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => {
-        p.x += p.vx;
-        p.y += p.vy;
-        p.rotation += p.rotationSpeed;
-        if (p.y > canvas.height + 20) {
-          p.y = -20;
-          p.x = Math.random() * canvas.width;
-        }
-        ctx.save();
-        ctx.translate(p.x, p.y);
-        ctx.rotate(p.rotation * Math.PI / 180);
-        ctx.fillStyle = p.color;
-        if (p.shape === 'rect') {
-          ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size);
+    function togglePlayPauseCurrent() {
+      if (audioEl.paused) {
+        if (!audioEl.src) {
+          playSelectedTrack(0);
         } else {
-          ctx.beginPath();
-          ctx.arc(0, 0, p.size/2, 0, Math.PI * 2);
-          ctx.fill();
+          audioEl.play().then(() => {
+            updateMainAudioBtn(true);
+            renderPlaylist();
+          });
         }
-        ctx.restore();
-      });
-      animationId = requestAnimationFrame(animate);
+      } else {
+        audioEl.pause();
+        updateMainAudioBtn(false);
+        renderPlaylist();
+      }
     }
-    animate();
-    setTimeout(() => {
-      cancelAnimationFrame(animationId);
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-    }, 12000);
-  }
 
-  function createSparkles() {
-    const card = document.getElementById('main-card');
-    if (!card) return;
-    const rect = card.getBoundingClientRect();
-    for (let i = 0; i < 30; i++) {
-      setTimeout(() => {
-        const s = document.createElement('div');
-        s.className = 'sparkle';
-        s.style.left = (rect.left + Math.random() * rect.width) + 'px';
-        s.style.top = (rect.top + Math.random() * rect.height) + 'px';
-        s.style.background = ['#ffd700', '#dc143c', '#ff0040', '#fff'][Math.floor(Math.random() * 4)];
-        document.body.appendChild(s);
-        setTimeout(() => s.remove(), 1500);
-      }, i * 80);
+    function updateMainAudioBtn(isPlaying) {
+      const btn = document.getElementById('audio-btn');
+      if (isPlaying) {
+        btn.textContent = '⏸️ ' + musicTracks[currentTrackIndex].name;
+        btn.classList.add('playing');
+      } else {
+        btn.textContent = '🎵 شغلي موسيقى الحب';
+        btn.classList.remove('playing');
+      }
     }
-  }
 
-  // ========== NEW FEATURES JS ==========
-  // Gift box
-  function openGift() {
-    if (document.getElementById('gift-password').value === '6895') {
-      document.getElementById('gift-box').classList.add('open');
-    } else {
-      document.getElementById('gift-error').classList.add('show');
-      setTimeout(() => document.getElementById('gift-error').classList.remove('show'), 2000);
-    }
-  }
-
-  function closeGift() {
-    document.getElementById('gift-overlay').style.display = 'none';
-  }
-
-  // Voice message
-  function toggleVoiceMessage() {
-    const v = document.getElementById('voice-message');
-    if (!v) return;
-    if (v.paused) {
-      v.play().catch(() => alert('تأكدي من وجود ملف ZAIN.mp3 في نفس المجلد'));
-    } else {
-      v.pause();
-    }
-  }
-
-  // Photo slider
-  function startPhotoSlider() {
-    const slides = document.querySelectorAll('#photo-slider img');
-    if (slides.length === 0) return;
-    let idx = 0;
-    setInterval(() => {
-      slides.forEach(s => s.classList.remove('active'));
-      slides[idx].classList.add('active');
-      idx = (idx + 1) % slides.length;
-    }, 3000);
-  }
-
-  // Love counter
-  function startLoveCounter() {
-    const counter = document.getElementById('love-counter');
-    let count = 0;
-    const interval = setInterval(() => {
-      count += 7;
-      if (count >= 1440) { count = 1440; clearInterval(interval); }
-      counter.textContent = count;
-    }, 15);
-  }
-
-  // Balloons
-  function launchBalloons() {
-    const letters = ['أ', 'س', 'م', 'ا', 'ء'];
-    letters.forEach((letter, i) => {
-      setTimeout(() => {
-        const b = document.createElement('div');
-        b.className = 'balloon';
-        b.textContent = '🎈' + letter;
-        b.style.left = (10 + i * 18) + '%';
-        document.body.appendChild(b);
-        setTimeout(() => b.remove(), 8000);
-      }, i * 500);
+    audioEl.addEventListener('ended', () => {
+      currentTrackIndex = (currentTrackIndex + 1) % musicTracks.length;
+      playSelectedTrack(currentTrackIndex);
     });
-  }
 
-  // Light mode toggle
-  function toggleMode() {
-    document.body.classList.toggle('light-mode');
-    const isLight = document.body.classList.contains('light-mode');
-    document.getElementById('mode-toggle').textContent = isLight ? '🌙 وضع داكن' : '☀️ وضع فاتح';
-    localStorage.setItem('lightMode', isLight ? '1' : '0');
-  }
-  if (localStorage.getItem('lightMode') === '1') {
-    document.body.classList.add('light-mode');
-    document.getElementById('mode-toggle').textContent = '🌙 وضع داكن';
-  }
-
-  // Wall messages (WhatsApp)
-  function sendWhatsAppMessage() {
-    const msg = document.getElementById('wall-input').value.trim();
-    if (!msg) { alert('اكتبي رسالة الأول يا سمسم! 💌'); return; }
-    window.open('https://wa.me/201289997048?text=' + encodeURIComponent(msg), '_blank');
-  }
-
-  function openMyWhatsApp() {
-    window.open('https://wa.me/201289997048?text=' + encodeURIComponent('كل سنة وانتي طيبة يا أجمل بنت في الدنيا 💞'), '_blank');
-  }
-
-  window.addEventListener('resize', () => {
-    const canvas = document.getElementById('confetti-canvas');
-    if (canvas) {
+    // ========== CONFETTI ==========
+    function startConfetti() {
+      const canvas = document.getElementById('confetti-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+
+      pausedElements.confettiCanvas = canvas;
+      pausedElements.confettiCtx = ctx;
+      pausedElements.confettiActive = true;
+
+      const colors = ['#8b0000', '#dc143c', '#ff0040', '#d4a017', '#ff69b4', '#fff'];
+      const particles = [];
+
+      for (let i = 0; i < 150; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height - canvas.height,
+          vx: (Math.random() - 0.5) * 4,
+          vy: Math.random() * 3 + 2,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          size: Math.random() * 8 + 4,
+          rotation: Math.random() * 360,
+          rotationSpeed: (Math.random() - 0.5) * 10,
+          shape: Math.random() > 0.5 ? 'rect' : 'circle'
+        });
+      }
+
+      pausedElements.confettiParticles = particles;
+
+      let animationId;
+
+      function animate() {
+        if (animationsPaused) {
+          pausedElements.confettiAnimationId = null;
+          return;
+        }
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.rotation += p.rotationSpeed;
+          if (p.y > canvas.height + 20) {
+            p.y = -20;
+            p.x = Math.random() * canvas.width;
+          }
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rotation * Math.PI / 180);
+          ctx.fillStyle = p.color;
+          if (p.shape === 'rect') {
+            ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+          } else {
+            ctx.beginPath();
+            ctx.arc(0, 0, p.size / 2, 0, Math.PI * 2);
+            ctx.fill();
+          }
+          ctx.restore();
+        });
+        animationId = requestAnimationFrame(animate);
+      }
+      animate();
+      pausedElements.confettiAnimationId = animationId;
+
+      setTimeout(() => {
+        if (pausedElements.confettiAnimationId) {
+          cancelAnimationFrame(pausedElements.confettiAnimationId);
+        }
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        pausedElements.confettiActive = false;
+        pausedElements.confettiParticles = [];
+        pausedElements.confettiAnimationId = null;
+      }, 12000);
     }
-  });
-</script>
+
+    function createSparkles() {
+      const card = document.getElementById('main-card');
+      if (!card) return;
+      const rect = card.getBoundingClientRect();
+      for (let i = 0; i < 30; i++) {
+        setTimeout(() => {
+          const s = document.createElement('div');
+          s.className = 'sparkle';
+          s.style.left = (rect.left + Math.random() * rect.width) + 'px';
+          s.style.top = (rect.top + Math.random() * rect.height) + 'px';
+          s.style.background = ['#d4a017', '#dc143c', '#ff0040', '#fff'][Math.floor(Math.random() * 4)];
+          document.body.appendChild(s);
+          setTimeout(() => s.remove(), 1500);
+        }, i * 80);
+      }
+    }
+
+    // ========== NEW FEATURES JS ==========
+    // Gift box
+    function openGift() {
+      if (document.getElementById('gift-password').value === '6895') {
+        document.getElementById('gift-box').classList.add('open');
+        document.getElementById('gift-error').classList.remove('show');
+      } else {
+        document.getElementById('gift-error').classList.add('show');
+        setTimeout(() => document.getElementById('gift-error').classList.remove('show'), 2000);
+      }
+    }
+
+    function closeGift() {
+      document.getElementById('gift-overlay').style.display = 'none';
+      // Resume all animations when gift is closed
+      resumeAllAnimations();
+      // If gift box was opened, reset it for potential re-opening
+      setTimeout(() => {
+        const giftBox = document.getElementById('gift-box');
+        if (giftBox.classList.contains('open')) {
+          giftBox.classList.remove('open');
+          document.getElementById('gift-password').value = '';
+        }
+      }, 500);
+    }
+
+    // Voice message
+    function toggleVoiceMessage() {
+      const v = document.getElementById('voice-message');
+      if (!v) return;
+      if (v.paused) {
+        v.play().catch(() => alert('تأكدي من وجود ملف ZAIN.mp3 في نفس المجلد'));
+      } else {
+        v.pause();
+      }
+    }
+
+    // Photo slider
+    function startPhotoSlider() {
+      const slides = document.querySelectorAll('#photo-slider img');
+      if (slides.length === 0) return;
+      let idx = 0;
+      setInterval(() => {
+        slides.forEach(s => s.classList.remove('active'));
+        slides[idx].classList.add('active');
+        idx = (idx + 1) % slides.length;
+      }, 3000);
+    }
+
+    // Love counter
+    function startLoveCounter() {
+      const counter = document.getElementById('love-counter');
+      let count = 0;
+      const interval = setInterval(() => {
+        count += 7;
+        if (count >= 1440) {
+          count = 1440;
+          clearInterval(interval);
+        }
+        counter.textContent = count;
+      }, 15);
+    }
+
+    // Balloons
+    function launchBalloons() {
+      const letters = ['أ', 'س', 'م', 'ا', 'ء'];
+      letters.forEach((letter, i) => {
+        setTimeout(() => {
+          const b = document.createElement('div');
+          b.className = 'balloon';
+          b.textContent = '🎈' + letter;
+          b.style.left = (10 + i * 18) + '%';
+          document.body.appendChild(b);
+          // Remove balloon after animation
+          setTimeout(() => b.remove(), 8000);
+        }, i * 500);
+      });
+    }
+
+    // Light mode toggle
+    function toggleMode() {
+      document.body.classList.toggle('light-mode');
+      const isLight = document.body.classList.contains('light-mode');
+      document.getElementById('mode-toggle').textContent = isLight ? '🌙 وضع داكن' : '☀️ وضع فاتح';
+      localStorage.setItem('lightMode', isLight ? '1' : '0');
+    }
+    if (localStorage.getItem('lightMode') === '1') {
+      document.body.classList.add('light-mode');
+      document.getElementById('mode-toggle').textContent = '🌙 وضع داكن';
+    }
+
+    // Wall messages (WhatsApp)
+    function sendWhatsAppMessage() {
+      const msg = document.getElementById('wall-input').value.trim();
+      if (!msg) {
+        alert('اكتبي رسالة الأول يا سمسم! 💌');
+        return;
+      }
+      window.open('https://wa.me/201289997048?text=' + encodeURIComponent(msg), '_blank');
+    }
+
+    function openMyWhatsApp() {
+      window.open('https://wa.me/201289997048?text=' + encodeURIComponent(
+        'كل سنة وانتي طيبة يا أجمل بنت في الدنيا 💞'), '_blank');
+    }
+
+    window.addEventListener('resize', () => {
+      const canvas = document.getElementById('confetti-canvas');
+      if (canvas) {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+    });
+
+    // Prevent double-tap zoom on buttons
+    document.addEventListener('touchstart', function(e) {
+      if (e.target.tagName === 'BUTTON' || e.target.closest('button')) {
+        e.preventDefault();
+        e.target.click();
+      }
+    }, { passive: false });
+  </script>
 
 </body>
 </html>
