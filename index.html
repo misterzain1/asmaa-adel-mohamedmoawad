@@ -1778,7 +1778,7 @@
         <h1 class="birthday-title">كل سنة وانتي طيبة</h1>
         <div class="name-highlight">يا اسماء</div>
 
-        <div class="date-badge">6 / 8 / 1997</div>
+        <div class="date-badge">لسنة 6 / 8 / 2026</div>
 
         <!-- Countdown -->
         <div class="countdown-section" id="countdown-section">
@@ -2133,7 +2133,7 @@
     function checkPassword() {
       const input = document.getElementById('password-input').value.trim();
       const errorMsg = document.getElementById('error-msg');
-      if (input === '681997' || input === '681995') {
+      if (input === '681995' || input === '681995') {
         document.getElementById('password-screen').style.display = 'none';
         document.getElementById('game-section').style.display = 'block';
         initGame();
@@ -2444,9 +2444,9 @@
 
     // ========== MULTI-AUDIO / PLAYLIST LOGIC ==========
     const musicTracks = [
-      { name: "🎵 أغنية عيد الميلاد (music.mp3)", file: "music.mp3" },
-      { name: "🎶 أغنية الحب الأولى (music2.mp3)", file: "music2.mp3" },
-      { name: "🎼 موسيقى هادئة (music3.mp3)", file: "music3.mp3" }
+      { name: "🎵 1أغنية عيد الميلاد (music.mp3)", file: "music.mp3" },
+      { name: "🎶 2أغنية عيد الميلاد (music2.mp3)", file: "music2.mp3" },
+      { name: "🎼 3أغنية عيد الميلاد (music3.mp3)", file: "music3.mp3" }
     ];
 
     let currentTrackIndex = 0;
@@ -2510,7 +2510,7 @@
         btn.textContent = '⏸️ ' + musicTracks[currentTrackIndex].name;
         btn.classList.add('playing');
       } else {
-        btn.textContent = '🎵 شغلي موسيقى الحب';
+        btn.textContent = '🎵 اسمعي موسيقي القلب يا قلبي';
         btn.classList.remove('playing');
       }
     }
@@ -2678,7 +2678,7 @@
 
     // Balloons
     function launchBalloons() {
-      const letters = ['أ', 'س', 'م', 'ا', 'ء'];
+      const letters = ['A', 'S', 'M', 'A', 'A'];
       letters.forEach((letter, i) => {
         setTimeout(() => {
           const b = document.createElement('div');
@@ -2716,7 +2716,7 @@
 
     function openMyWhatsApp() {
       window.open('https://wa.me/201289997048?text=' + encodeURIComponent(
-        'كل سنة وانتي طيبة يا أجمل بنت في الدنيا 💞'), '_blank');
+        ' انا سمسم يا حبيبي و دية رسالة افتراضية مني علشانا انا بكلمك من الموقع وكل سنة و انا طيبة يا أجمل بنت في الدنيا بوجودك يا حبيبي ذكري 6/8/2026 💞'), '_blank');
     }
 
     window.addEventListener('resize', () => {
